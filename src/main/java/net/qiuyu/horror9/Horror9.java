@@ -19,6 +19,7 @@ import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.item.ModCreativeModeTab;
 import net.qiuyu.horror9.entity.item.ModItems;
 import net.qiuyu.horror9.entity.renderer.No1Renderer;
+import net.qiuyu.horror9.register.ModBlocks;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -33,6 +34,7 @@ import software.bernie.geckolib.GeckoLib;
         ModItems.register(modEventBus);
         ModEntityTypes.register(modEventBus);
         ModCreativeModeTab.register(modEventBus);
+
         GeckoLib.initialize();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
