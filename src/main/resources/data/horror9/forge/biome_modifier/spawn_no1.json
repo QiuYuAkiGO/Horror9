@@ -4,7 +4,7 @@
     "minecraft:desert"
   ],
   "spawners": {
-    "type": "tutorialmod:chomper",
+    "type": "horror9:no1",
     "weight": 150,
     "minCount": 1,
     "maxCount": 3

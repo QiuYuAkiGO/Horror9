@@ -23,8 +23,9 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class No1 extends Monster implements GeoEntity {
+public class No1Entity extends Monster implements GeoEntity {
     private AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
 
 
     public static AttributeSupplier setAttributes() {
@@ -36,7 +37,7 @@ public class No1 extends Monster implements GeoEntity {
     }
 
 
-    protected No1(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public No1Entity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
     @Override
@@ -50,18 +51,19 @@ public class No1 extends Monster implements GeoEntity {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
     }
 
-    private <E extends No1> PlayState predicate(final AnimationState<E> event) {
+    private <E extends No1Entity> PlayState predicate(final AnimationState<E> event) {
         if (event.isMoving()) {
-            event.setAnimation(RawAnimation.begin().thenLoop("animation.no1.walk"));
+            event.setAnimation(RawAnimation.begin().thenPlayAndHold("no1.walk"));
             return PlayState.CONTINUE;
         }
-        event.setAnimation(RawAnimation.begin().thenLoop("animation.no1.idle"));
+        event.setAnimation(RawAnimation.begin().thenLoop("no1.idle"));
         return PlayState.CONTINUE;
     }
 
-    private <E extends No1> PlayState attackPredicate(AnimationState<E> event) {
+    private <E extends No1Entity> PlayState attackPredicate(AnimationState<E> event) {
         if(this.swinging){
-            event.setAnimation(RawAnimation.begin().then("animation.no1.attack", Animation.LoopType.PLAY_ONCE));
+            event.resetCurrentAnimation();
+            event.setAnimation(RawAnimation.begin().then("no1.attack", Animation.LoopType.PLAY_ONCE));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
@@ -81,19 +83,19 @@ public class No1 extends Monster implements GeoEntity {
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, 0.15F, 1.0F);
+        this.playSound(SoundEvents.WITHER_SKELETON_STEP, 0.15F, 1.0F);
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.CAT_STRAY_AMBIENT;
+        return SoundEvents.BLAZE_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.DOLPHIN_HURT;
+        return SoundEvents.IRON_GOLEM_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.DOLPHIN_DEATH;
+        return SoundEvents.IRON_GOLEM_DEATH;
     }
 
     protected float getSoundVolume() {

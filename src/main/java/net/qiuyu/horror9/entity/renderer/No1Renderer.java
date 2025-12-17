@@ -1,30 +1,28 @@
-package net.flandre923.tutorialmod.entity.renderer;
+package net.qiuyu.horror9.entity.renderer;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.flandre923.tutorialmod.TutorialMod;
-import net.flandre923.tutorialmod.entity.custom.ChomperEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.qiuyu.horror9.Horror9;
+import net.qiuyu.horror9.entity.custom.No1Entity;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-public class ChomperRenderer extends GeoEntityRenderer<ChomperEntity> {
-    public ChomperRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new ChomperModel());
-        this.shadowRadius = 0.3f;
+public class No1Renderer extends GeoEntityRenderer<No1Entity> {
+    public No1Renderer(EntityRendererProvider.Context renderManager) {
+        super(renderManager, new No1Model());
+        this.shadowRadius = 2.0f;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ChomperEntity instance) {
-        return new ResourceLocation(TutorialMod.MOD_ID, "textures/entity/chomper_texture.png");
+    public ResourceLocation getTextureLocation(No1Entity instance) {
+        return new ResourceLocation(Horror9.MODID, "textures/entity/no1_texture.png");
     }
 
 
     @Override
-    public RenderType getRenderType(ChomperEntity animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
+    public RenderType getRenderType(No1Entity animatable, ResourceLocation texture, @Nullable MultiBufferSource bufferSource, float partialTick) {
         return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }
