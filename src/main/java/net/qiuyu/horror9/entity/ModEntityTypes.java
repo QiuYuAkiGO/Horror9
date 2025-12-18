@@ -18,7 +18,7 @@ public class ModEntityTypes {
             ENTITY_TYPES.register("no1",
                     () -> EntityType.Builder.of(No1Entity::new, MobCategory.MONSTER)
                             .sized(3.5f, 4.5f)
-                            .build(new ResourceLocation(Horror9.MODID, "no1").toString()));
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "no1").toString()));
 
 
     public static void register(IEventBus eventBus) {

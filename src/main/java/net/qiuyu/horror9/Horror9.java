@@ -2,11 +2,6 @@ package net.qiuyu.horror9;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,18 +14,17 @@ import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.item.ModCreativeModeTab;
 import net.qiuyu.horror9.entity.item.ModItems;
 import net.qiuyu.horror9.entity.renderer.No1Renderer;
-import net.qiuyu.horror9.register.ModBlocks;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
 @Mod(Horror9.MODID) public class Horror9 {
 
     public static final String MODID = "horror9";
-    private static final Logger LOGGER = LogUtils.getLogger();
+//    private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public Horror9() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public Horror9(FMLJavaModLoadingContext context) {
+        IEventBus modEventBus = context.getModEventBus();
         ModItems.register(modEventBus);
         ModEntityTypes.register(modEventBus);
         ModCreativeModeTab.register(modEventBus);
@@ -50,11 +44,5 @@ import software.bernie.geckolib.GeckoLib;
         }
     }
     private void commonSetup(final FMLCommonSetupEvent event)
-    {
-        event.enqueueWork(()->{
-            SpawnPlacements.register(ModEntityTypes.NO1.get(),
-                    SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Monster::checkMonsterSpawnRules);
-        });
-    }
+    {}
 }

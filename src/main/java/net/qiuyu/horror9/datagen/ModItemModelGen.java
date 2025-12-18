@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.item.ModItems;
 
-public class ModItemModelGen extends ItemModelProvider{
+public class ModItemModelGen extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
     public static final String EGG_TEMPLATE = "item/template_spawn_egg";
@@ -22,6 +22,7 @@ public class ModItemModelGen extends ItemModelProvider{
     protected void registerModels() {
         eggItem(ModItems.NO1_SPAWN_EGG.get());
     }
+
     private void eggItem(Item item) {
         withExistingParent(itemName(item),
                 EGG_TEMPLATE);
@@ -36,10 +37,10 @@ public class ModItemModelGen extends ItemModelProvider{
     }
 
     public ResourceLocation resourceBlock(String path) {
-        return new ResourceLocation(Horror9.MODID, "block/" + path);
+        return ResourceLocation.parse(Horror9.MODID + ":" + "block/" + path);
     }
 
     public ResourceLocation resourceItem(String path) {
-        return new ResourceLocation(Horror9.MODID, "item/" + path);
+        return ResourceLocation.parse(Horror9.MODID + ":" + "item/" + path);
     }
 }

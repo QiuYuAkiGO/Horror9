@@ -3,9 +3,7 @@ package net.qiuyu.horror9.register;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
@@ -88,12 +86,8 @@ public class ModBlocks {
     public static final RegistryObject<SlabBlock> SAPINDUS_SLAB =
             BLOCKS.register("sapindus_slab", () -> new SlabBlock(woodProps()));
 
-    private static BlockState defaultStateOfPlanks() {
-        return ModBlocks.SAPINDUS_PLANKS.get().defaultBlockState();
-    }
-
     public static final RegistryObject<StairBlock> SAPINDUS_STAIRS =
-            BLOCKS.register("sapindus_stairs", () -> new StairBlock(defaultStateOfPlanks(), woodProps()));
+            BLOCKS.register("sapindus_stairs", () -> new StairBlock(() -> SAPINDUS_PLANKS.get().defaultBlockState(), woodProps()));
 
     // Fence + Fence Gate
     public static final RegistryObject<FenceBlock> SAPINDUS_FENCE =
