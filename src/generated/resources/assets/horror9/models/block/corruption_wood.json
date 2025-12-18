@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "horror9:block/corruption_wood_end",
+    "side": "horror9:block/corruption_wood_side"
+  }
+}

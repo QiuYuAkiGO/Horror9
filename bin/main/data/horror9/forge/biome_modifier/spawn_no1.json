@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:desert"
+  ],
+  "spawners": {
+    "type": "horror9:no1",
+    "weight": 150,
+    "minCount": 1,
+    "maxCount": 3
+  }
+}
