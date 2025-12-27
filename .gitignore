@@ -1,6 +1,7 @@
 # User-specific stuff
 .idea/
-
+src/generated/
+run-data/
 *.iml
 *.ipr
 *.iws
