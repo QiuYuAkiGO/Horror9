@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.custom.No1Entity;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
@@ -16,8 +17,8 @@ public class No1Renderer extends GeoEntityRenderer<No1Entity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(No1Entity instance) {
-        return new ResourceLocation(Horror9.MODID, "textures/entity/no1_texture.png");
+    public @NotNull ResourceLocation getTextureLocation(@NotNull No1Entity instance) {
+        return ResourceLocation.parse(Horror9.MODID+":"+"textures/entity/no1_texture.png");
     }
 
 

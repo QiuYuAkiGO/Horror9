@@ -21,6 +21,7 @@ public class ModCreativeModeTab {
                     .displayItems((pParameters, pOutput) -> {
                         // 物品
                         pOutput.accept(ModItems.NO1_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.BITER_SPAWN_EGG.get());
                     })
                     .build());
 

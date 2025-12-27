@@ -20,7 +20,7 @@ public class ModBlockModelGen extends BlockStateProvider {
     }
     public ResourceLocation blockTexture(Block block) {
         ResourceLocation name = key(block);
-        return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
+        return ResourceLocation.parse(name.getNamespace() + ":" + ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
     }
     private ResourceLocation key(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block);
