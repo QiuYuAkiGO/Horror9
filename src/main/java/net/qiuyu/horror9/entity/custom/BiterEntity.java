@@ -68,14 +68,14 @@ public class BiterEntity extends Monster implements GeoEntity {
 
     @Override
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
-        pPlayer.addEffect(new MobEffectInstance(MobEffects.POISON,
-                pPlayer.hasEffect(MobEffects.POISON) ? pPlayer.getEffect(MobEffects.POISON).getDuration() + 100 : 100, 0));
-        pPlayer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
-                pPlayer.hasEffect(MobEffects.CONFUSION) ? pPlayer.getEffect(MobEffects.CONFUSION).getDuration() + 100 : 100, 0));
-        pPlayer.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,
-                pPlayer.hasEffect(MobEffects.BLINDNESS) ? pPlayer.getEffect(MobEffects.BLINDNESS).getDuration() + 100 : 100, 0));
-        pPlayer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
-                pPlayer.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ? pPlayer.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getDuration() + 100 : 100, 1));
+//        pPlayer.addEffect(new MobEffectInstance(MobEffects.POISON,
+//                pPlayer.hasEffect(MobEffects.POISON) ? pPlayer.getEffect(MobEffects.POISON).getDuration() + 100 : 100, 0));
+//        pPlayer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
+//                pPlayer.hasEffect(MobEffects.CONFUSION) ? pPlayer.getEffect(MobEffects.CONFUSION).getDuration() + 100 : 100, 0));
+//        pPlayer.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,
+//                pPlayer.hasEffect(MobEffects.BLINDNESS) ? pPlayer.getEffect(MobEffects.BLINDNESS).getDuration() + 100 : 100, 0));
+//        pPlayer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
+//                pPlayer.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ? pPlayer.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getDuration() + 100 : 100, 1));
         return super.mobInteract(pPlayer, pHand);
     }
 
@@ -85,11 +85,20 @@ public class BiterEntity extends Monster implements GeoEntity {
     }
 
     @Override
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        if (this.isPassenger() && pSource.getEntity() != null && pSource.getEntity() == this.getVehicle()) {
+            return false;
+        }
+        return super.hurt(pSource, pAmount);
+    }
+
+    @Override
     public boolean doHurtTarget(Entity pEntity) {
         boolean flag = super.doHurtTarget(pEntity);
         if (flag && pEntity instanceof LivingEntity && !this.isPassenger()) {
             this.startRiding(pEntity);
-            this.stopTriggeredAnimation("attackController","attack");
+            this.playSound(SoundEvents.VEX_CHARGE);
+            this.stopTriggeredAnimation("attackController",null);
             if (!pEntity.level().isClientSide) {
                 Horror9.sendMSGToAll(new BiterMountPlayerMsg(this.getId(), pEntity.getId()));
             }
@@ -135,7 +144,7 @@ public class BiterEntity extends Monster implements GeoEntity {
 
             if (!mount.isAlive() || (mount instanceof Player player && player.isCreative())) {
                 this.removeVehicle();
-                this.stopTriggeredAnimation("attackController","attack.2");
+                this.stopTriggeredAnimation("attackController",null);
                 if (!this.level().isClientSide) {
                     Horror9.sendMSGToAll(new BiterDismountMsg(this.getId(), vehicle.getId()));
                 }
@@ -180,22 +189,21 @@ public class BiterEntity extends Monster implements GeoEntity {
 
     @Override
     protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState blockIn) {
-        this.playSound(SoundEvents.SPIDER_STEP, 0.15F, 1.0F);
+        this.playSound(SoundEvents.ZOMBIE_STEP, 1.0F, 2.0F);
     }
 
     @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.SPIDER_AMBIENT;
+    protected void playHurtSound(DamageSource pSource) {
+        this.playSound(SoundEvents.ZOMBIE_HURT, 1.0F, 3.0F);
     }
 
     @Override
-    protected @NotNull SoundEvent getHurtSound(@NotNull DamageSource damageSourceIn) {
-        return SoundEvents.SPIDER_HURT;
+    public void playAmbientSound() {
+        this.playSound(SoundEvents.ZOMBIE_AMBIENT, 1.0F, 3.0F);
     }
 
     @Override
-    protected @NotNull SoundEvent getDeathSound() {
-        return SoundEvents.SPIDER_DEATH;
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ZOMBIE_DEATH;
     }
-
 }

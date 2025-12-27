@@ -23,7 +23,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<BiterEntity>> BITER =
             ENTITY_TYPES.register("biter",
                     () -> EntityType.Builder.of(BiterEntity::new, MobCategory.MONSTER)
-                            .sized(0.8f, 0.8f)
+                            .sized(0.6f, 0.6f)
                             .build(ResourceLocation.parse(Horror9.MODID + ":" + "biter").toString()));
 
 
