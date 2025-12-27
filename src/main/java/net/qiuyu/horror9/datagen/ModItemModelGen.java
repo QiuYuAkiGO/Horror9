@@ -11,7 +11,7 @@ import net.qiuyu.horror9.entity.item.ModItems;
 
 public class ModItemModelGen extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
-    public static final String HANDHELD = "item/handheld";
+//    public static final String HANDHELD = "item/handheld";
     public static final String EGG_TEMPLATE = "item/template_spawn_egg";
 
     public ModItemModelGen(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -21,6 +21,7 @@ public class ModItemModelGen extends ItemModelProvider {
     @Override
     protected void registerModels() {
         eggItem(ModItems.NO1_SPAWN_EGG.get());
+        eggItem(ModItems.BITER_SPAWN_EGG.get());
     }
 
     private void eggItem(Item item) {
@@ -33,6 +34,7 @@ public class ModItemModelGen extends ItemModelProvider {
     }
 
     private String itemName(Item item) {
+        if (item == null) return "";
         return ForgeRegistries.ITEMS.getKey(item).getPath();
     }
 

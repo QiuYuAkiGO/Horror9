@@ -131,7 +131,6 @@ public class No1Entity extends TamableAnimal implements GeoEntity, NeutralMob {
     }
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        Item item = itemstack.getItem();
         if (this.level().isClientSide) {
             boolean flag = this.isOwnedBy(pPlayer) || this.isTame() || itemstack.is(Items.MAGMA_CREAM) && !this.isTame() && !this.isAngry();
             return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
@@ -151,7 +150,7 @@ public class No1Entity extends TamableAnimal implements GeoEntity, NeutralMob {
             if (this.random.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, pPlayer)) {
                 this.tame(pPlayer);
                 this.navigation.stop();
-                this.setTarget((LivingEntity)null);
+                this.setTarget(null);
                 this.setOrderedToSit(true);
                 this.level().broadcastEntityEvent(this, (byte)7);
             } else {

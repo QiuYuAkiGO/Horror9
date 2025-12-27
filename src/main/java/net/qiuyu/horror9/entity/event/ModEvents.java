@@ -5,6 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.entity.custom.BiterEntity;
 import net.qiuyu.horror9.entity.custom.No1Entity;
 
 public class ModEvents {
@@ -16,6 +17,7 @@ public class ModEvents {
             @SubscribeEvent
             public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
                 event.put(ModEntityTypes.NO1.get(), No1Entity.setAttributes());
+                event.put(ModEntityTypes.BITER.get(), BiterEntity.setAttributes());
             }
         }
     }
