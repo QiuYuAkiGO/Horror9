@@ -1,6 +1,5 @@
 package net.qiuyu.horror9;
 
-import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,8 +12,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.item.ModCreativeModeTab;
 import net.qiuyu.horror9.entity.item.ModItems;
+import net.qiuyu.horror9.entity.renderer.BiterRenderer;
 import net.qiuyu.horror9.entity.renderer.No1Renderer;
-import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
 @Mod(Horror9.MODID) public class Horror9 {
@@ -41,6 +40,7 @@ import software.bernie.geckolib.GeckoLib;
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntityTypes.NO1.get(), No1Renderer::new);
+            EntityRenderers.register(ModEntityTypes.BITER.get(), BiterRenderer::new);
         }
     }
     private void commonSetup(final FMLCommonSetupEvent event)
