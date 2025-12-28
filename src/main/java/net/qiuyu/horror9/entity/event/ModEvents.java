@@ -7,6 +7,7 @@ import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.custom.BiterEntity;
 import net.qiuyu.horror9.entity.custom.No1Entity;
+import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
 
 public class ModEvents {
 
@@ -18,6 +19,7 @@ public class ModEvents {
             public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
                 event.put(ModEntityTypes.NO1.get(), No1Entity.setAttributes());
                 event.put(ModEntityTypes.BITER.get(), BiterEntity.setAttributes());
+                event.put(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenEntity.setAttributes());
             }
         }
     }

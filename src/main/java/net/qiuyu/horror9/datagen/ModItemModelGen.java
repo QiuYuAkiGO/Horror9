@@ -22,6 +22,7 @@ public class ModItemModelGen extends ItemModelProvider {
     protected void registerModels() {
         eggItem(ModItems.NO1_SPAWN_EGG.get());
         eggItem(ModItems.BITER_SPAWN_EGG.get());
+        eggItem(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
     }
 
     private void eggItem(Item item) {

@@ -204,6 +204,6 @@ public class BiterEntity extends Monster implements GeoEntity {
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ZOMBIE_DEATH;
+        return SoundEvents.VEX_DEATH;
     }
 }

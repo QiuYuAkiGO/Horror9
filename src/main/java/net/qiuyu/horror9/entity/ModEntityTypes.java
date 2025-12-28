@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.custom.BiterEntity;
 import net.qiuyu.horror9.entity.custom.No1Entity;
+import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
 
 public class ModEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -23,8 +24,13 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<BiterEntity>> BITER =
             ENTITY_TYPES.register("biter",
                     () -> EntityType.Builder.of(BiterEntity::new, MobCategory.MONSTER)
-                            .sized(0.6f, 0.6f)
+                            .sized(0.8f, 0.8f)
                             .build(ResourceLocation.parse(Horror9.MODID + ":" + "biter").toString()));
+    public static final RegistryObject<EntityType<TheMistakenEntity>> THE_MISTAKEN =
+            ENTITY_TYPES.register("the_mistaken",
+                    () -> EntityType.Builder.of(TheMistakenEntity::new, MobCategory.MONSTER)
+                            .sized(0.6f, 2.9f)
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "the_mistaken").toString()));
 
 
     public static void register(IEventBus eventBus) {

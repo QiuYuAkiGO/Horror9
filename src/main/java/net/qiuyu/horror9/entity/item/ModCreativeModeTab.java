@@ -22,6 +22,7 @@ public class ModCreativeModeTab {
                         // 物品
                         pOutput.accept(ModItems.NO1_SPAWN_EGG.get());
                         pOutput.accept(ModItems.BITER_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
                     })
                     .build());
 

@@ -17,9 +17,11 @@ public class ModLangGenCN extends LanguageProvider {
     protected void addTranslations() {
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
         add(ModItems.BITER_SPAWN_EGG.get(),"活体蔓生者卵");
+        add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"误解之人投影");
         add(ModCreativeModeTab.HORROR9_TAB_STRING,"恐怖九号创造栏");
         add("entity.horror9.no1","一号机");
         add("entity.horror9.biter","活体蔓生者");
+        add("entity.horror9.the_mistaken","误解之人");
 
     }
 }
