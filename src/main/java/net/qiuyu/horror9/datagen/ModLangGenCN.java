@@ -4,8 +4,8 @@ package net.qiuyu.horror9.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.qiuyu.horror9.Horror9;
-import net.qiuyu.horror9.entity.item.ModCreativeModeTab;
-import net.qiuyu.horror9.entity.item.ModItems;
+import net.qiuyu.horror9.register.ModCreativeModeTab;
+import net.qiuyu.horror9.register.ModItems;
 
 
 public class ModLangGenCN extends LanguageProvider {
@@ -15,6 +15,7 @@ public class ModLangGenCN extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.OWL_SICKLE.get(),"猫鹰镰");
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
         add(ModItems.BITER_SPAWN_EGG.get(),"活体蔓生者卵");
         add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"误解之人投影");

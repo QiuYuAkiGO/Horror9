@@ -7,12 +7,13 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.qiuyu.horror9.Horror9;
-import net.qiuyu.horror9.entity.item.ModItems;
+import net.qiuyu.horror9.register.ModItems;
 
 public class ModItemModelGen extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
 //    public static final String HANDHELD = "item/handheld";
     public static final String EGG_TEMPLATE = "item/template_spawn_egg";
+    public static final String SWORD_TEMPLATE = "item/wooden_sword";
 
     public ModItemModelGen(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, Horror9.MODID, existingFileHelper);
@@ -23,6 +24,7 @@ public class ModItemModelGen extends ItemModelProvider {
         eggItem(ModItems.NO1_SPAWN_EGG.get());
         eggItem(ModItems.BITER_SPAWN_EGG.get());
         eggItem(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
+        withExistingParent(itemName(ModItems.OWL_SICKLE.get()), SWORD_TEMPLATE).texture("layer0", resourceItem("owl_sickle"));
     }
 
     private void eggItem(Item item) {

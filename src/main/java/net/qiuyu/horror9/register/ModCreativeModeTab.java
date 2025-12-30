@@ -1,4 +1,4 @@
-package net.qiuyu.horror9.entity.item;
+package net.qiuyu.horror9.register;
 
 
 import net.minecraft.core.registries.Registries;
@@ -23,6 +23,7 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.NO1_SPAWN_EGG.get());
                         pOutput.accept(ModItems.BITER_SPAWN_EGG.get());
                         pOutput.accept(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.OWL_SICKLE.get());
                     })
                     .build());
 

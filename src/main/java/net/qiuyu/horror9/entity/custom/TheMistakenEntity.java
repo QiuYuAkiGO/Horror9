@@ -86,11 +86,7 @@ public class TheMistakenEntity extends Monster implements GeoEntity {
     }
 
     private <E extends TheMistakenEntity> PlayState predicate(final AnimationState<E> event) {
-//        if (event.isMoving()) {
-//            event.setAnimation(RawAnimation.begin().thenPlayAndHold("walk"));
-//        } else {
-//            event.setAnimation(RawAnimation.begin().thenLoop("idle"));
-//        }
+        event.setAnimation(RawAnimation.begin().thenLoop("stand"));
         return PlayState.CONTINUE;
     }
 
