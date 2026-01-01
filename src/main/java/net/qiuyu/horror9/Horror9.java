@@ -17,10 +17,11 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import net.qiuyu.horror9.entity.ModEntityTypes;
-import net.qiuyu.horror9.entity.item.ModCreativeModeTab;
-import net.qiuyu.horror9.entity.item.ModItems;
+import net.qiuyu.horror9.register.ModCreativeModeTab;
+import net.qiuyu.horror9.register.ModItems;
 import net.qiuyu.horror9.entity.renderer.BiterRenderer;
 import net.qiuyu.horror9.entity.renderer.No1Renderer;
+import net.qiuyu.horror9.entity.renderer.TheMistakenRenderer;
 import net.qiuyu.horror9.message.BiterDismountMsg;
 import net.qiuyu.horror9.message.BiterMountPlayerMsg;
 import software.bernie.geckolib.GeckoLib;
@@ -77,6 +78,7 @@ import software.bernie.geckolib.GeckoLib;
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntityTypes.NO1.get(), No1Renderer::new);
             EntityRenderers.register(ModEntityTypes.BITER.get(), BiterRenderer::new);
+            EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
         }
     }
 }

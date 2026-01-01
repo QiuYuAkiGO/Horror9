@@ -7,7 +7,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.qiuyu.horror9.Horror9;
-import net.qiuyu.horror9.entity.item.ModItems;
+import net.qiuyu.horror9.register.ModItems;
 
 public class ModItemModelGen extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
@@ -22,6 +22,7 @@ public class ModItemModelGen extends ItemModelProvider {
     protected void registerModels() {
         eggItem(ModItems.NO1_SPAWN_EGG.get());
         eggItem(ModItems.BITER_SPAWN_EGG.get());
+        eggItem(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
     }
 
     private void eggItem(Item item) {
