@@ -1,4 +1,3 @@
-/*
 package net.qiuyu.horror9.items.renderer;
 
 import net.minecraft.resources.ResourceLocation;
@@ -9,20 +8,17 @@ import software.bernie.geckolib.model.GeoModel;
 public class OwlSickleModel extends GeoModel<OwlSickleItem> {
     @Override
     public ResourceLocation getModelResource(OwlSickleItem animatable) {
-        // 替换为实际的模型路径
         return ResourceLocation.parse(Horror9.MODID + ":" + "geo/owl_sickle.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(OwlSickleItem animatable) {
-        // 替换为实际的贴图路径
-        return ResourceLocation.parse(Horror9.MODID + ":" + "textures/entity/owl_sickle.png");
+        return ResourceLocation.parse(Horror9.MODID + ":" + "textures/item/owl_sickle_texture.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(OwlSickleItem animatable) {
-        // 替换为实际的动画路径
+        // 暂时没有相应文件,不要播放动画
         return ResourceLocation.parse(Horror9.MODID + ":" + "animations/owl_sickle.animation.json");
     }
 }
-*/

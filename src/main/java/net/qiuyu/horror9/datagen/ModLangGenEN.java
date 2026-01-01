@@ -13,7 +13,9 @@ public class ModLangGenEN extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(ModItems.OWL_SICKLE.get(),"Owl Sickle");
+        add(ModItems.OWL_SICKLE.get(),"Reaper's Scythe");
+        add("tooltip.horror9.owl_sickle.line1", "He finally realized that he had become the blade of 'Misunderstanding'.");
+        add("tooltip.horror9.owl_sickle.line2", "\"Heads fall, fate is sealed.\"");
         add(ModItems.NO1_SPAWN_EGG.get(),"No1 Egg");
         add(ModItems.BITER_SPAWN_EGG.get(),"Biter Egg");
         add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"The Mistaken Egg");

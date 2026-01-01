@@ -25,7 +25,7 @@ public class ModItems {
     public static final RegistryObject<Item> THE_MISTAKEN_SPAWN_EGG = ITEMS.register("the_mistaken_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.THE_MISTAKEN, 0x22b341, 0x19732e,
                     new Item.Properties()));
-    public static RegistryObject<Item> OWL_SICKLE = ITEMS.register("owl_sickle", () -> new OwlSickleItem(Tiers.NETHERITE, 11, 2.1f,
+    public static RegistryObject<Item> OWL_SICKLE = ITEMS.register("owl_sickle", () -> new OwlSickleItem(Tiers.NETHERITE, 9, -3.84f,
             new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {

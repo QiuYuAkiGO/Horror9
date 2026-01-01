@@ -15,7 +15,9 @@ public class ModLangGenCN extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(ModItems.OWL_SICKLE.get(),"猫鹰镰");
+        add(ModItems.OWL_SICKLE.get(),"『枭首之镰』");
+        add("tooltip.horror9.owl_sickle.line1", "他终于看清，自己已然成为了“误解”的刀刃。");
+        add("tooltip.horror9.owl_sickle.line2", "\"人头落地，既成定局\"");
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
         add(ModItems.BITER_SPAWN_EGG.get(),"活体蔓生者卵");
         add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"误解之人投影");
