@@ -28,10 +28,5 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(),new ModLangGenEN(output,"en_us"));
         generator.addProvider(event.includeClient(),new ModLangGenCN(output,"zh_cn"));
         generator.addProvider(event.includeClient(),new ModBlockModelGen(output,helper));
-        ModBlockTagGen blockModelGen = new ModBlockTagGen(output,lookupProvider,event.getExistingFileHelper());
-        generator.addProvider(event.includeServer(),blockModelGen);
-        generator.addProvider(event.includeServer(),new ModRecipesGen(output));
-        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(ModLootTableGen::new, LootContextParamSets.BLOCK))));
     }
 }
