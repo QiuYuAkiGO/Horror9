@@ -71,7 +71,7 @@ import software.bernie.geckolib.GeckoLib;
     }
 
     public static <MSG> void sendNonLocal(MSG msg, ServerPlayer player) {
-        NETWORK_WRAPPER.sendTo(msg, player.connection.f_9742_, NetworkDirection.PLAY_TO_CLIENT);
+        NETWORK_WRAPPER.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
