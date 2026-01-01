@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
   build-and-deploy:
@@ -23,7 +24,7 @@ jobs:
           java-version: '17'
 
       - name: Setup Gradle (设置 Gradle)
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
 
       - name: Build with Gradle (构建模组)
         run: ./gradlew build
