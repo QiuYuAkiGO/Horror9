@@ -26,5 +26,10 @@ public class ModLangGenCN extends LanguageProvider {
         add("entity.horror9.biter","活体蔓生者");
         add("entity.horror9.the_mistaken","误解之人");
 
+        // 按键翻译
+        add("key.category.horror9", "恐怖九号");
+        add("key.horror9.shift_left_click", "Shift + 左键");
+        add("key.horror9.shift_right_click", "Shift + 右键");
+        add("key.horror9.shift_middle_click", "Shift + 中键");
     }
 }

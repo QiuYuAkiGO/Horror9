@@ -24,6 +24,7 @@ import net.qiuyu.horror9.entity.renderer.No1Renderer;
 import net.qiuyu.horror9.entity.renderer.TheMistakenRenderer;
 import net.qiuyu.horror9.message.BiterDismountMsg;
 import net.qiuyu.horror9.message.BiterMountPlayerMsg;
+import net.qiuyu.horror9.message.HuntingHornNoteMsg;
 import software.bernie.geckolib.GeckoLib;
 
 @Mod(Horror9.MODID) public class Horror9 {
@@ -56,6 +57,7 @@ import software.bernie.geckolib.GeckoLib;
     private void commonSetup(final FMLCommonSetupEvent event) {
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, BiterMountPlayerMsg.class, BiterMountPlayerMsg::write, BiterMountPlayerMsg::read, BiterMountPlayerMsg.Handler::handle);
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, BiterDismountMsg.class, BiterDismountMsg::write, BiterDismountMsg::read, BiterDismountMsg.Handler::handle);
+        NETWORK_WRAPPER.registerMessage(packetsRegistered++, HuntingHornNoteMsg.class, HuntingHornNoteMsg::write, HuntingHornNoteMsg::read, HuntingHornNoteMsg.Handler::handle);
     }
 
     public static <MSG> void sendMSGToServer(MSG message) {

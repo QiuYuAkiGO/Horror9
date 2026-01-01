@@ -23,5 +23,11 @@ public class ModLangGenEN extends LanguageProvider {
         add("entity.horror9.no1","The No.1");
         add("entity.horror9.biter","The Biter");
         add("entity.horror9.the_mistaken","The Mistaken");
+        
+        // Keybindings
+        add("key.category.horror9", "Horror9");
+        add("key.horror9.shift_left_click", "Shift + Left Click");
+        add("key.horror9.shift_right_click", "Shift + Right Click");
+        add("key.horror9.shift_middle_click", "Shift + Middle Click");
     }
 }
