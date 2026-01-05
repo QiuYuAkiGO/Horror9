@@ -8,7 +8,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class No1Model extends GeoModel<No1Entity> {
     @Override
     public ResourceLocation getModelResource(No1Entity object) {
-        return ResourceLocation.parse(Horror9.MODID+":"+"geo/no1.geo.json");
+        return ResourceLocation.parse(Horror9.MODID+":"+"geo/entity/no1.geo.json");
     }
 
     @Override
@@ -18,6 +18,6 @@ public class No1Model extends GeoModel<No1Entity> {
 
     @Override
     public ResourceLocation getAnimationResource(No1Entity animatable) {
-        return ResourceLocation.parse(Horror9.MODID+":"+"animations/no1.animation.json");
+        return ResourceLocation.parse(Horror9.MODID+":"+"animations/entity/no1.animation.json");
     }
 }
