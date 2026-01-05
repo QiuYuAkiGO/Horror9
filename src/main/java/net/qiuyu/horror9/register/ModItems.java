@@ -8,7 +8,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.qiuyu.horror9.Horror9;
+import net.qiuyu.horror9.armor.ModArmorMaterials;
+import net.qiuyu.horror9.armor.custom.medicare.Medicare;
 import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.items.custom.HeartMetal;
+import net.qiuyu.horror9.items.custom.HeartPassItem;
 import net.qiuyu.horror9.items.custom.OwlSickleItem;
 
 public class ModItems {
@@ -25,8 +29,15 @@ public class ModItems {
     public static final RegistryObject<Item> THE_MISTAKEN_SPAWN_EGG = ITEMS.register("the_mistaken_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.THE_MISTAKEN, 0x22b341, 0x19732e,
                     new Item.Properties()));
-    public static RegistryObject<Item> OWL_SICKLE = ITEMS.register("owl_sickle", () -> new OwlSickleItem(Tiers.NETHERITE, 9, -3.84f,
+    public static final RegistryObject<Item> OWL_SICKLE = ITEMS.register("owl_sickle", () -> new OwlSickleItem(Tiers.NETHERITE, 9, -3.84f,
             new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HEART_METAL = ITEMS.register("heart_metal", () -> new HeartMetal(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HEART_PASS = ITEMS.register("heart_pass", () -> new HeartPassItem(Tiers.DIAMOND, 12, -3.1f,
+            HeartPassItem.createDefaultProperties()));
+    public static final RegistryObject<ArmorItem> MEDICARE_HELMET = ITEMS.register("medicare_helmet", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<ArmorItem> MEDICARE_CHESTPLATE = ITEMS.register("medicare_chestplate", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<ArmorItem> MEDICARE_LEGGINGS = ITEMS.register("medicare_leggings", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<ArmorItem> MEDICARE_BOOTS = ITEMS.register("medicare_boots", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

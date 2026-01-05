@@ -9,7 +9,7 @@ public class TheMistakenModel extends GeoModel<TheMistakenEntity> {
     @Override
     public ResourceLocation getModelResource(TheMistakenEntity animatable) {
         // 替换为实际的模型路径
-        return ResourceLocation.parse(Horror9.MODID + ":" + "geo/the_mistaken.geo.json");
+        return ResourceLocation.parse(Horror9.MODID + ":" + "geo/entity/the_mistaken.geo.json");
     }
 
     @Override
@@ -21,6 +21,6 @@ public class TheMistakenModel extends GeoModel<TheMistakenEntity> {
     @Override
     public ResourceLocation getAnimationResource(TheMistakenEntity animatable) {
         // 替换为实际的动画路径
-        return ResourceLocation.parse(Horror9.MODID + ":" + "animations/the_mistaken.animation.json");
+        return ResourceLocation.parse(Horror9.MODID + ":" + "animations/entity/the_mistaken.animation.json");
     }
 }

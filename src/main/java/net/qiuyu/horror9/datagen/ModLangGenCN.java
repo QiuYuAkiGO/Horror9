@@ -15,15 +15,32 @@ public class ModLangGenCN extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+
+        // 护甲
+        add(ModItems.MEDICARE_HELMET.get(),"爱心医疗部『帽子』");
+        add(ModItems.MEDICARE_CHESTPLATE.get(),"爱心医疗部『大衣』");
+        add(ModItems.MEDICARE_LEGGINGS.get(),"爱心医疗部『裤子』");
+        add(ModItems.MEDICARE_BOOTS.get(),"爱心医疗部『防尘鞋』");
+        add("tooltip.horror9.medicare.line1", "爱心医疗部的部员，能够出色的兼顾到设施的一切，");
+        add("tooltip.horror9.medicare.line2", "但最主要的还是擅长照顾病人的情绪");
+
+        // 武器
         add(ModItems.OWL_SICKLE.get(),"『枭首之镰』");
         add("tooltip.horror9.owl_sickle.line1", "他终于看清，自己已然成为了“误解”的刀刃。");
         add("tooltip.horror9.owl_sickle.line2", "\"人头落地，既成定局\"");
-        add("tooltip.horror9.heart_pass.line1", "患者在接受治疗时请保持安静❤️");
-        add("tooltip.horror9.heart_pass.line2", "感谢您的理解与支持❤️");
+        add(ModItems.HEART_PASS.get(),"『传递爱心』");
+        add("tooltip.horror9.heart_pass.line1", "患者在接受治疗时请保持安静❤");
+        add("tooltip.horror9.heart_pass.line2", "感谢您的理解与支持❤");
+
+        // 饰品
+        add(ModItems.HEART_METAL.get(),"❤『爱心勋章』❤");
+        add("tooltip.horror9.heart_metal.line1", "已发放爱心献血奖励❤");
+
+        // 实体
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
         add(ModItems.BITER_SPAWN_EGG.get(),"活体蔓生者卵");
         add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"误解之人投影");
-        add(ModCreativeModeTab.HORROR9_TAB_STRING,"恐怖九号创造栏");
+        add(ModCreativeModeTab.HORROR9_TAB_STRING,"恐怖九号");
         add("entity.horror9.no1","一号机");
         add("entity.horror9.biter","活体蔓生者");
         add("entity.horror9.the_mistaken","误解之人");

@@ -24,6 +24,12 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.BITER_SPAWN_EGG.get());
                         pOutput.accept(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
                         pOutput.accept(ModItems.OWL_SICKLE.get());
+                        pOutput.accept(ModItems.HEART_METAL.get());
+                        pOutput.accept(ModItems.HEART_PASS.get());
+                        pOutput.accept(ModItems.MEDICARE_HELMET.get());
+                        pOutput.accept(ModItems.MEDICARE_CHESTPLATE.get());
+                        pOutput.accept(ModItems.MEDICARE_LEGGINGS.get());
+                        pOutput.accept(ModItems.MEDICARE_BOOTS.get());
                     })
                     .build());
 

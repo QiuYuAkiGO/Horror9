@@ -2,41 +2,27 @@ package net.qiuyu.horror9.armor.custom.medicare;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.qiuyu.horror9.armor.renderer.medicare.MedicareRenderer;
-import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-import java.util.function.Consumer;
 
-public class Medicare extends ArmorItem implements GeoItem {
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+public class Medicare extends ArmorItem  {
+//    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private static final Map<ArmorItem.Type, Double> HEALTH_BONUS_MAP = Util.make(new EnumMap<>(ArmorItem.Type.class), (bonus) -> {
         bonus.put(ArmorItem.Type.BOOTS, 2.0D);
@@ -45,11 +31,11 @@ public class Medicare extends ArmorItem implements GeoItem {
         bonus.put(ArmorItem.Type.HELMET, 3.0D);
     });
 
-    private static final UUID[] ARMOR_MODIFIER_UUID_PER_SLOT = new UUID[]{
-            UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B20"),
-            UUID.fromString("D8499B04-0E66-4726-8529-A9AA043017ad"),
-            UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"),
-            UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD921BB150")
+    private static final UUID[] HEALTH_MODIFIER_UUID_PER_SLOT = new UUID[]{
+            UUID.fromString("7842b57d-e641-4da3-b441-a3a2341d7254"),
+            UUID.fromString("c5963b61-4682-411c-9602-544158428574"),
+            UUID.fromString("d9426f0f-08e8-466d-96f7-921360662d0d"),
+            UUID.fromString("747206ca-9781-4328-8d00-47b744a87b54")
     };
 
     public Medicare(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
@@ -62,58 +48,16 @@ public class Medicare extends ArmorItem implements GeoItem {
             ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
             builder.putAll(super.getDefaultAttributeModifiers(pEquipmentSlot));
             double healthBonus = HEALTH_BONUS_MAP.getOrDefault(this.type, 0.0D);
-            builder.put(Attributes.MAX_HEALTH, new AttributeModifier(ARMOR_MODIFIER_UUID_PER_SLOT[pEquipmentSlot.getIndex()], "Max Health modifier", healthBonus, AttributeModifier.Operation.ADDITION));
+            builder.put(Attributes.MAX_HEALTH, new AttributeModifier(HEALTH_MODIFIER_UUID_PER_SLOT[pEquipmentSlot.getIndex()], "Max Health modifier", healthBonus, AttributeModifier.Operation.ADDITION));
             return builder.build();
         }
         return super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<>(this, 20, state -> {
-            state.setAnimation(DefaultAnimations.IDLE);
-            Entity entity = state.getData(DataTickets.ENTITY);
-
-            if (entity instanceof ArmorStand){
-                return PlayState.CONTINUE;
-            }
-
-            Set<Item> wornArmor = new ObjectOpenHashSet<>();
-
-            for (ItemStack stack : entity.getArmorSlots()) {
-                if (stack.isEmpty()){
-                    return PlayState.STOP;
-                }
-                wornArmor.add(stack.getItem());
-            }
-
-            return PlayState.CONTINUE;
-        }));
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pTooltipComponents.add(Component.translatable("tooltip.horror9.medicare.line1").withStyle(ChatFormatting.LIGHT_PURPLE));
+        pTooltipComponents.add(Component.translatable("tooltip.horror9.medicare.line2").withStyle(ChatFormatting.LIGHT_PURPLE));
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
-
-
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
-    }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private GeoArmorRenderer<?> renderer;
-
-            @Override
-            public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
-                if (this.renderer == null){
-                    this.renderer = new MedicareRenderer();
-                }
-                this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
-
-                return this.renderer;
-            }
-        });
-    }
-
-
 }

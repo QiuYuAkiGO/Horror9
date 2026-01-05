@@ -9,7 +9,7 @@ public class BiterModel extends GeoModel<BiterEntity> {
     @Override
     public ResourceLocation getModelResource(BiterEntity animatable) {
         // 替换为实际的模型路径
-        return ResourceLocation.parse(Horror9.MODID + ":" + "geo/biter.geo.json");
+        return ResourceLocation.parse(Horror9.MODID + ":" + "geo/entity/biter.geo.json");
     }
 
     @Override
@@ -21,6 +21,6 @@ public class BiterModel extends GeoModel<BiterEntity> {
     @Override
     public ResourceLocation getAnimationResource(BiterEntity animatable) {
         // 替换为实际的动画路径
-        return ResourceLocation.parse(Horror9.MODID + ":" + "animations/biter.animation.json");
+        return ResourceLocation.parse(Horror9.MODID + ":" + "animations/entity/biter.animation.json");
     }
 }

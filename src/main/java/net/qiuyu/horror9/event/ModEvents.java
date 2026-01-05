@@ -1,5 +1,6 @@
 package net.qiuyu.horror9.event;
 
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -17,6 +18,7 @@ import net.qiuyu.horror9.entity.custom.BiterEntity;
 import net.qiuyu.horror9.entity.custom.No1Entity;
 import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
 import net.qiuyu.horror9.register.ModItems;
+import top.theillusivec4.curios.api.CuriosApi;
 
 public class ModEvents {
 
@@ -24,11 +26,22 @@ public class ModEvents {
     public static class ForgeEvents {
 
         @SubscribeEvent
+        @SuppressWarnings("removal")
         public static void onLivingHurt(LivingHurtEvent event) {
             if (event.getSource().getEntity() instanceof Player player) {
                 if (player.getMainHandItem().is(ModItems.OWL_SICKLE.get()) && player.hasEffect(MobEffects.DARKNESS) && player.getAttackStrengthScale(0.0F) >= 1.0F) {
                     event.setAmount(event.getAmount() + 6.0f);
                 }
+            }
+
+            LivingEntity victim = event.getEntity();
+            if (!victim.level().isClientSide()) {
+                //noinspection UnstableApiUsage
+                CuriosApi.getCuriosHelper().findFirstCurio(victim, stack -> stack.is(ModItems.HEART_METAL.get())).ifPresent(slotResult -> {
+                    if (victim.getRandom().nextFloat() < 0.8f) {
+                        victim.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 0));
+                    }
+                });
             }
         }
 

@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -24,8 +25,8 @@ public class HeartPassItem extends AxeItem implements GeoItem {
 
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        if (pTarget.isAlive()) {
-            pTarget.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 120, 1));
+        if (pTarget.isAlive() && pAttacker instanceof Player player && player.getAttackStrengthScale(0.0F) >= 1.0F) {
+            pTarget.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200, 1));
         }
         return super.hurtEnemy(pStack, pTarget, pAttacker);
     }
@@ -35,7 +36,7 @@ public class HeartPassItem extends AxeItem implements GeoItem {
     }
 
     public static Properties createDefaultProperties() {
-        return new Properties().defaultDurability(128).stacksTo(1);
+        return new Properties().defaultDurability(128);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class HeartPassItem extends AxeItem implements GeoItem {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("tooltip.horror9.heart_pass.line1").withStyle(ChatFormatting.LIGHT_PURPLE));
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.heart_pass.line2").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.horror9.heart_pass.line2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
@@ -58,12 +59,11 @@ public class HeartPassItem extends AxeItem implements GeoItem {
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
             private HeartPassRenderer renderer;
-
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                if (this.renderer == null)
+                if (this.renderer == null){
                     this.renderer = new HeartPassRenderer();
-
+                }
                 return this.renderer;
             }
         });
