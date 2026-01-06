@@ -29,13 +29,13 @@ public class HuntingHornClientEvents {
         }
 
         // 检测按键按下 (consumeClick 会在按下时返回一次 true)
-        if (ModKeyBindings.SHIFT_LEFT_CLICK_MAPPING.consumeClick()) {
+        if (ModKeyBindings.CTRL_LEFT_CLICK_MAPPING.consumeClick()) {
             Horror9.sendMSGToServer(new HuntingHornNoteMsg(0)); // RED
         }
-        if (ModKeyBindings.SHIFT_RIGHT_CLICK_MAPPING.consumeClick()) {
+        if (ModKeyBindings.CTRL_RIGHT_CLICK_MAPPING.consumeClick()) {
             Horror9.sendMSGToServer(new HuntingHornNoteMsg(1)); // GREEN
         }
-        if (ModKeyBindings.SHIFT_MIDDLE_CLICK_MAPPING.consumeClick()) {
+        if (ModKeyBindings.CTRL_MIDDLE_CLICK_MAPPING.consumeClick()) {
             Horror9.sendMSGToServer(new HuntingHornNoteMsg(2)); // BLUE
         }
     }

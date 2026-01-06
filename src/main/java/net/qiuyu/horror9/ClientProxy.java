@@ -19,16 +19,16 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public boolean isNoteKey1Down() {
-        return ModKeyBindings.SHIFT_LEFT_CLICK_MAPPING.isDown();
+        return ModKeyBindings.CTRL_LEFT_CLICK_MAPPING.isDown();
     }
 
     @Override
     public boolean isNoteKey2Down() {
-        return ModKeyBindings.SHIFT_RIGHT_CLICK_MAPPING.isDown();
+        return ModKeyBindings.CTRL_RIGHT_CLICK_MAPPING.isDown();
     }
 
     @Override
     public boolean isNoteKey3Down() {
-        return ModKeyBindings.SHIFT_MIDDLE_CLICK_MAPPING.isDown();
+        return ModKeyBindings.CTRL_MIDDLE_CLICK_MAPPING.isDown();
     }
 }

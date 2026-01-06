@@ -41,8 +41,10 @@ public class ModLangGenEN extends LanguageProvider {
         
         // Keybindings
         add("key.category.horror9", "Horror9");
-        add("key.horror9.shift_left_click", "Shift + Left Click");
-        add("key.horror9.shift_right_click", "Shift + Right Click");
-        add("key.horror9.shift_middle_click", "Shift + Middle Click");
+        add("key.horror9.ctrl_left_click", "Ctrl + Left Click");
+        add("key.horror9.ctrl_right_click", "Ctrl + Right Click");
+        add("key.horror9.ctrl_middle_click", "Ctrl + Middle Click");
+
+        add("curios.identifier.chest", "Chest");
     }
 }
