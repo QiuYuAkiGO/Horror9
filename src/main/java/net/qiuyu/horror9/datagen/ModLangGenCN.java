@@ -47,8 +47,10 @@ public class ModLangGenCN extends LanguageProvider {
 
         // 按键翻译
         add("key.category.horror9", "恐怖九号");
-        add("key.horror9.shift_left_click", "Shift + 左键");
-        add("key.horror9.shift_right_click", "Shift + 右键");
-        add("key.horror9.shift_middle_click", "Shift + 中键");
+        add("key.horror9.ctrl_left_click", "Ctrl + 左键");
+        add("key.horror9.ctrl_right_click", "Ctrl + 右键");
+        add("key.horror9.ctrl_middle_click", "Ctrl + 中键");
+
+        add("curios.identifier.chest", "胸部");
     }
 }

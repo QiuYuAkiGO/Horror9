@@ -20,38 +20,38 @@ public class ModKeyBindings {
     public static final String KEY_CATEGORY_HORROR9 = "key.category." + Horror9.MODID;
 
     // 按键翻译键
-    public static final String KEY_SHIFT_LEFT_CLICK = "key." + Horror9.MODID + ".shift_left_click";
-    public static final String KEY_SHIFT_RIGHT_CLICK = "key." + Horror9.MODID + ".shift_right_click";
-    public static final String KEY_SHIFT_MIDDLE_CLICK = "key." + Horror9.MODID + ".shift_middle_click";
+    public static final String KEY_CTRL_LEFT_CLICK = "key." + Horror9.MODID + ".ctrl_left_click";
+    public static final String KEY_CTRL_RIGHT_CLICK = "key." + Horror9.MODID + ".ctrl_right_click";
+    public static final String KEY_CTRL_MIDDLE_CLICK = "key." + Horror9.MODID + ".ctrl_middle_click";
 
-    // 1. Shift + 左键
-    public static final KeyMapping SHIFT_LEFT_CLICK_MAPPING = new KeyMapping(
-            KEY_SHIFT_LEFT_CLICK,
+    // 1. Ctrl + 左键
+    public static final KeyMapping CTRL_LEFT_CLICK_MAPPING = new KeyMapping(
+            KEY_CTRL_LEFT_CLICK,
             KeyConflictContext.IN_GAME,
-            KeyModifier.SHIFT,
+            KeyModifier.CONTROL,
             InputConstants.Type.MOUSE,
             GLFW.GLFW_MOUSE_BUTTON_LEFT,
             KEY_CATEGORY_HORROR9
     );
 
-    // 2. Shift + 右键
-    public static final KeyMapping SHIFT_RIGHT_CLICK_MAPPING = new KeyMapping(
-            KEY_SHIFT_RIGHT_CLICK,
+    // 2. Ctrl + 右键
+    public static final KeyMapping CTRL_RIGHT_CLICK_MAPPING = new KeyMapping(
+            KEY_CTRL_RIGHT_CLICK,
             KeyConflictContext.IN_GAME,
-            KeyModifier.SHIFT,
+            KeyModifier.CONTROL,
             InputConstants.Type.MOUSE,
             GLFW.GLFW_MOUSE_BUTTON_RIGHT,
             KEY_CATEGORY_HORROR9
     );
 
-    // 3. Shift + 左键 + 右键
+    // 3. Ctrl + 左键 + 右键
     // 注意：Minecraft 的 KeyMapping 系统默认不支持一个映射对应两个物理按键（除了修饰符）。
-    // 这里将其作为一个独立的逻辑按键注册，默认绑定为 Shift + 鼠标中键 (Middle Click)，
+    // 这里将其作为一个独立的逻辑按键注册，默认绑定为 Ctrl + 鼠标中键 (Middle Click)，
     // 玩家可以在按键设置中自行更改此项绑定。
-    public static final KeyMapping SHIFT_MIDDLE_CLICK_MAPPING = new KeyMapping(
-            KEY_SHIFT_MIDDLE_CLICK,
+    public static final KeyMapping CTRL_MIDDLE_CLICK_MAPPING = new KeyMapping(
+            KEY_CTRL_MIDDLE_CLICK,
             KeyConflictContext.IN_GAME,
-            KeyModifier.SHIFT,
+            KeyModifier.CONTROL,
             InputConstants.Type.MOUSE,
             GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
             KEY_CATEGORY_HORROR9
@@ -63,8 +63,8 @@ public class ModKeyBindings {
      */
     @SubscribeEvent
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
-        event.register(SHIFT_LEFT_CLICK_MAPPING);
-        event.register(SHIFT_RIGHT_CLICK_MAPPING);
-        event.register(SHIFT_MIDDLE_CLICK_MAPPING);
+        event.register(CTRL_LEFT_CLICK_MAPPING);
+        event.register(CTRL_RIGHT_CLICK_MAPPING);
+        event.register(CTRL_MIDDLE_CLICK_MAPPING);
     }
 }

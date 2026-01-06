@@ -2,6 +2,7 @@ package net.qiuyu.horror9.event;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -28,13 +29,18 @@ public class ModEvents {
         @SubscribeEvent
         @SuppressWarnings("removal")
         public static void onLivingHurt(LivingHurtEvent event) {
-            if (event.getSource().getEntity() instanceof Player player) {
+            LivingEntity victim = event.getEntity();
+            Entity attacker = event.getSource().getEntity();
+
+            if (attacker instanceof Player player) {
                 if (player.getMainHandItem().is(ModItems.OWL_SICKLE.get()) && player.hasEffect(MobEffects.DARKNESS) && player.getAttackStrengthScale(0.0F) >= 1.0F) {
                     event.setAmount(event.getAmount() + 6.0f);
                 }
+                if (player.getMainHandItem().is(ModItems.HEART_PASS.get()) && player.getAttackStrengthScale(0.0F) >= 1.0F) {
+                    victim.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200, 1));
+                }
             }
 
-            LivingEntity victim = event.getEntity();
             if (!victim.level().isClientSide()) {
                 //noinspection UnstableApiUsage
                 CuriosApi.getCuriosHelper().findFirstCurio(victim, stack -> stack.is(ModItems.HEART_METAL.get())).ifPresent(slotResult -> {

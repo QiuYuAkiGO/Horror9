@@ -81,12 +81,12 @@ public class HuntingHornItem extends Item implements GeoItem {
             Level level = player.level();
             
             if (level.isClientSide) {
-                // 判定：左键 + 右键 (通过读取 ModKeyBindings 中的 Shift + 中键 映射)
+                // 判定：左键 + 右键 (通过读取 ModKeyBindings 中的 Ctrl + 中键 映射)
                 if (Horror9.PROXY.isNoteKey3Down() && player.isUsingItem()) {
                     return true;
                 }
 
-                // 检查是否按下设置好的 Shift + 左键
+                // 检查是否按下设置好的 Ctrl + 左键
                 if (Horror9.PROXY.isNoteKey1Down()) {
                     return true;
                 }

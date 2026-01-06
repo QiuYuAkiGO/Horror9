@@ -23,14 +23,6 @@ import java.util.function.Consumer;
 public class HeartPassItem extends AxeItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    @Override
-    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        if (pTarget.isAlive() && pAttacker instanceof Player player && player.getAttackStrengthScale(0.0F) >= 1.0F) {
-            pTarget.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200, 1));
-        }
-        return super.hurtEnemy(pStack, pTarget, pAttacker);
-    }
-
     public HeartPassItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
     }
