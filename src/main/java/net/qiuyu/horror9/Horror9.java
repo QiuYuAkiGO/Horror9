@@ -85,7 +85,7 @@ import java.util.stream.Collectors;
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
-        Curios.registerCurioSlot(Curios.CHEST_SLOT, 1, false, ResourceLocation.parse("curios:slot/chest_slot"));
+        Curios.registerCurioSlot(Curios.CHEST_SLOT, 1, false, null);
     }
 
     private void processIMC(final InterModProcessEvent event) {
