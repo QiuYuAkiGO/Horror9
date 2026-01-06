@@ -1,5 +1,6 @@
 package net.qiuyu.horror9;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,11 +12,14 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.server.ServerLifecycleHooks;
+import net.qiuyu.horror9.compat.Curios;
 import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.register.ModCreativeModeTab;
 import net.qiuyu.horror9.register.ModItems;
@@ -25,11 +29,15 @@ import net.qiuyu.horror9.entity.renderer.TheMistakenRenderer;
 import net.qiuyu.horror9.message.BiterDismountMsg;
 import net.qiuyu.horror9.message.BiterMountPlayerMsg;
 import net.qiuyu.horror9.message.HuntingHornNoteMsg;
+import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
+
+import java.util.stream.Collectors;
 
 @Mod(Horror9.MODID) public class Horror9 {
 
     public static final String MODID = "horror9";
+    public static final Logger LOGGER = LogUtils.getLogger();
     private static final String PROTOCOL_VERSION = Integer.toString(1);
     private static int packetsRegistered;
     public static final CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
@@ -51,6 +59,8 @@ import software.bernie.geckolib.GeckoLib;
 
         GeckoLib.initialize();
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::enqueueIMC);
+        modEventBus.addListener(this::processIMC);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -72,6 +82,16 @@ import software.bernie.geckolib.GeckoLib;
 
     public static <MSG> void sendNonLocal(MSG msg, ServerPlayer player) {
         NETWORK_WRAPPER.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+    }
+
+    private void enqueueIMC(final InterModEnqueueEvent event) {
+        Curios.registerCurioSlot(Curios.CHEST_SLOT, 1, false, ResourceLocation.parse("curios:slot/chest_slot"));
+    }
+
+    private void processIMC(final InterModProcessEvent event) {
+        LOGGER.info("Got IMC {}", event.getIMCStream().
+                map(m -> m.messageSupplier().get()).
+                collect(Collectors.toList()));
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
