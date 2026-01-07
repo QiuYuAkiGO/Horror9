@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
     MEDICARE(
-            "medicare", 140, Util.make(new EnumMap<>(ArmorItem.Type.class), (protectionFuncType) -> {
+            "medicare", 160, Util.make(new EnumMap<>(ArmorItem.Type.class), (protectionFuncType) -> {
         protectionFuncType.put(ArmorItem.Type.BOOTS, 2);
         protectionFuncType.put(ArmorItem.Type.LEGGINGS, 7);
         protectionFuncType.put(ArmorItem.Type.CHESTPLATE, 8);

@@ -13,12 +13,15 @@ import net.qiuyu.horror9.armor.custom.medicare.Medicare;
 import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.items.custom.HeartMetal;
 import net.qiuyu.horror9.items.custom.HeartPassItem;
+import net.qiuyu.horror9.items.custom.NullTridentItem;
 import net.qiuyu.horror9.items.custom.OwlSickleItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Horror9.MODID);
 
+    public static final RegistryObject<Item> NULL_TRIDENT = ITEMS.register("null_trident",
+            () -> new NullTridentItem(new Item.Properties().stacksTo(1).durability(250)));
 
     public static final RegistryObject<Item> NO1_SPAWN_EGG = ITEMS.register("no1_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.NO1, 0x22b341, 0x19732e,

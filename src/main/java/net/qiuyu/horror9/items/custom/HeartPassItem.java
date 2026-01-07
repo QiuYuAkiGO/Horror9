@@ -28,7 +28,7 @@ public class HeartPassItem extends AxeItem implements GeoItem {
     }
 
     public static Properties createDefaultProperties() {
-        return new Properties().defaultDurability(128);
+        return new Properties().durability(368);
     }
 
     @Override
