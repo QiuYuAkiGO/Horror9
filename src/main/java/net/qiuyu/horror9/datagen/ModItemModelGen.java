@@ -23,6 +23,10 @@ public class ModItemModelGen extends ItemModelProvider {
         eggItem(ModItems.NO1_SPAWN_EGG.get());
         eggItem(ModItems.BITER_SPAWN_EGG.get());
         eggItem(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
+
+        withExistingParent(itemName(ModItems.NULL_TRIDENT.get()), modLoc("item/null_trident_in_hand"));
+        withExistingParent("null_trident_2d", GENERATED).texture("layer0", resourceItem("null_trident_texture"));
+
         itemGeneratedModel(ModItems.HEART_METAL.get(), resourceItem("heart_metal_texture"));
         itemGeneratedModel(ModItems.MEDICARE_HELMET.get(), resourceItem("medicare_helmet_texture"));
         itemGeneratedModel(ModItems.MEDICARE_CHESTPLATE.get(), resourceItem("medicare_chestplate_texture"));

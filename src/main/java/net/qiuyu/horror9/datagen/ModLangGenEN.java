@@ -27,6 +27,9 @@ public class ModLangGenEN extends LanguageProvider {
         add(ModItems.HEART_PASS.get(),"Heart Pass");
         add("tooltip.horror9.heart_pass.line1", "Please remain quiet while the patient is receiving treatment.❤");
         add("tooltip.horror9.heart_pass.line2", "Thank you for your understanding and support.❤");
+        add(ModItems.NULL_TRIDENT.get(),"WIPE OUT");
+        add("tooltip.horror9.null_trident.line1", "Efficient so called.");
+        add("tooltip.horror9.null_trident.line2", "Not funny.");
 
         add(ModItems.HEART_METAL.get(),"❤『Heart Metal』❤");
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");

@@ -31,6 +31,9 @@ public class ModLangGenCN extends LanguageProvider {
         add(ModItems.HEART_PASS.get(),"『传递爱心』");
         add("tooltip.horror9.heart_pass.line1", "患者在接受治疗时请保持安静❤");
         add("tooltip.horror9.heart_pass.line2", "感谢您的理解与支持❤");
+        add(ModItems.NULL_TRIDENT.get(),"『存在抹除』");
+        add("tooltip.horror9.null_trident.line1", "我们称之为高效。");
+        add("tooltip.horror9.null_trident.line2", "不嘻嘻。");
 
         // 饰品
         add(ModItems.HEART_METAL.get(),"❤『爱心勋章』❤");

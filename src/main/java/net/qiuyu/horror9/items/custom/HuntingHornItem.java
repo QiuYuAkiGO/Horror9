@@ -62,9 +62,7 @@ public class HuntingHornItem extends Item implements GeoItem {
 
         // 示例：双红触发一个左键技能（增加移动速度）
         registerSkill(List.of(HornType.RED, HornType.RED),
-                new HornSkill("speed_boost", (player, level) -> {
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0));
-                }, SkillType.LEFT_CLICK));
+                new HornSkill("speed_boost", (player, level) -> player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0)), SkillType.LEFT_CLICK));
     }
 
     private static void registerSkill(List<HornType> sequence, HornSkill skill) {

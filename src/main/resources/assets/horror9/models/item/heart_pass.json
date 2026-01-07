@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "horror9:item/heart_pass_texture"
+		"1": "horror9:item/heart_pass_texture",
+		"particle": "horror9:item/heart_pass_texture"
 	},
 	"elements": [
 		{
