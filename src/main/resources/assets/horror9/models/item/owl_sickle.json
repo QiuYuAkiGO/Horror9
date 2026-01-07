@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "horror9:item/owl_sickle_texture"
+		"0": "horror9:item/owl_sickle_texture",
+		"particle": "horror9:item/owl_sickle_texture"
 	},
 	"elements": [
 		{
