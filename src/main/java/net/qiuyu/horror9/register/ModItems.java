@@ -33,7 +33,7 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.THE_MISTAKEN, 0x22b341, 0x19732e,
                     new Item.Properties()));
     public static final RegistryObject<Item> OWL_SICKLE = ITEMS.register("owl_sickle", () -> new OwlSickleItem(Tiers.NETHERITE, 9, -3.84f,
-            new Item.Properties().stacksTo(1)));
+            new Item.Properties().durability(198)));
     public static final RegistryObject<Item> HEART_METAL = ITEMS.register("heart_metal", () -> new HeartMetal(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> HEART_PASS = ITEMS.register("heart_pass", () -> new HeartPassItem(Tiers.DIAMOND, 12, -3.1f,
             HeartPassItem.createDefaultProperties()));
