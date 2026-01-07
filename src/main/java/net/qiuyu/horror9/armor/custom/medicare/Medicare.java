@@ -25,10 +25,10 @@ public class Medicare extends ArmorItem  {
 //    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private static final Map<ArmorItem.Type, Double> HEALTH_BONUS_MAP = Util.make(new EnumMap<>(ArmorItem.Type.class), (bonus) -> {
-        bonus.put(ArmorItem.Type.BOOTS, 2.0D);
+        bonus.put(ArmorItem.Type.BOOTS, 4.0D);
         bonus.put(ArmorItem.Type.LEGGINGS, 7.0D);
         bonus.put(ArmorItem.Type.CHESTPLATE, 8.0D);
-        bonus.put(ArmorItem.Type.HELMET, 3.0D);
+        bonus.put(ArmorItem.Type.HELMET, 5.0D);
     });
 
     private static final UUID[] HEALTH_MODIFIER_UUID_PER_SLOT = new UUID[]{
