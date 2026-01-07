@@ -27,11 +27,9 @@ public class NullTridentEntity extends ThrownTrident {
     protected void onHitEntity(EntityHitResult pResult) {
         Entity target = pResult.getEntity();
         if (!this.level().isClientSide) {
-            if (target instanceof Player player) {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    Horror9.sendNonLocal(new CrashPlayerMsg(), serverPlayer);
-                }
-            } else {
+            if (target instanceof ServerPlayer serverPlayer) {
+                Horror9.sendNonLocal(new CrashPlayerMsg(), serverPlayer);
+            } else if (!(target instanceof Player)) {
                 target.discard();
             }
         }

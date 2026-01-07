@@ -1,6 +1,7 @@
 package net.qiuyu.horror9.items.custom;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -16,12 +17,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.custom.NullTridentEntity;
 import net.qiuyu.horror9.message.CrashPlayerMsg;
+import net.qiuyu.horror9.items.renderer.NullTridentItemRenderer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class NullTridentItem extends TridentItem {
     public NullTridentItem(Properties pProperties) {
@@ -30,12 +34,14 @@ public class NullTridentItem extends TridentItem {
 
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        if (!pAttacker.level().isClientSide) {
-            if (pTarget instanceof Player player) {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    Horror9.sendNonLocal(new CrashPlayerMsg(), serverPlayer);
-                }
-            } else {
+        if (pAttacker.level().isClientSide) {
+            if (pTarget instanceof Player && pTarget == Horror9.PROXY.getClientSidePlayer()) {
+                throw new NullPointerException("Forcefully crashed by Null Trident");
+            }
+        } else {
+            if (pTarget instanceof ServerPlayer serverPlayer) {
+                Horror9.sendNonLocal(new CrashPlayerMsg(), serverPlayer);
+            } else if (!(pTarget instanceof Player)) {
                 pTarget.discard();
             }
         }
@@ -109,5 +115,19 @@ public class NullTridentItem extends TridentItem {
         pTooltipComponents.add(Component.translatable("tooltip.horror9.null_trident.line1").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD));
         pTooltipComponents.add(Component.translatable("tooltip.horror9.null_trident.line2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.OBFUSCATED));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private NullTridentItemRenderer renderer;
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new NullTridentItemRenderer();
+                }
+                return this.renderer;
+            }
+        });
     }
 }

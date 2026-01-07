@@ -19,10 +19,8 @@ public class CrashPlayerMsg {
     public static class Handler {
         public static void handle(CrashPlayerMsg message, Supplier<NetworkEvent.Context> context) {
             context.get().setPacketHandled(true);
-            context.get().enqueueWork(() -> {
-                // 抛出 NullPointerException 导致客户端崩溃
-                throw new NullPointerException("Forcefully crashed by Null Trident");
-            });
+            // 抛出 NullPointerException 导致客户端崩溃
+            throw new NullPointerException("Forcefully crashed by Null Trident");
         }
     }
 }
