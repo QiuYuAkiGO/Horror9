@@ -5,7 +5,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.items.custom.HeartPassItem;
-import net.qiuyu.horror9.items.custom.OwlSickleItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoItemRenderer;

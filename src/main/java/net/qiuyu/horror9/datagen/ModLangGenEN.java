@@ -30,6 +30,9 @@ public class ModLangGenEN extends LanguageProvider {
         add(ModItems.NULL_TRIDENT.get(),"WIPE OUT");
         add("tooltip.horror9.null_trident.line1", "Efficient so called.");
         add("tooltip.horror9.null_trident.line2", "Not funny.");
+        add(ModItems.OXYGEN_DESTROYER.get(),"Oxygen Destroyer");
+        add("tooltip.horror9.oxygen_destroyer.line1", "");
+        add("tooltip.horror9.oxygen_destroyer.line2", "");
 
         add(ModItems.HEART_METAL.get(),"❤『Heart Metal』❤");
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");

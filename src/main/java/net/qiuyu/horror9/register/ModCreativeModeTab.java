@@ -27,6 +27,7 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.OWL_SICKLE.get());
                         pOutput.accept(ModItems.HEART_METAL.get());
                         pOutput.accept(ModItems.HEART_PASS.get());
+                        pOutput.accept(ModItems.OXYGEN_DESTROYER.get());
                         pOutput.accept(ModItems.MEDICARE_HELMET.get());
                         pOutput.accept(ModItems.MEDICARE_CHESTPLATE.get());
                         pOutput.accept(ModItems.MEDICARE_LEGGINGS.get());

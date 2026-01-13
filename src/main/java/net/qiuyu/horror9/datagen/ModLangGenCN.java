@@ -34,6 +34,9 @@ public class ModLangGenCN extends LanguageProvider {
         add(ModItems.NULL_TRIDENT.get(),"『存在抹除』");
         add("tooltip.horror9.null_trident.line1", "我们称之为高效。");
         add("tooltip.horror9.null_trident.line2", "不嘻嘻。");
+        add(ModItems.OXYGEN_DESTROYER.get(),"『撼地者』");
+        add("tooltip.horror9.oxygen_destroyer.line1", "");
+        add("tooltip.horror9.oxygen_destroyer.line2", "");
 
         // 饰品
         add(ModItems.HEART_METAL.get(),"❤『爱心勋章』❤");

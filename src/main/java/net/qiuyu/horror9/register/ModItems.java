@@ -11,10 +11,7 @@ import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.armor.ModArmorMaterials;
 import net.qiuyu.horror9.armor.custom.medicare.Medicare;
 import net.qiuyu.horror9.entity.ModEntityTypes;
-import net.qiuyu.horror9.items.custom.HeartMetal;
-import net.qiuyu.horror9.items.custom.HeartPassItem;
-import net.qiuyu.horror9.items.custom.NullTridentItem;
-import net.qiuyu.horror9.items.custom.OwlSickleItem;
+import net.qiuyu.horror9.items.custom.*;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -37,6 +34,8 @@ public class ModItems {
     public static final RegistryObject<Item> HEART_METAL = ITEMS.register("heart_metal", () -> new HeartMetal(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> HEART_PASS = ITEMS.register("heart_pass", () -> new HeartPassItem(Tiers.DIAMOND, 12, -3.1f,
             HeartPassItem.createDefaultProperties()));
+    public static final RegistryObject<Item> OXYGEN_DESTROYER = ITEMS.register("oxygen_destroyer", () -> new OxygenDestroyerItem(Tiers.DIAMOND, 20, -3.1f,
+            OxygenDestroyerItem.createDefaultProperties()));
     public static final RegistryObject<ArmorItem> MEDICARE_HELMET = ITEMS.register("medicare_helmet", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<ArmorItem> MEDICARE_CHESTPLATE = ITEMS.register("medicare_chestplate", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<ArmorItem> MEDICARE_LEGGINGS = ITEMS.register("medicare_leggings", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));

@@ -108,7 +108,6 @@ import java.util.stream.Collectors;
             EntityRenderers.register(ModEntityTypes.BITER.get(), BiterRenderer::new);
             EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
             EntityRenderers.register(ModEntityTypes.NULL_TRIDENT_ENTITY.get(), NullTridentEntityRenderer::new);
-
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
         }
 
