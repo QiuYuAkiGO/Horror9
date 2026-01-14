@@ -20,13 +20,14 @@ public class ModCreativeModeTab {
                     .title(Component.translatable(HORROR9_TAB_STRING))
                     .displayItems((pParameters, pOutput) -> {
                         // 物品
-                        pOutput.accept(ModItems.NULL_TRIDENT.get());
+//                        pOutput.accept(ModItems.NULL_TRIDENT.get());
                         pOutput.accept(ModItems.NO1_SPAWN_EGG.get());
                         pOutput.accept(ModItems.BITER_SPAWN_EGG.get());
                         pOutput.accept(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
                         pOutput.accept(ModItems.OWL_SICKLE.get());
                         pOutput.accept(ModItems.HEART_METAL.get());
                         pOutput.accept(ModItems.HEART_PASS.get());
+                        pOutput.accept(ModItems.OXYGEN_DESTROYER.get());
                         pOutput.accept(ModItems.MEDICARE_HELMET.get());
                         pOutput.accept(ModItems.MEDICARE_CHESTPLATE.get());
                         pOutput.accept(ModItems.MEDICARE_LEGGINGS.get());

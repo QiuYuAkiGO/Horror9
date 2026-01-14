@@ -2,7 +2,6 @@ package net.qiuyu.horror9;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ThrownTridentRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -110,7 +108,6 @@ import java.util.stream.Collectors;
             EntityRenderers.register(ModEntityTypes.BITER.get(), BiterRenderer::new);
             EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
             EntityRenderers.register(ModEntityTypes.NULL_TRIDENT_ENTITY.get(), NullTridentEntityRenderer::new);
-
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
         }
 

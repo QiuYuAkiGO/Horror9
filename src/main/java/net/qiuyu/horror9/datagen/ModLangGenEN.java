@@ -30,9 +30,14 @@ public class ModLangGenEN extends LanguageProvider {
         add(ModItems.NULL_TRIDENT.get(),"WIPE OUT");
         add("tooltip.horror9.null_trident.line1", "Efficient so called.");
         add("tooltip.horror9.null_trident.line2", "Not funny.");
+        add(ModItems.OXYGEN_DESTROYER.get(),"Oxygen Destroyer");
+        add("tooltip.horror9.oxygen_destroyer.line1", "Based on the skin of a giant beast, it is a gene weapon with its own power system, which can explode when it hits the ground.");
+        add("tooltip.horror9.oxygen_destroyer.line2", "Right-click and hold for 2s, the ground can explode, and enemies in front of the fan-shaped range can be knocked back.");
 
         add(ModItems.HEART_METAL.get(),"❤『Heart Metal』❤");
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");
+        add("tooltip.horror9.heart_metal.line2", "When the wearer is attacked, there is a 30% chance");
+        add("tooltip.horror9.heart_metal.line3", "to grant itself Regeneration I, lasting 20s");
 
         add(ModItems.NO1_SPAWN_EGG.get(),"No1 Egg");
         add(ModItems.BITER_SPAWN_EGG.get(),"Biter Egg");
