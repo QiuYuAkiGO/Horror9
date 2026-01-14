@@ -3,6 +3,7 @@ package net.qiuyu.horror9.items.custom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -73,7 +74,7 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
         if (pLivingEntity instanceof Player player) {
             int i = this.getUseDuration(pStack) - pTimeLeft;
             if (i >= 40) { // 2 seconds
-                player.playSound(SoundEvents.ANVIL_PLACE, 1.0F, 1.0F);
+                player.playSound(SoundEvents.GENERIC_EXPLODE, 1.0F, 1.0F);
                 if (!pLevel.isClientSide) {
                     performAoeAttack(player, pLevel);
                     player.getCooldowns().addCooldown(this, 240); // 12 seconds
@@ -83,6 +84,7 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
     }
 
     private void performAoeAttack(Player player, Level level) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
         double range = 3.0;
         Vec3 lookVec = player.getLookAngle();
         Vec3 playerPos = player.getEyePosition();
@@ -100,6 +102,7 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
                 // cos(120/2) = cos(60) = 0.5
                 if (dotProduct >= 0.5) {
                     target.hurt(level.damageSources().playerAttack(player), 16.0F);
+                    serverLevel.sendParticles(ParticleTypes.EXPLOSION, target.getX(), target.getY() + target.getBbHeight() / 2.0, target.getZ(), 5, 0.2, 0.2, 0.2, 0.0);
                     if (!(target instanceof Player tp && tp.isCreative())) {
                         target.setDeltaMovement(target.getDeltaMovement().x, 0.8, target.getDeltaMovement().z);
                         target.hurtMarked = true;
@@ -109,43 +112,42 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
         }
 
         // 地面方块动画效果
-        if (level instanceof ServerLevel serverLevel) {
-            BlockPos centerPos = player.blockPosition();
-            for (int x = -4; x <= 4; x++) {
-                for (int z = -4; z <= 4; z++) {
-                    for (int y = 2; y >= -2; y--) {
-                        BlockPos pos = centerPos.offset(x, y, z);
-                        BlockState state = level.getBlockState(pos);
-                        if (state.isAir()) continue;
+        BlockPos centerPos = player.blockPosition();
+        for (int x = -4; x <= 4; x++) {
+            for (int z = -4; z <= 4; z++) {
+                for (int y = 2; y >= -2; y--) {
+                    BlockPos pos = centerPos.offset(x, y, z);
+                    BlockState state = level.getBlockState(pos);
+                    if (state.isAir()) continue;
 
-                        // 判定是否为地表方块
-                        if (!level.getBlockState(pos.above()).isAir()) continue;
+                    // 判定是否为地表方块
+                    if (!level.getBlockState(pos.above()).isAir()) continue;
 
-                        Vec3 blockCenter = Vec3.atCenterOf(pos);
-                        Vec3 toBlock = blockCenter.subtract(playerPos);
-                        double distance = toBlock.length();
+                    Vec3 blockCenter = Vec3.atCenterOf(pos);
+                    Vec3 toBlock = blockCenter.subtract(playerPos);
+                    double distance = toBlock.length();
 
-                        if (distance <= range + 0.5) {
-                            double dotProduct = lookVec.dot(toBlock.normalize());
-                            if (dotProduct >= 0.5) {
-                                int delay = (int) (distance * 3);
-                                scheduleDelayTask(serverLevel.getServer(), delay, () -> {
-                                    if (level.getBlockState(pos).equals(state)) {
-                                        // 使用 fall 产生实体，然后立即恢复原方块以达到“只生成实体”的效果
-                                        FallingBlockEntity fallingBlock = FallingBlockEntity.fall(level, pos, state);
-                                        level.setBlock(pos, state, 3); // 立即恢复方块
+                    if (distance <= range + 0.5) {
+                        double dotProduct = lookVec.dot(toBlock.normalize());
+                        if (dotProduct >= 0.5) {
+                            int delay = (int) (distance * 3);
+                            scheduleDelayTask(serverLevel.getServer(), delay, () -> {
+                                if (level.getBlockState(pos).equals(state)) {
+                                    serverLevel.sendParticles(ParticleTypes.EXPLOSION, blockCenter.x, blockCenter.y + 0.5, blockCenter.z, 2, 0.1, 0.1, 0.1, 0.0);
+                                    // 使用 fall 产生实体，然后立即恢复原方块以达到“只生成实体”的效果
+                                    FallingBlockEntity fallingBlock = FallingBlockEntity.fall(level, pos, state);
+                                    level.setBlock(pos, state, 3); // 立即恢复方块
 
-                                        fallingBlock.time = 1; // 设置为1以跳过初始删除方块的逻辑
-                                        fallingBlock.dropItem = false;
-                                        fallingBlock.setDeltaMovement(0, 0.3, 0);
-                                        fallingBlock.hurtMarked = true;
+                                    fallingBlock.time = 1; // 设置为1以跳过初始删除方块的逻辑
+                                    fallingBlock.dropItem = false;
+                                    fallingBlock.setDeltaMovement(0, 0.3, 0);
+                                    fallingBlock.hurtMarked = true;
 
-                                        // 20tick后自动消失，防止实体下落后尝试替换方块
-                                        scheduleDelayTask(serverLevel.getServer(), 20, fallingBlock::discard);
-                                    }
-                                });
-                                break;
-                            }
+                                    // 20tick后自动消失，防止实体下落后尝试替换方块
+                                    scheduleDelayTask(serverLevel.getServer(), 20, fallingBlock::discard);
+                                }
+                            });
+                            break;
                         }
                     }
                 }

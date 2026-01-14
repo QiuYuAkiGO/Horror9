@@ -44,7 +44,7 @@ public class ModEvents {
             if (!victim.level().isClientSide()) {
                 //noinspection UnstableApiUsage
                 CuriosApi.getCuriosHelper().findFirstCurio(victim, stack -> stack.is(ModItems.HEART_METAL.get())).ifPresent(slotResult -> {
-                    if (victim.getRandom().nextFloat() < 0.8f) {
+                    if (victim.getRandom().nextFloat() < 0.3f) {
                         victim.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 0));
                     }
                 });
