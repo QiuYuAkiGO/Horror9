@@ -33,6 +33,7 @@ public class ModLangGenEN extends LanguageProvider {
         add(ModItems.OXYGEN_DESTROYER.get(),"Oxygen Destroyer");
         add("tooltip.horror9.oxygen_destroyer.line1", "Based on the skin of a giant beast, it is a gene weapon with its own power system, which can explode when it hits the ground.");
         add("tooltip.horror9.oxygen_destroyer.line2", "Right-click and hold for 2s, the ground can explode, and enemies in front of the fan-shaped range can be knocked back.");
+        add(ModItems.WITHER_BOMB.get(), "Wither Bomb");
 
         add(ModItems.HEART_METAL.get(),"❤『Heart Metal』❤");
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");

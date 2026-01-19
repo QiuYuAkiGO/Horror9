@@ -1,0 +1,102 @@
+package net.qiuyu.horror9.items.custom;
+
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
+import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.entity.custom.WitherBombEntity;
+
+public class WitherBombItem extends Item {
+    private static final int USE_TIME = 20;
+    private static final int[] CHARGE_POINTS = {5, 10, 15, 20};
+
+    public WitherBombItem(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remainingUseTicks) {
+        if (level.isClientSide && entity instanceof Player player) {
+            int usedTicks = this.getUseDuration(stack) - remainingUseTicks;
+
+            // 检查是否到达蓄力节点
+            for (int chargePoint : CHARGE_POINTS) {
+                if (usedTicks == chargePoint) {
+                    // 播放蓄力音效
+                    level.playSound(
+                            player,
+                            player.getX(),
+                            player.getY(),
+                            player.getZ(),
+                            SoundEvents.EXPERIENCE_ORB_PICKUP,
+                            SoundSource.PLAYERS,
+                            0.7F,
+                            1.0F + (chargePoint - 5) * 0.05F // 音调逐渐升高
+                    );
+                    break;
+                }
+            }
+        }
+
+        super.onUseTick(level, entity, stack, remainingUseTicks);
+    }
+
+    @Override
+    public void releaseUsing(ItemStack itemstack, Level level, LivingEntity entityLiving, int timeLeft) {
+        if (entityLiving instanceof Player player) {
+            int i = this.getUseDuration(itemstack) - timeLeft;
+            if (i < USE_TIME) {
+                return;
+            }
+            // 创建实体
+            if (!level.isClientSide()) {
+                WitherBombEntity witherBombEntity = new WitherBombEntity(ModEntityTypes.WITHER_BOMB.get(),
+                        player.position().x(), player.getEyePosition().y, player.position().z(), 0F, -0.5F, 0F, level);
+                witherBombEntity.setOwner(player);
+                witherBombEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+                level.addFreshEntity(witherBombEntity);
+            }
+            // 播放音效
+            level.playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    SoundEvents.EGG_THROW,
+                    SoundSource.NEUTRAL,
+                    0.5F,
+                    0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
+            );
+
+            // 减少物品数量
+            itemstack.shrink(1);
+        }
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW; // 使用拉弓动画
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        player.startUsingItem(hand);
+
+        return InteractionResultHolder.consume(itemstack);
+    }
+
+
+}

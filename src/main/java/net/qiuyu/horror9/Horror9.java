@@ -22,12 +22,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import net.qiuyu.horror9.compat.Curios;
 import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.entity.renderer.*;
 import net.qiuyu.horror9.register.ModCreativeModeTab;
 import net.qiuyu.horror9.register.ModItems;
-import net.qiuyu.horror9.entity.renderer.BiterRenderer;
-import net.qiuyu.horror9.entity.renderer.No1Renderer;
-import net.qiuyu.horror9.entity.renderer.TheMistakenRenderer;
-import net.qiuyu.horror9.entity.renderer.NullTridentEntityRenderer;
 import net.qiuyu.horror9.message.BiterDismountMsg;
 import net.qiuyu.horror9.message.BiterMountPlayerMsg;
 import net.qiuyu.horror9.message.CrashPlayerMsg;
@@ -109,6 +106,7 @@ import java.util.stream.Collectors;
             EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
             EntityRenderers.register(ModEntityTypes.NULL_TRIDENT_ENTITY.get(), NullTridentEntityRenderer::new);
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
+            EntityRenderers.register(ModEntityTypes.WITHER_BOMB.get(), WitherBombRenderer::new);
         }
 
         @SubscribeEvent
