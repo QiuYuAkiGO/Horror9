@@ -33,6 +33,7 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.MEDICARE_LEGGINGS.get());
                         pOutput.accept(ModItems.MEDICARE_BOOTS.get());
                         pOutput.accept(ModItems.WITHER_BOMB.get());
+                        pOutput.accept(ModItems.CREATOR_PHONE.get());
                     })
                     .build());
 

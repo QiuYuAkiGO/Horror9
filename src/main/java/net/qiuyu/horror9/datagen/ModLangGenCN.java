@@ -45,6 +45,10 @@ public class ModLangGenCN extends LanguageProvider {
         add("tooltip.horror9.heart_metal.line2", "当佩戴者受到攻击时,有百分之30%的概率");
         add("tooltip.horror9.heart_metal.line3", "为自身赋予生命回复1的效果,持续20s");
 
+        add(ModItems.CREATOR_PHONE.get(), "什庭之匣");
+        add("tooltip.horror9.creator_phone.energy", "能量: %d%%");
+        add("gui.horror9.creator_phone.title", "选择玩家进行传送");
+
         // 实体
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
         add(ModItems.BITER_SPAWN_EGG.get(),"活体蔓生者卵");

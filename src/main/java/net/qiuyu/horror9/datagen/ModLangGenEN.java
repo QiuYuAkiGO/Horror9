@@ -40,6 +40,10 @@ public class ModLangGenEN extends LanguageProvider {
         add("tooltip.horror9.heart_metal.line2", "When the wearer is attacked, there is a 30% chance");
         add("tooltip.horror9.heart_metal.line3", "to grant itself Regeneration I, lasting 20s");
 
+        add(ModItems.CREATOR_PHONE.get(), "Creator Phone");
+        add("tooltip.horror9.creator_phone.energy", "Energy: %d%%");
+        add("gui.horror9.creator_phone.title", "Select Player to Teleport");
+
         add(ModItems.NO1_SPAWN_EGG.get(),"No1 Egg");
         add(ModItems.BITER_SPAWN_EGG.get(),"Biter Egg");
         add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"The Mistaken Egg");
@@ -47,7 +51,7 @@ public class ModLangGenEN extends LanguageProvider {
         add("entity.horror9.no1","The No.1");
         add("entity.horror9.biter","The Biter");
         add("entity.horror9.the_mistaken","The Mistaken");
-        
+
         // Keybindings
         add("key.category.horror9", "Horror9");
         add("key.horror9.ctrl_left_click", "Ctrl + Left Click");
