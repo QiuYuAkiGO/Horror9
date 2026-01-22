@@ -76,7 +76,9 @@ public class WitherBombItem extends Item {
             );
 
             // 减少物品数量
-            itemstack.shrink(1);
+            if (!player.isCreative()){
+                itemstack.shrink(1);
+            }
         }
     }
 
