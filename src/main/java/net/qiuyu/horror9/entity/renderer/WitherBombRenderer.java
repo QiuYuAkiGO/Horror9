@@ -15,13 +15,14 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class WitherBombRenderer extends EntityRenderer<WitherBombEntity> {
-    private static final ResourceLocation TEXTURE_LOCATION = ResourceLocation.parse(Horror9.MODID + ":textures/item/wither_bomb_texture.png");
+    private static final ResourceLocation TEXTURE_LOCATION = ResourceLocation.parse(Horror9.MODID + ":textures/item/wither_bomb_a_texture.png");
     private static final RenderType RENDER_TYPE = RenderType.entityCutoutNoCull(TEXTURE_LOCATION);
 
     public WitherBombRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
     }
 
+    @Override
     public void render(WitherBombEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         pPoseStack.pushPose();
         pPoseStack.scale(1.0F, 1.0F, 1.0F);
