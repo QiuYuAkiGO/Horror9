@@ -41,8 +41,11 @@ public class ModLangGenEN extends LanguageProvider {
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");
         add("tooltip.horror9.heart_metal.line2", "When the wearer is attacked, there is a 30% chance");
         add("tooltip.horror9.heart_metal.line3", "to grant itself Regeneration I, lasting 20s");
-
         add(ModItems.CREATOR_PHONE.get(), "Creator Phone");
+        add(ModItems.YUUKA_HALO.get(), "Yuuka's Halo");
+
+        add("tooltip.horror9.yuuka_halo.line1", "It's logical because the explosion is caused by gravity.");
+        add("tooltip.horror9.yuuka_halo.line2", "Grants Speed III when equipped. Causes explosion on fall (Damage 1:1 with distance).");
         add("tooltip.horror9.creator_phone.energy", "Energy: %d%%");
         add("gui.horror9.creator_phone.title", "Select Player to Teleport");
 
@@ -61,5 +64,6 @@ public class ModLangGenEN extends LanguageProvider {
         add("key.horror9.ctrl_middle_click", "Ctrl + Middle Click");
 
         add("curios.identifier.chest", "Chest");
+        add("curios.identifier.halo", "Halo");
     }
 }

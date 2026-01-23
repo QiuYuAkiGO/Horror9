@@ -48,6 +48,9 @@ public class ModLangGenCN extends LanguageProvider {
         add("tooltip.horror9.heart_metal.line3", "为自身赋予生命回复1的效果,持续20s");
 
         add(ModItems.CREATOR_PHONE.get(), "什庭之匣");
+        add(ModItems.YUUKA_HALO.get(), "优香的光环");
+        add("tooltip.horror9.yuuka_halo.line1", "由于是由于重力产生的爆炸，所以这很合理。");
+        add("tooltip.horror9.yuuka_halo.line2", "装备时获得移速3,且从高处掉下造成爆炸(伤害与距离成1:1)");
         add("tooltip.horror9.creator_phone.energy", "能量: %d%%");
         add("gui.horror9.creator_phone.title", "选择玩家进行传送");
 
@@ -67,5 +70,6 @@ public class ModLangGenCN extends LanguageProvider {
         add("key.horror9.ctrl_middle_click", "Ctrl + 中键");
 
         add("curios.identifier.chest", "胸部");
+        add("curios.identifier.halo", "光环");
     }
 }

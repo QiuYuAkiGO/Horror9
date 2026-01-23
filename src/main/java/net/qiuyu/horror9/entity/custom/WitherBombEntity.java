@@ -14,14 +14,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
+import org.jetbrains.annotations.NotNull;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class WitherBombEntity extends AbstractHurtingProjectile implements ItemSupplier {
-    ExplosionDamageCalculator explosionDamageCalculator = new ExplosionDamageCalculator();
+public class WitherBombEntity extends AbstractHurtingProjectile implements ItemSupplier, GeoEntity {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(WitherBombEntity.class, EntityDataSerializers.ITEM_STACK);
     private static final float RADIUS = 2.0F;
 
@@ -37,7 +41,7 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
      * 当击中某个实体时调用
      */
     @Override
-    protected void onHitEntity(EntityHitResult result) {
+    protected void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             // 爆炸
@@ -46,7 +50,7 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult result) {
+    protected void onHitBlock(@NotNull BlockHitResult result) {
         super.onHitBlock(result);
         if (!this.level().isClientSide) {
             Vec3i vec3i = result.getDirection().getNormal();
@@ -61,7 +65,7 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
      * 当此实体击中方块或实体时调用。
      */
     @Override
-    protected void onHit(HitResult result) {
+    protected void onHit(@NotNull HitResult result) {
         super.onHit(result);
         if (!this.level().isClientSide) {
             this.discard();
@@ -101,9 +105,7 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
             if (mobeffect.isInstantenous()) {
                 mobeffect.applyInstantenousEffect(this, this.getOwner(), livingentity, effectInstances.getAmplifier(), 1);
             } else {
-                int i = effectInstances.mapDuration((duration) -> {
-                    return (int)((double)duration + 0.5D);
-                });
+                int i = effectInstances.mapDuration((duration) -> (int)((double)duration + 0.5D));
                 MobEffectInstance mobeffectinstance1 = new MobEffectInstance(mobeffect, i, effectInstances.getAmplifier(), effectInstances.isAmbient(), effectInstances.isVisible());
                 if (!mobeffectinstance1.endsWithin(20)) {
                     livingentity.addEffect(mobeffectinstance1, entity);
@@ -119,7 +121,7 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
     }
 
     @Override
-    public ItemStack getItem() {
+    public @NotNull ItemStack getItem() {
         return ItemStack.EMPTY;
     }
 
@@ -142,13 +144,23 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
      * 当实体受到攻击时调用。
      */
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurt(@NotNull DamageSource source, float amount) {
         return false;
     }
 
     @Override
     protected void defineSynchedData() {
         this.getEntityData().define(DATA_ITEM_STACK, ItemStack.EMPTY);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        // 无需动画控制器，此实体不需要动画
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 
 }

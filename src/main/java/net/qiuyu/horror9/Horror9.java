@@ -31,6 +31,7 @@ import net.qiuyu.horror9.message.CrashPlayerMsg;
 import net.qiuyu.horror9.message.CreatorPhoneTeleportMsg;
 import net.qiuyu.horror9.message.HuntingHornNoteMsg;
 import net.qiuyu.horror9.items.renderer.HeartMetalRenderer;
+import net.qiuyu.horror9.items.renderer.YuukaHaloRenderer;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -91,6 +92,7 @@ import java.util.stream.Collectors;
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
         Curios.registerCurioSlot(Curios.CHEST_SLOT, 1, false, null);
+        Curios.registerCurioSlot(Curios.HALO_SLOT, 1, false, null);
     }
 
     private void processIMC(final InterModProcessEvent event) {
@@ -108,6 +110,7 @@ import java.util.stream.Collectors;
             EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
             EntityRenderers.register(ModEntityTypes.NULL_TRIDENT_ENTITY.get(), NullTridentEntityRenderer::new);
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
+            CuriosRendererRegistry.register(ModItems.YUUKA_HALO.get(), YuukaHaloRenderer::new);
             EntityRenderers.register(ModEntityTypes.WITHER_BOMB.get(), WitherBombRenderer::new);
         }
 

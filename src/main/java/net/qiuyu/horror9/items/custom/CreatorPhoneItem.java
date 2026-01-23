@@ -17,19 +17,30 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CreatorPhoneItem extends Item {
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.qiuyu.horror9.items.renderer.CreatorPhoneRenderer;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
+import java.util.function.Consumer;
+
+public class CreatorPhoneItem extends Item implements GeoItem {
     public static final int MAX_ENERGY = 100;
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public CreatorPhoneItem(Properties pProperties) {
         super(pProperties.stacksTo(1));
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pHand) {
         if (pLevel.isClientSide) {
             openScreen();
         }
@@ -45,7 +56,7 @@ public class CreatorPhoneItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+    public void inventoryTick(@NotNull ItemStack pStack, Level pLevel, @NotNull Entity pEntity, int pSlotId, boolean pIsSelected) {
         if (!pLevel.isClientSide && pEntity instanceof Player) {
             if (pLevel.getGameTime() % 20 == 0) {
                 pStack.getCapability(ForgeCapabilities.ENERGY).ifPresent(energy -> {
@@ -58,7 +69,7 @@ public class CreatorPhoneItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pStack.getCapability(ForgeCapabilities.ENERGY).ifPresent(energy -> {
             int percentage = (int) ((float) energy.getEnergyStored() / energy.getMaxEnergyStored() * 100);
             pTooltipComponents.add(Component.translatable("tooltip.horror9.creator_phone.energy", percentage)
@@ -68,12 +79,12 @@ public class CreatorPhoneItem extends Item {
     }
 
     @Override
-    public boolean isBarVisible(ItemStack pStack) {
+    public boolean isBarVisible(@NotNull ItemStack pStack) {
         return true;
     }
 
     @Override
-    public int getBarColor(ItemStack pStack) {
+    public int getBarColor(@NotNull ItemStack pStack) {
         return 0xFF00FF00;
     }
 
@@ -82,6 +93,29 @@ public class CreatorPhoneItem extends Item {
         return pStack.getCapability(ForgeCapabilities.ENERGY)
                 .map(e -> Math.round((float) e.getEnergyStored() * 13.0F / (float) e.getMaxEnergyStored()))
                 .orElse(0);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private CreatorPhoneRenderer renderer;
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null){
+                    this.renderer = new CreatorPhoneRenderer();
+                }
+                return this.renderer;
+            }
+        });
     }
 
     @Override
@@ -97,7 +131,7 @@ public class CreatorPhoneItem extends Item {
         }
 
         @Override
-        public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable net.minecraft.core.Direction side) {
+        public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable net.minecraft.core.Direction side) {
             return ForgeCapabilities.ENERGY.orEmpty(cap, energy);
         }
     }
@@ -108,7 +142,7 @@ public class CreatorPhoneItem extends Item {
         public ItemEnergyStorage(ItemStack stack, int capacity) {
             super(capacity);
             this.stack = stack;
-            if (stack.hasTag() && stack.getTag().contains("Energy")) {
+            if (stack.getTag() != null && stack.hasTag() && stack.getTag().contains("Energy")) {
                 this.energy = stack.getTag().getInt("Energy");
             }
         }
@@ -145,7 +179,7 @@ public class CreatorPhoneItem extends Item {
 
         @Override
         public int getEnergyStored() {
-            if (stack.hasTag() && stack.getTag().contains("Energy")) {
+            if (stack.getTag() != null && stack.hasTag() && stack.getTag().contains("Energy")) {
                 this.energy = stack.getTag().getInt("Energy");
             }
             return this.energy;

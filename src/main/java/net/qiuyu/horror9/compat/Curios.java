@@ -8,6 +8,7 @@ import top.theillusivec4.curios.api.SlotTypeMessage;
 @SuppressWarnings({"removal", "UnstableApiUsage"})
 public class Curios {
     public static String CHEST_SLOT = "chest";
+    public static String HALO_SLOT = "halo";
 
     public static void registerCurioSlot(final String identifier, final int slots, final boolean isHidden, @Nullable final ResourceLocation icon) {
         final SlotTypeMessage.Builder message = new SlotTypeMessage.Builder(identifier);
@@ -22,7 +23,7 @@ public class Curios {
             message.icon(icon);
         }
 
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> message.build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, message::build);
 
     }
 }

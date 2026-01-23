@@ -14,7 +14,9 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,10 +28,42 @@ import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
 import net.qiuyu.horror9.register.ModItems;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.List;
+
 public class ModEvents {
 
     @Mod.EventBusSubscriber(modid = Horror9.MODID)
     public static class ForgeEvents {
+
+        @SubscribeEvent
+        public static void onLivingFall(LivingFallEvent event) {
+            LivingEntity entity = event.getEntity();
+            if (entity instanceof Player player && !player.level().isClientSide()) {
+                float fallDistance = event.getDistance();
+                if (fallDistance > 3.0f) {
+                    CuriosApi.getCuriosInventory(player).map(handler -> handler.findFirstCurio(stack -> stack.is(ModItems.YUUKA_HALO.get())))
+                            .ifPresent(slotResult -> {
+                                Level level = player.level();
+                                // 产生视觉爆炸，半径随距离略微增加
+                                level.explode(player, player.getX(), player.getY(), player.getZ(), 2.0f + fallDistance / 10.0f, Level.ExplosionInteraction.NONE);
+
+                                // 手动计算半径内的伤害，实现 1:1 的比例
+                                float radius = 3.0f + fallDistance / 5.0f;
+                                List<Entity> entities = level.getEntities(player, player.getBoundingBox().inflate(radius));
+                                for (Entity target : entities) {
+                                    if (target instanceof LivingEntity livingTarget) {
+                                        float distance = player.distanceTo(target);
+                                        if (distance <= radius) {
+                                            // 伤害和摔落距离呈 1:1 比例（在爆炸中心时）
+                                            float damage = fallDistance * (1.0f - distance / radius);
+                                            livingTarget.hurt(level.damageSources().explosion(player, player), damage);
+                                        }
+                                    }
+                                }
+                            });
+                }
+            }
+        }
 
         @SubscribeEvent
         public static void onLivingHurt(LivingHurtEvent event) {
@@ -72,7 +106,7 @@ public class ModEvents {
                     ItemStack stack = player.getInventory().getItem(i);
                     if (stack.is(ModItems.CREATOR_PHONE.get())) {
                         IEnergyStorage energy = stack.getCapability(ForgeCapabilities.ENERGY).orElse(null);
-                        if (energy != null && energy.getEnergyStored() > 0) {
+                        if (energy.getEnergyStored() > 0) {
                             event.setCanceled(true);
                             energy.extractEnergy(energy.getEnergyStored(), false);
                             player.setHealth(1.0f);

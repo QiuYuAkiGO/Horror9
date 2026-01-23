@@ -32,7 +32,6 @@ public class ModItemModelGen extends ItemModelProvider {
         itemGeneratedModel(ModItems.MEDICARE_CHESTPLATE.get(), resourceItem("medicare_chestplate_texture"));
         itemGeneratedModel(ModItems.MEDICARE_LEGGINGS.get(), resourceItem("medicare_leggings_texture"));
         itemGeneratedModel(ModItems.MEDICARE_BOOTS.get(), resourceItem("medicare_boots_texture"));
-        itemGeneratedModel(ModItems.CREATOR_PHONE.get(), resourceItem("creator_phone_texture"));
     }
 
     private void eggItem(Item item) {
