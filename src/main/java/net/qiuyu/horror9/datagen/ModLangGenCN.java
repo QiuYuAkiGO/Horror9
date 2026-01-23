@@ -36,7 +36,7 @@ public class ModLangGenCN extends LanguageProvider {
         add("tooltip.horror9.null_trident.line2", "不嘻嘻。");
         add(ModItems.OXYGEN_DESTROYER.get(),"『撼地者』");
         add("tooltip.horror9.oxygen_destroyer.line1", "基于某个巨兽表皮而放置的基因武器,自带动力系统,可以在锤击地面时产生爆炸.");
-        add("tooltip.horror9.oxygen_destroyer.line2", "右键长按2s,可以是地面发生爆炸,击飞面前扇形范围的敌人.");
+        add("tooltip.horror9.oxygen_destroyer.line2", "右键长按2s,可以使地面发生爆炸,击飞面前扇形范围的敌人.");
         add(ModItems.WITHER_BOMB.get(), "凋零炸弹");
         add("tooltip.horror9.wither_bomb.line1", "危险易爆品，请小心存放！");
         add("tooltip.horror9.wither_bomb.line2", "右键长按1s抛出，碰撞后爆炸并放出大范围凋零气体。");
