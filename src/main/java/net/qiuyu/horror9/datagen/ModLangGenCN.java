@@ -36,13 +36,23 @@ public class ModLangGenCN extends LanguageProvider {
         add("tooltip.horror9.null_trident.line2", "不嘻嘻。");
         add(ModItems.OXYGEN_DESTROYER.get(),"『撼地者』");
         add("tooltip.horror9.oxygen_destroyer.line1", "基于某个巨兽表皮而放置的基因武器,自带动力系统,可以在锤击地面时产生爆炸.");
-        add("tooltip.horror9.oxygen_destroyer.line2", "右键长按2s,可以是地面发生爆炸,击飞面前扇形范围的敌人.");
+        add("tooltip.horror9.oxygen_destroyer.line2", "右键长按2s,可以使地面发生爆炸,击飞面前扇形范围的敌人.");
+        add(ModItems.WITHER_BOMB.get(), "凋零炸弹");
+        add("tooltip.horror9.wither_bomb.line1", "危险易爆品，请小心存放！");
+        add("tooltip.horror9.wither_bomb.line2", "右键长按1s抛出，碰撞后爆炸并放出大范围凋零气体。");
 
         // 饰品
         add(ModItems.HEART_METAL.get(),"❤『爱心勋章』❤");
         add("tooltip.horror9.heart_metal.line1", "已发放爱心献血奖励❤");
         add("tooltip.horror9.heart_metal.line2", "当佩戴者受到攻击时,有百分之30%的概率");
         add("tooltip.horror9.heart_metal.line3", "为自身赋予生命回复1的效果,持续20s");
+
+        add(ModItems.CREATOR_PHONE.get(), "什庭之匣");
+        add(ModItems.YUUKA_HALO.get(), "优香的光环");
+        add("tooltip.horror9.yuuka_halo.line1", "由于是由于重力产生的爆炸，所以这很合理。");
+        add("tooltip.horror9.yuuka_halo.line2", "装备时获得移速3,且从高处掉下造成爆炸(伤害与距离成1:1)");
+        add("tooltip.horror9.creator_phone.energy", "能量: %d%%");
+        add("gui.horror9.creator_phone.title", "选择玩家进行传送");
 
         // 实体
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
@@ -60,5 +70,6 @@ public class ModLangGenCN extends LanguageProvider {
         add("key.horror9.ctrl_middle_click", "Ctrl + 中键");
 
         add("curios.identifier.chest", "胸部");
+        add("curios.identifier.halo", "光环");
     }
 }

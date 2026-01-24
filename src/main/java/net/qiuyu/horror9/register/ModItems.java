@@ -40,6 +40,11 @@ public class ModItems {
     public static final RegistryObject<ArmorItem> MEDICARE_CHESTPLATE = ITEMS.register("medicare_chestplate", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<ArmorItem> MEDICARE_LEGGINGS = ITEMS.register("medicare_leggings", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<ArmorItem> MEDICARE_BOOTS = ITEMS.register("medicare_boots", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> CREATOR_PHONE = ITEMS.register("creator_phone", () -> new CreatorPhoneItem(new Item.Properties()));
+    public static final RegistryObject<Item> YUUKA_HALO = ITEMS.register("yuuka_halo", () -> new YuukaHaloItem(new Item.Properties()));
+
+    // 凋零炸弹
+    public static final RegistryObject<WitherBombItem> WITHER_BOMB = ITEMS.register("wither_bomb", () -> new WitherBombItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

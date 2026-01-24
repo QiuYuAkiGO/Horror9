@@ -8,10 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.qiuyu.horror9.Horror9;
-import net.qiuyu.horror9.entity.custom.BiterEntity;
-import net.qiuyu.horror9.entity.custom.No1Entity;
-import net.qiuyu.horror9.entity.custom.NullTridentEntity;
-import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
+import net.qiuyu.horror9.entity.custom.*;
 
 public class ModEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -38,6 +35,12 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(TheMistakenEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 2.9f)
                             .build(ResourceLocation.parse(Horror9.MODID + ":" + "the_mistaken").toString()));
+    // 凋零炸弹
+    public static final RegistryObject<EntityType<WitherBombEntity>> WITHER_BOMB =
+            ENTITY_TYPES.register("wither_bomb",
+                    () -> EntityType.Builder.<WitherBombEntity>of(WitherBombEntity::new, MobCategory.MISC)
+                            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10)
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "wither_bomb").toString()));
 
 
     public static void register(IEventBus eventBus) {

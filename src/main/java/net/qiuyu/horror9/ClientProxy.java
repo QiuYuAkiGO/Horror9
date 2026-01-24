@@ -27,4 +27,9 @@ public class ClientProxy extends CommonProxy {
     public boolean isNoteKey3Down() {
         return ModKeyBindings.CTRL_MIDDLE_CLICK_MAPPING.isDown();
     }
+
+    @Override
+    public void openCreatorPhoneScreen() {
+        Minecraft.getInstance().setScreen(new net.qiuyu.horror9.client.gui.CreatorPhoneScreen());
+    }
 }

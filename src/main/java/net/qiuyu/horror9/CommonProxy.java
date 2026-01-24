@@ -22,4 +22,7 @@ public class CommonProxy {
     public boolean isNoteKey3Down() {
         return false;
     }
+
+    public void openCreatorPhoneScreen() {
+    }
 }

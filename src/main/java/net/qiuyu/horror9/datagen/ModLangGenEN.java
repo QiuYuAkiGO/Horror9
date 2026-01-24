@@ -33,11 +33,21 @@ public class ModLangGenEN extends LanguageProvider {
         add(ModItems.OXYGEN_DESTROYER.get(),"Oxygen Destroyer");
         add("tooltip.horror9.oxygen_destroyer.line1", "Based on the skin of a giant beast, it is a gene weapon with its own power system, which can explode when it hits the ground.");
         add("tooltip.horror9.oxygen_destroyer.line2", "Right-click and hold for 2s, the ground can explode, and enemies in front of the fan-shaped range can be knocked back.");
+        add(ModItems.WITHER_BOMB.get(), "Wither Bomb");
+        add("tooltip.horror9.wither_bomb.line1", "Warning: Explosive device!");
+        add("tooltip.horror9.wither_bomb.line2", "Hold right-click to throw. Explodes on impact with a wither gas effect.");
 
         add(ModItems.HEART_METAL.get(),"❤『Heart Metal』❤");
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");
         add("tooltip.horror9.heart_metal.line2", "When the wearer is attacked, there is a 30% chance");
         add("tooltip.horror9.heart_metal.line3", "to grant itself Regeneration I, lasting 20s");
+        add(ModItems.CREATOR_PHONE.get(), "Creator Phone");
+        add(ModItems.YUUKA_HALO.get(), "Yuuka's Halo");
+
+        add("tooltip.horror9.yuuka_halo.line1", "It's logical because the explosion is caused by gravity.");
+        add("tooltip.horror9.yuuka_halo.line2", "Grants Speed III when equipped. Causes explosion on fall (Damage 1:1 with distance).");
+        add("tooltip.horror9.creator_phone.energy", "Energy: %d%%");
+        add("gui.horror9.creator_phone.title", "Select Player to Teleport");
 
         add(ModItems.NO1_SPAWN_EGG.get(),"No1 Egg");
         add(ModItems.BITER_SPAWN_EGG.get(),"Biter Egg");
@@ -46,7 +56,7 @@ public class ModLangGenEN extends LanguageProvider {
         add("entity.horror9.no1","The No.1");
         add("entity.horror9.biter","The Biter");
         add("entity.horror9.the_mistaken","The Mistaken");
-        
+
         // Keybindings
         add("key.category.horror9", "Horror9");
         add("key.horror9.ctrl_left_click", "Ctrl + Left Click");
@@ -54,5 +64,6 @@ public class ModLangGenEN extends LanguageProvider {
         add("key.horror9.ctrl_middle_click", "Ctrl + Middle Click");
 
         add("curios.identifier.chest", "Chest");
+        add("curios.identifier.halo", "Halo");
     }
 }

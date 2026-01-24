@@ -22,17 +22,16 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import net.qiuyu.horror9.compat.Curios;
 import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.entity.renderer.*;
 import net.qiuyu.horror9.register.ModCreativeModeTab;
 import net.qiuyu.horror9.register.ModItems;
-import net.qiuyu.horror9.entity.renderer.BiterRenderer;
-import net.qiuyu.horror9.entity.renderer.No1Renderer;
-import net.qiuyu.horror9.entity.renderer.TheMistakenRenderer;
-import net.qiuyu.horror9.entity.renderer.NullTridentEntityRenderer;
 import net.qiuyu.horror9.message.BiterDismountMsg;
 import net.qiuyu.horror9.message.BiterMountPlayerMsg;
 import net.qiuyu.horror9.message.CrashPlayerMsg;
+import net.qiuyu.horror9.message.CreatorPhoneTeleportMsg;
 import net.qiuyu.horror9.message.HuntingHornNoteMsg;
 import net.qiuyu.horror9.items.renderer.HeartMetalRenderer;
+import net.qiuyu.horror9.items.renderer.YuukaHaloRenderer;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -74,6 +73,7 @@ import java.util.stream.Collectors;
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, BiterDismountMsg.class, BiterDismountMsg::write, BiterDismountMsg::read, BiterDismountMsg.Handler::handle);
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, HuntingHornNoteMsg.class, HuntingHornNoteMsg::write, HuntingHornNoteMsg::read, HuntingHornNoteMsg.Handler::handle);
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, CrashPlayerMsg.class, CrashPlayerMsg::write, CrashPlayerMsg::read, CrashPlayerMsg.Handler::handle);
+        NETWORK_WRAPPER.registerMessage(packetsRegistered++, CreatorPhoneTeleportMsg.class, CreatorPhoneTeleportMsg::write, CreatorPhoneTeleportMsg::read, CreatorPhoneTeleportMsg.Handler::handle);
     }
 
     public static <MSG> void sendMSGToServer(MSG message) {
@@ -92,6 +92,7 @@ import java.util.stream.Collectors;
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
         Curios.registerCurioSlot(Curios.CHEST_SLOT, 1, false, null);
+        Curios.registerCurioSlot(Curios.HALO_SLOT, 1, false, null);
     }
 
     private void processIMC(final InterModProcessEvent event) {
@@ -109,6 +110,8 @@ import java.util.stream.Collectors;
             EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
             EntityRenderers.register(ModEntityTypes.NULL_TRIDENT_ENTITY.get(), NullTridentEntityRenderer::new);
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
+            CuriosRendererRegistry.register(ModItems.YUUKA_HALO.get(), YuukaHaloRenderer::new);
+            EntityRenderers.register(ModEntityTypes.WITHER_BOMB.get(), WitherBombRenderer::new);
         }
 
         @SubscribeEvent
