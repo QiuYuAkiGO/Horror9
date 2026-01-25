@@ -6,7 +6,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.qiuyu.horror9.Horror9;
 
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Horror9.MODID)
 public class ModMessages {
 
     @SubscribeEvent

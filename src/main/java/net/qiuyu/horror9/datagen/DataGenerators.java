@@ -9,7 +9,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.qiuyu.horror9.Horror9;
 
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Horror9.MODID)
 public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event){

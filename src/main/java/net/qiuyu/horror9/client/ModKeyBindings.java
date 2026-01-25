@@ -15,7 +15,7 @@ import org.lwjgl.glfw.GLFW;
 /**
  * 模组按键绑定注册类
  */
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Horror9.MODID, value = Dist.CLIENT)
 public class ModKeyBindings {
     // 按键分类名称
     public static final String KEY_CATEGORY_HORROR9 = "key.category." + Horror9.MODID;

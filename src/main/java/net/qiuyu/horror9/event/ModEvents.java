@@ -138,7 +138,7 @@ public class ModEvents {
         }
 
 
-        @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+        @EventBusSubscriber(modid = Horror9.MODID)
         public static class ModEventBusEvents {
             @SubscribeEvent
             public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
