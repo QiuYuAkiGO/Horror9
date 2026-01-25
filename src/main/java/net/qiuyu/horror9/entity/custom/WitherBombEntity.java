@@ -28,6 +28,7 @@ import java.util.List;
 public class WitherBombEntity extends ThrowableItemProjectile implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private static final float RADIUS = 5.0F;
+    private static final float EXPLODE_LEVEL = 2.0F;
 
     public WitherBombEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level);
@@ -82,7 +83,7 @@ public class WitherBombEntity extends ThrowableItemProjectile implements GeoEnti
                         pos.x(),
                         pos.y(),
                         pos.z(),
-                        RADIUS,
+                        EXPLODE_LEVEL,
                         false,
                         Level.ExplosionInteraction.NONE
                 );
