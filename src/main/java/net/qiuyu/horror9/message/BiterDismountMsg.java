@@ -1,54 +1,41 @@
 package net.qiuyu.horror9.message;
 
-import net.minecraft.network.FriendlyByteBuf;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.fml.LogicalSide;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.custom.BiterEntity;
 
-import java.util.function.Supplier;
+public record BiterDismountMsg(int rider, int mount) implements CustomPacketPayload {
 
-public class BiterDismountMsg {
+    public static final Type<BiterDismountMsg> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Horror9.MODID, "biter_dismount_player"));
 
-    public int rider;
-    public int mount;
+    public static final StreamCodec<ByteBuf, BiterDismountMsg> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, BiterDismountMsg::rider,
+            ByteBufCodecs.INT, BiterDismountMsg::mount,
+            BiterDismountMsg::new
+    );
 
-    public BiterDismountMsg(int rider, int mount) {
-        this.rider = rider;
-        this.mount = mount;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static BiterDismountMsg read(FriendlyByteBuf buf) {
-        return new BiterDismountMsg(buf.readInt(), buf.readInt());
-    }
-
-    public static void write(BiterDismountMsg message, FriendlyByteBuf buf) {
-        buf.writeInt(message.rider);
-        buf.writeInt(message.mount);
-    }
-
-    public static class Handler {
-        public Handler() {
-        }
-
-        public static void handle(BiterDismountMsg message, Supplier<NetworkEvent.Context> context) {
-            context.get().setPacketHandled(true);
-            context.get().enqueueWork(() -> {
-                Player player = context.get().getSender();
-                if (context.get().getDirection().getReceptionSide() == LogicalSide.CLIENT) {
-                    player = Horror9.PROXY.getClientSidePlayer();
+    public static void handle(BiterDismountMsg message, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            Player player = context.player();
+            if (player != null) {
+                Entity entity = player.level().getEntity(message.rider);
+                Entity mountEntity = player.level().getEntity(message.mount);
+                if ((entity instanceof BiterEntity) && mountEntity != null) {
+                    entity.stopRiding();
                 }
-
-                if (player != null) {
-                    Entity entity = player.level().getEntity(message.rider);
-                    Entity mountEntity = player.level().getEntity(message.mount);
-                    if ((entity instanceof BiterEntity) && mountEntity != null) {
-                        entity.stopRiding();
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 }

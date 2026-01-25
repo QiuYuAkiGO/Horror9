@@ -1,26 +1,25 @@
 package net.qiuyu.horror9.message;
 
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.qiuyu.horror9.Horror9;
 
-import java.util.function.Supplier;
+public record CrashPlayerMsg() implements CustomPacketPayload {
 
-public class CrashPlayerMsg {
-    public CrashPlayerMsg() {
+    public static final Type<CrashPlayerMsg> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Horror9.MODID, "crash_player"));
+
+    public static final StreamCodec<ByteBuf, CrashPlayerMsg> STREAM_CODEC = StreamCodec.unit(new CrashPlayerMsg());
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static CrashPlayerMsg read(FriendlyByteBuf buf) {
-        return new CrashPlayerMsg();
-    }
-
-    public static void write(CrashPlayerMsg message, FriendlyByteBuf buf) {
-    }
-
-    public static class Handler {
-        public static void handle(CrashPlayerMsg message, Supplier<NetworkEvent.Context> context) {
-            context.get().setPacketHandled(true);
-            // 抛出 NullPointerException 导致客户端崩溃
-            throw new NullPointerException("Forcefully crashed by Null Trident");
-        }
+    public static void handle(CrashPlayerMsg message, IPayloadContext context) {
+        // 抛出 NullPointerException 导致客户端崩溃
+        throw new NullPointerException("Forcefully crashed by Null Trident");
     }
 }

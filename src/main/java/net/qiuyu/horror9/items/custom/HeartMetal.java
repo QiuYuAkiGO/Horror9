@@ -23,10 +23,10 @@ public class HeartMetal extends Item implements ICurioItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("tooltip.horror9.heart_metal.line1").withStyle(ChatFormatting.LIGHT_PURPLE));
         pTooltipComponents.add(Component.translatable("tooltip.horror9.heart_metal.line2").withStyle(ChatFormatting.LIGHT_PURPLE));
         pTooltipComponents.add(Component.translatable("tooltip.horror9.heart_metal.line3").withStyle(ChatFormatting.LIGHT_PURPLE));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pIsAdvanced);
     }
 }

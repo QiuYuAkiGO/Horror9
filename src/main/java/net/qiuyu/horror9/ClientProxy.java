@@ -2,9 +2,9 @@ package net.qiuyu.horror9;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.qiuyu.horror9.client.ModKeyBindings;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientProxy extends CommonProxy {

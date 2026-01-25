@@ -30,9 +30,8 @@ import net.qiuyu.horror9.message.BiterDismountMsg;
 import net.qiuyu.horror9.message.BiterMountPlayerMsg;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class BiterEntity extends Monster implements GeoEntity {
@@ -98,7 +97,7 @@ public class BiterEntity extends Monster implements GeoEntity {
         if (flag && pEntity instanceof LivingEntity && !this.isPassenger()) {
             this.startRiding(pEntity);
             this.playSound(SoundEvents.VEX_CHARGE);
-            this.stopTriggeredAnimation("attackController",null);
+            this.stopTriggeredAnim("attackController",null);
             if (!pEntity.level().isClientSide) {
                 Horror9.sendMSGToAll(new BiterMountPlayerMsg(this.getId(), pEntity.getId()));
             }
@@ -144,7 +143,7 @@ public class BiterEntity extends Monster implements GeoEntity {
 
             if (!mount.isAlive() || (mount instanceof Player player && player.isCreative())) {
                 this.removeVehicle();
-                this.stopTriggeredAnimation("attackController",null);
+                this.stopTriggeredAnim("attackController",null);
                 if (!this.level().isClientSide) {
                     Horror9.sendMSGToAll(new BiterDismountMsg(this.getId(), vehicle.getId()));
                 }
@@ -177,7 +176,8 @@ public class BiterEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
         controllers.add(new AnimationController<>(this, "controller", 0, this::predicate));
         controllers.add(new AnimationController<>(this, "attackController", 0, this::attackPredicate));
     }

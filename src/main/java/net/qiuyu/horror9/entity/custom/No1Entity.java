@@ -27,13 +27,13 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
@@ -62,7 +62,7 @@ public class No1Entity extends TamableAnimal implements GeoEntity, NeutralMob {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2D, false));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.2D, 10.0F, 4.0F, false));
+        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.2D, 10.0F, 4.0F));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
@@ -92,8 +92,9 @@ public class No1Entity extends TamableAnimal implements GeoEntity, NeutralMob {
         return PlayState.CONTINUE;
     }
 
+
     @Override
-    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller",
                 0, this::predicate));
         controllers.add(new AnimationController<>(this, "attackController",
@@ -121,14 +122,21 @@ public class No1Entity extends TamableAnimal implements GeoEntity, NeutralMob {
         return SoundEvents.IRON_GOLEM_DEATH;
     }
 
-    protected void dropCustomDeathLoot(@NotNull DamageSource pSource, int pLooting, boolean pRecentlyHit) {
-        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
+    @Override
+    protected void dropCustomDeathLoot(ServerLevel pLevel, @NotNull DamageSource pSource, boolean pRecentlyHit) {
+        super.dropCustomDeathLoot(pLevel, pSource, pRecentlyHit);
         ItemEntity itemEntity = this.spawnAtLocation(Items.LAVA_BUCKET);
         if (itemEntity != null) {
             itemEntity.setExtendedLifetime();
         }
 
     }
+
+    @Override
+    public boolean isFood(ItemStack itemStack) {
+        return false;
+    }
+
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if (this.level().isClientSide) {
@@ -147,7 +155,7 @@ public class No1Entity extends TamableAnimal implements GeoEntity, NeutralMob {
             if (!pPlayer.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }
-            if (this.random.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, pPlayer)) {
+            if (this.random.nextInt(3) == 0 && !EventHooks.onAnimalTame(this, pPlayer)) {
                 this.tame(pPlayer);
                 this.navigation.stop();
                 this.setTarget(null);

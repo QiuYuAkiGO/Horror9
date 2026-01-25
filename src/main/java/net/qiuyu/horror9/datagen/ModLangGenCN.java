@@ -2,7 +2,7 @@ package net.qiuyu.horror9.datagen;
 
 
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.register.ModCreativeModeTab;
 import net.qiuyu.horror9.register.ModItems;

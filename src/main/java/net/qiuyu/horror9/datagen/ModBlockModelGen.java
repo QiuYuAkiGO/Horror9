@@ -1,11 +1,13 @@
 package net.qiuyu.horror9.datagen;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.qiuyu.horror9.Horror9;
 
 
@@ -23,7 +25,7 @@ public class ModBlockModelGen extends BlockStateProvider {
         return ResourceLocation.parse(name.getNamespace() + ":" + ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
     }
     private ResourceLocation key(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block);
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     private String name(Block block) {

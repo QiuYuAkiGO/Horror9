@@ -36,7 +36,7 @@ public class CreatorPhoneScreen extends Screen {
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(pGuiGraphics);
+        this.renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         pGuiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 20, 0xFFFFFF);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
     }

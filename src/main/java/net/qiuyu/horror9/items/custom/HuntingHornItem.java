@@ -1,5 +1,6 @@
 package net.qiuyu.horror9.items.custom;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
@@ -14,11 +15,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.qiuyu.horror9.Horror9;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.ArrayList;
@@ -76,6 +79,7 @@ public class HuntingHornItem extends Item implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override
@@ -84,19 +88,10 @@ public class HuntingHornItem extends Item implements GeoItem {
     }
 
     /**
-     * 必须重写此方法并返回一个非零值，右键才能“按住”
-     * 72000 tick = 1小时，足够长了
-     */
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return 72000;
-    }
-
-    /**
      * 定义右键按住时的动作，比如 BOW(拉弓), SPEAR(投矛), BLOCK(格挡) 或 NONE
      */
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack pStack) {
         return UseAnim.BOW;
     }
 
@@ -128,13 +123,14 @@ public class HuntingHornItem extends Item implements GeoItem {
 
             if (!level.isClientSide) {
                 // 触发存储在技能队列中的左键技能
-                CompoundTag nbt = stack.getTag();
-                if (nbt != null && nbt.contains("LCSkill")) {
+                CompoundTag nbt = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+                if (nbt.contains("LCSkill")) {
                     String skillId = nbt.getString("LCSkill");
                     HornSkill skill = SKILLS_BY_ID.get(skillId);
                     if (skill != null) {
                         skill.effect().accept(player, level);
                         nbt.remove("LCSkill");
+                        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
                         player.displayClientMessage(Component.literal("§b左键技能已触发!"), true);
                     }
                 }
@@ -166,7 +162,7 @@ public class HuntingHornItem extends Item implements GeoItem {
     }
 
     private void playSeqAdd(ItemStack stack, Player player, HornType type){
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         ListTag list = nbt.getList("InputSeq", Tag.TAG_STRING);
         list.add(StringTag.valueOf(type.name()));
         
@@ -176,6 +172,7 @@ public class HuntingHornItem extends Item implements GeoItem {
         }
         
         nbt.put("InputSeq", list);
+        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
         
         // 发送动作条提示
         player.displayClientMessage(Component.literal("§6输入音符: §f" + type.name()), true);
@@ -184,7 +181,7 @@ public class HuntingHornItem extends Item implements GeoItem {
     }
 
     private void matchAndAddSkill(ItemStack stack, Player player){
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         ListTag list = nbt.getList("InputSeq", Tag.TAG_STRING);
         if (list.isEmpty()) return;
 
@@ -219,6 +216,7 @@ public class HuntingHornItem extends Item implements GeoItem {
             addSkillToQueue(nbt, longestMatch, player);
             // 这里可以根据需要决定是否在匹配成功后清空 InputSeq
             // 按照通常设计，存入技能队列后，输入序列会清空，以便开始下一次积攒
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
         }
     }
 
@@ -240,7 +238,7 @@ public class HuntingHornItem extends Item implements GeoItem {
     }
 
     private void startPlaying(ItemStack stack, Player player){
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         ListTag peSkills = nbt.getList("PESkills", Tag.TAG_STRING);
         if (peSkills.isEmpty()) {
             player.displayClientMessage(Component.literal("§c技能队列中没有可演奏的技能!"), true);
@@ -254,13 +252,16 @@ public class HuntingHornItem extends Item implements GeoItem {
                 skill.effect().accept(player, player.level());
             }
         }
-        
+
         nbt.remove("PESkills");
+        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
         player.displayClientMessage(Component.literal("§a演奏结束，技能效果已生效!"), true);
     }
 
     private void playSeqRemove(ItemStack stack){
-        stack.getOrCreateTag().remove("InputSeq");
+        CompoundTag nbt = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        nbt.remove("InputSeq");
+        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
     }
 
     public enum HornType{

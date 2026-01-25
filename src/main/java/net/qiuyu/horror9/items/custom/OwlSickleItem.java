@@ -8,22 +8,21 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.qiuyu.horror9.items.renderer.OwlSickleRenderer;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
+public class OwlSickleItem extends SwordItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     public OwlSickleItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        super(pTier, pProperties.attributes(SwordItem.createAttributes(pTier, pAttackDamageModifier, pAttackSpeedModifier)));
     }
 
     @Override
@@ -41,8 +40,6 @@ public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
         });
     }
 
-
-
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
 
@@ -53,15 +50,15 @@ public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        // 暂时没有动画
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.horror9.owl_sickle.line1"));
+        tooltipComponents.add(Component.translatable("tooltip.horror9.owl_sickle.line2").withStyle(ChatFormatting.DARK_RED));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.owl_sickle.line1"));
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.owl_sickle.line2").withStyle(ChatFormatting.DARK_RED));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override

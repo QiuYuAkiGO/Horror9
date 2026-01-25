@@ -15,9 +15,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class TheMistakenEntity extends Monster implements GeoEntity {
@@ -68,14 +67,6 @@ public class TheMistakenEntity extends Monster implements GeoEntity {
         }
     }
 
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller",
-                0, this::predicate));
-        controllers.add(new AnimationController<>(this, "attackController",
-                0, this::attackPredicate));
-    }
-
     private PlayState attackPredicate(AnimationState<TheMistakenEntity> event) {
         if (this.swinging) {
             event.resetCurrentAnimation();
@@ -88,6 +79,15 @@ public class TheMistakenEntity extends Monster implements GeoEntity {
     private <E extends TheMistakenEntity> PlayState predicate(final AnimationState<E> event) {
         event.setAnimation(RawAnimation.begin().thenLoop("stand"));
         return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controller",
+                0, this::predicate));
+        controllers.add(new AnimationController<>(this, "attackController",
+                0, this::attackPredicate));
+
     }
 
     @Override

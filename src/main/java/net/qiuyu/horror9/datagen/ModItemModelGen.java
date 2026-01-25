@@ -1,11 +1,11 @@
 package net.qiuyu.horror9.datagen;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.register.ModItems;
 
@@ -45,7 +45,7 @@ public class ModItemModelGen extends ItemModelProvider {
 
     private String itemName(Item item) {
         if (item == null) return "";
-        return ForgeRegistries.ITEMS.getKey(item).getPath();
+        return BuiltInRegistries.ITEM.getKey(item).getPath();
     }
 
     public ResourceLocation resourceBlock(String path) {

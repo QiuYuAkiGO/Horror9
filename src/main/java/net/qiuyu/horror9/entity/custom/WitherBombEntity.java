@@ -1,9 +1,8 @@
 package net.qiuyu.horror9.entity.custom;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Vec3i;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,41 +10,45 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
-import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
+import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.register.ModItems;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class WitherBombEntity extends AbstractHurtingProjectile implements ItemSupplier, GeoEntity {
+public class WitherBombEntity extends ThrowableItemProjectile implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(WitherBombEntity.class, EntityDataSerializers.ITEM_STACK);
-    private static final float RADIUS = 2.0F;
+    private static final float RADIUS = 5.0F;
 
-    public WitherBombEntity(EntityType<? extends WitherBombEntity> entityType, Level level) {
+    public WitherBombEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level);
     }
 
-    public WitherBombEntity(EntityType<? extends WitherBombEntity> entityType, double pX, double pY, double pZ, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel) {
-        super(entityType, pX, pY, pZ, pOffsetX, pOffsetY, pOffsetZ, pLevel);
+    public WitherBombEntity(Level level, LivingEntity owner) {
+        super(ModEntityTypes.WITHER_BOMB.get(), owner, level);
     }
 
-    /**
-     * 当击中某个实体时调用
-     */
+    @Override
+    protected @NotNull Item getDefaultItem() {
+        return ModItems.WITHER_BOMB.get();
+    }
+
+
     @Override
     protected void onHitEntity(@NotNull EntityHitResult result) {
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             // 爆炸
-            this.explode(this.position());
+            this.explode(result.getLocation());
         }
     }
 
@@ -83,12 +86,17 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
                         false,
                         Level.ExplosionInteraction.NONE
                 );
-        applySplash(new MobEffectInstance(MobEffects.WITHER, 600));
+        if (this.level() instanceof ServerLevel serverLevel) {
+            // 额外生成一些烟雾粒子，增强视觉覆盖范围以匹配伤害半径
+            serverLevel.sendParticles(ParticleTypes.EXPLOSION, pos.x(), pos.y(), pos.z(), 2, 1.0, 1.0, 1.0, 0.0);
+            serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, pos.x(), pos.y(), pos.z(), 40, RADIUS * 0.5, RADIUS * 0.5, RADIUS * 0.5, 0.1);
+        }
+        applySplash(pos, new MobEffectInstance(MobEffects.WITHER, 600));
     }
 
-    private void applySplash(MobEffectInstance effectInstances) {
+    private void applySplash(Vec3 pos, MobEffectInstance effectInstances) {
         // 效果范围
-        AABB aabb = this.getBoundingBox().inflate(5.0D, 5.0D, 5.0D);
+        AABB aabb = new AABB(pos, pos).inflate(RADIUS);
         // 获取范围内的生物
         List<LivingEntity> list = this.level().getEntitiesOfClass(LivingEntity.class, aabb);
         if (list.isEmpty()) {
@@ -96,39 +104,28 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
         }
         Entity entity = this.getEffectSource();
         for(LivingEntity livingentity : list) {
+            // 检查距离，确保是球形范围
+            if (livingentity.distanceToSqr(pos) > RADIUS * RADIUS) {
+                continue;
+            }
             // 判断是否免疫药水
             if (!livingentity.isAffectedByPotions()) {
-                return;
+                continue;
             }
             // 添加效果
-            MobEffect mobeffect = effectInstances.getEffect();
+            MobEffect mobeffect = effectInstances.getEffect().value();
             if (mobeffect.isInstantenous()) {
                 mobeffect.applyInstantenousEffect(this, this.getOwner(), livingentity, effectInstances.getAmplifier(), 1);
             } else {
                 int i = effectInstances.mapDuration((duration) -> (int)((double)duration + 0.5D));
-                MobEffectInstance mobeffectinstance1 = new MobEffectInstance(mobeffect, i, effectInstances.getAmplifier(), effectInstances.isAmbient(), effectInstances.isVisible());
+                MobEffectInstance mobeffectinstance1 = new MobEffectInstance(effectInstances.getEffect(), i, effectInstances.getAmplifier(), effectInstances.isAmbient(), effectInstances.isVisible());
                 if (!mobeffectinstance1.endsWithin(20)) {
                     livingentity.addEffect(mobeffectinstance1, entity);
                 }
             }
-
         }
     }
 
-    @Override
-    protected boolean shouldBurn() {
-        return false;
-    }
-
-    @Override
-    public @NotNull ItemStack getItem() {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    protected float getInertia() {
-        return 1.0F;
-    }
 
     @Override
     public void tick() {
@@ -149,13 +146,8 @@ public class WitherBombEntity extends AbstractHurtingProjectile implements ItemS
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.getEntityData().define(DATA_ITEM_STACK, ItemStack.EMPTY);
-    }
-
-    @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        // 无需动画控制器，此实体不需要动画
+
     }
 
     @Override

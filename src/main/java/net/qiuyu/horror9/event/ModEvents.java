@@ -1,5 +1,6 @@
 package net.qiuyu.horror9.event;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -11,15 +12,17 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.energy.IEnergyStorage;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.custom.BiterEntity;
@@ -32,8 +35,13 @@ import java.util.List;
 
 public class ModEvents {
 
-    @Mod.EventBusSubscriber(modid = Horror9.MODID)
+    @EventBusSubscriber(modid = Horror9.MODID)
     public static class ForgeEvents {
+
+        @SubscribeEvent
+        public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent event) {
+            event.registerItem(Capabilities.EnergyStorage.ITEM, (stack, ctx) -> new net.qiuyu.horror9.items.custom.CreatorPhoneItem.ItemEnergyStorage(stack, net.qiuyu.horror9.items.custom.CreatorPhoneItem.MAX_ENERGY), ModItems.CREATOR_PHONE.get());
+        }
 
         @SubscribeEvent
         public static void onLivingFall(LivingFallEvent event) {
@@ -66,7 +74,7 @@ public class ModEvents {
         }
 
         @SubscribeEvent
-        public static void onLivingHurt(LivingHurtEvent event) {
+        public static void onLivingHurt(LivingIncomingDamageEvent event) {
             LivingEntity victim = event.getEntity();
             Entity attacker = event.getSource().getEntity();
 
@@ -94,7 +102,7 @@ public class ModEvents {
             if (event.getEntity() instanceof Player player && !player.level().isClientSide()) {
                 if (event.getSource().getEntity() instanceof LivingEntity attacker && attacker.getMainHandItem().is(ModItems.OWL_SICKLE.get())) {
                     ItemStack head = new ItemStack(Items.PLAYER_HEAD);
-                    head.getOrCreateTag().putString("SkullOwner", player.getName().getString());
+                    head.set(DataComponents.PROFILE, new ResolvableProfile(player.getGameProfile()));
 
                     ItemEntity itemEntity = new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), head);
 //                    itemEntity.setPickUpDelay(10);
@@ -105,8 +113,8 @@ public class ModEvents {
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
                     if (stack.is(ModItems.CREATOR_PHONE.get())) {
-                        IEnergyStorage energy = stack.getCapability(ForgeCapabilities.ENERGY).orElse(null);
-                        if (energy.getEnergyStored() > 0) {
+                        IEnergyStorage energy = stack.getCapability(Capabilities.EnergyStorage.ITEM);
+                        if (energy != null && energy.getEnergyStored() > 0) {
                             event.setCanceled(true);
                             energy.extractEnergy(energy.getEnergyStored(), false);
                             player.setHealth(1.0f);
@@ -130,7 +138,7 @@ public class ModEvents {
         }
 
 
-        @Mod.EventBusSubscriber(modid = Horror9.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+        @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
         public static class ModEventBusEvents {
             @SubscribeEvent
             public static void entityAttributeEvent(EntityAttributeCreationEvent event) {

@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +29,7 @@ public class NullTridentItemRenderer extends BlockEntityWithoutLevelRenderer {
         if (displayContext == ItemDisplayContext.GUI) {
             poseStack.pushPose();
 //            poseStack.scale(2.0F, 2.0F, 2.0F);
-            BakedModel model = Minecraft.getInstance().getModelManager().getModel(ResourceLocation.parse(Horror9.MODID + ":item/null_trident_2d"));
+            BakedModel model = Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(ResourceLocation.parse(Horror9.MODID + ":item/null_trident_2d"), "inventory"));
             Minecraft.getInstance().getItemRenderer().render(stack, displayContext, false, poseStack, buffer, packedLight, packedOverlay, model);
             poseStack.popPose();
             return;
@@ -37,7 +38,7 @@ public class NullTridentItemRenderer extends BlockEntityWithoutLevelRenderer {
         poseStack.pushPose();
         poseStack.scale(1.0F, -1.0F, -1.0F);
         VertexConsumer vertexconsumer = ItemRenderer.getFoilBufferDirect(buffer, this.tridentModel.renderType(TRIDENT_LOCATION), false, stack.hasFoil());
-        this.tridentModel.renderToBuffer(poseStack, vertexconsumer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.tridentModel.renderToBuffer(poseStack, vertexconsumer, packedLight, packedOverlay, 0xFFFFFFFF);
         poseStack.popPose();
     }
 }

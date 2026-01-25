@@ -1,7 +1,7 @@
 package net.qiuyu.horror9.compat;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.InterModComms;
+import net.neoforged.fml.InterModComms;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 

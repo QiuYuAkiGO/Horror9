@@ -1,0 +1,281 @@
+Reusing configuration cache.
+> Task :compileJava FAILED
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:23: ����: �Ҳ�������
+public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
+                                                        ^
+  ����: �� Vanishable
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:14: ����: �Ҳ�������
+@Mod(value = horror9.MODID, dist = Dist.CLIENT)
+             ^
+  ����: ���� horror9
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:16: ����: �Ҳ�������
+@EventBusSubscriber(modid = horror9.MODID, value = Dist.CLIENT)
+                            ^
+  ����: ���� horror9
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\client\gui\CreatorPhoneScreen.java:39: ����: �޷����� Screen�еķ��� renderBackgroundӦ�õ���������;
+        this.renderBackground(pGuiGraphics);
+            ^
+  ��Ҫ: GuiGraphics,int,int,float
+  �ҵ�:    GuiGraphics
+  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\client\ModKeyBindings.java:18: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
+@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                           ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\client\ModKeyBindings.java:18: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
+@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                                   ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\DataGenerators.java:12: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
+@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+                                           ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\DataGenerators.java:12: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
+@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+                                                                   ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\ModBlockModelGen.java:27: ����: �Ҳ�������
+        return NeoForgeRegistries.BLOCKS.getKey(block);
+                                 ^
+  ����:   ���� BLOCKS
+  λ��: �� NeoForgeRegistries
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\ModItemModelGen.java:47: ����: �����ForgeRegistries������
+        return ForgeRegistries.ITEMS.getKey(item).getPath();
+                              ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\entity\custom\WitherBombEntity.java:37: ����: ����AbstractHurtingProjectile(EntityType<CAP#1>,double,double,double,double,double,double,Level), �Ҳ������ʵĹ�����
+        super(entityType, pX, pY, pZ, pOffsetX, pOffsetY, pOffsetZ, pLevel);
+        ^
+    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,Level)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,double,double,double,Level)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,double,double,double,Vec3,Level)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,LivingEntity,Vec3,Level)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+  ����, CAP#1�������ͱ���:
+    CAP#1��? extends WitherBombEntity�Ĳ�����չWitherBombEntity
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\entity\custom\WitherBombEntity.java:104: ����: �����ݵ�����: Holder<MobEffect>�޷�ת��ΪMobEffect
+            MobEffect mobeffect = effectInstances.getEffect();
+                                                           ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\entity\custom\WitherBombEntity.java:109: ����: �����ݵ�����: MobEffect�޷�ת��ΪHolder<MobEffect>
+                MobEffectInstance mobeffectinstance1 = new MobEffectInstance(mobeffect, i, effectInstances.getAmplifier(), effectInstances.isAmbient(), effectInstances.isVisible());
+                                                                             ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\event\ModEvents.java:141: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
+        @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+                                                   ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\event\ModEvents.java:141: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
+        @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+                                                                           ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\Horror9.java:80: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                       ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\Horror9.java:80: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                               ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:28: ����: �����horror9������
+        horror9.LOGGER.info("HELLO FROM CLIENT SETUP");
+               ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:29: ����: �����horror9������
+        horror9.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+               ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\CreatorPhoneItem.java:106: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartMetal.java:25: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartMetal.java:30: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                                      ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:23: ����: �޷����� AxeItem�еĹ����� AxeItemӦ�õ���������;
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        ^
+  ��Ҫ: Tier,Properties
+  �ҵ�:    Tier,float,float,Properties
+  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:30: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:34: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                                      ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:47: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:118: ����: [removal] IItemExtension �е� onEntitySwing(ItemStack,LivingEntity) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
+                   ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:124: ����: �Ҳ�������
+                CompoundTag nbt = stack.getTag();
+                                       ^
+  ����:   ���� getTag()
+  λ��: ����ΪItemStack�ı��� stack
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:148: ����: [removal] IItemExtension �е� onEntitySwing(ItemStack,LivingEntity) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+        return super.onEntitySwing(stack, entity);
+                    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:162: ����: �Ҳ�������
+        CompoundTag nbt = stack.getOrCreateTag();
+                               ^
+  ����:   ���� getOrCreateTag()
+  λ��: ����ΪItemStack�ı��� stack
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:180: ����: �Ҳ�������
+        CompoundTag nbt = stack.getOrCreateTag();
+                               ^
+  ����:   ���� getOrCreateTag()
+  λ��: ����ΪItemStack�ı��� stack
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:236: ����: �Ҳ�������
+        CompoundTag nbt = stack.getOrCreateTag();
+                               ^
+  ����:   ���� getOrCreateTag()
+  λ��: ����ΪItemStack�ı��� stack
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:256: ����: �Ҳ�������
+        stack.getOrCreateTag().remove("InputSeq");
+             ^
+  ����:   ���� getOrCreateTag()
+  λ��: ����ΪItemStack�ı��� stack
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:54: ����: �޷����� TridentItem�еķ��� getUseDurationӦ�õ���������;
+            int i = this.getUseDuration(pStack) - pTimeLeft;
+                        ^
+  ��Ҫ: ItemStack,LivingEntity
+  �ҵ�:    ItemStack
+  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:56: ����: �Ҳ�������
+                int j = EnchantmentHelper.getRiptide(pStack);
+                                         ^
+  ����:   ���� getRiptide(ItemStack)
+  λ��: �� EnchantmentHelper
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:59: ����: �����ݵ�����: EquipmentSlot ���Ǻ����ӿ�
+                        pStack.hurtAndBreak(1, player, (p_43414_) -> {
+                              ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:70: ����: ����playSound(Player,NullTridentEntity,Holder<SoundEvent>,SoundSource,float,float), �Ҳ������ʵķ���
+                            pLevel.playSound((Player)null, nulltrident, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
+                                  ^
+    ���� Level.playSound(Entity,BlockPos,SoundEvent,SoundSource,float,float)������
+      (������ƥ��; NullTridentEntity�޷�ת��ΪBlockPos)
+    ���� Level.playSound(Player,BlockPos,SoundEvent,SoundSource,float,float)������
+      (������ƥ��; NullTridentEntity�޷�ת��ΪBlockPos)
+    ���� Level.playSound(Player,double,double,double,SoundEvent,SoundSource)������
+      (������ƥ��; NullTridentEntity�޷�ת��Ϊdouble)
+    ���� Level.playSound(Player,Entity,SoundEvent,SoundSource,float,float)������
+      (������ƥ��; Holder<SoundEvent>�޷�ת��ΪSoundEvent)
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:90: ����: �޷����� Player�еķ��� startAutoSpinAttackӦ�õ���������;
+                        player.startAutoSpinAttack(20);
+                              ^
+  ��Ҫ: int,float,ItemStack
+  �ҵ�:    int
+  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:98: ����: �����ݵ�����: Holder<SoundEvent>�޷�ת��ΪSoundEvent
+                            soundevent = SoundEvents.TRIDENT_RIPTIDE_3;
+                                                    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:100: ����: �����ݵ�����: Holder<SoundEvent>�޷�ת��ΪSoundEvent
+                            soundevent = SoundEvents.TRIDENT_RIPTIDE_2;
+                                                    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:102: ����: �����ݵ�����: Holder<SoundEvent>�޷�ת��ΪSoundEvent
+                            soundevent = SoundEvents.TRIDENT_RIPTIDE_1;
+                                                    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:113: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:117: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                                      ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:121: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:26: ����: ����SwordItem(Tier,int,float,Properties), �Ҳ������ʵĹ�����
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        ^
+    ������ SwordItem.SwordItem(Tier,Properties)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+    ������ SwordItem.SwordItem(Tier,Properties,Tool)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:30: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:55: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:59: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                                      ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:36: ����: �޷����� AxeItem�еĹ����� AxeItemӦ�õ���������;
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        ^
+  ��Ҫ: Tier,Properties
+  �ҵ�:    Tier,float,float,Properties
+  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:49: ����: �Ҳ�������
+        pPlayer.playSound(SoundEvents.NOTE_BLOCK_BELL.get(), 1.0F, 1.0F);
+                                                     ^
+  ����:   ���� get()
+  λ��: ����ΪReference<SoundEvent>�ı��� NOTE_BLOCK_BELL
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:54: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:68: ����: �Ҳ�������
+            pLivingEntity.playSound(SoundEvents.NOTE_BLOCK_BELL.get(), 1.0F, 2.0F);
+                                                               ^
+  ����:   ���� get()
+  λ��: ����ΪReference<SoundEvent>�ı��� NOTE_BLOCK_BELL
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:77: ����: �����ݵ�����: Reference<SoundEvent>�޷�ת��ΪSoundEvent
+                player.playSound(SoundEvents.GENERIC_EXPLODE, 1.0F, 1.0F);
+                                            ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:185: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\WitherBombItem.java:96: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\WitherBombItem.java:125: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:63: ����: YuukaHaloItem�е�getAttributeModifiers(SlotContext,UUID,ItemStack)�޷�ʵ��ICurioItem�е�getAttributeModifiers(SlotContext,UUID,ItemStack)
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+                                                  ^
+  ��������Multimap<Attribute,AttributeModifier>��Multimap<Holder<Attribute>,AttributeModifier>������
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:49: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:62: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
+    @Override
+    ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:66: ����: �Ҳ�������
+        modifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "Yuuka Halo Speed", 0.6D, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                                                                                                                                  ^
+  ����:   ���� MULTIPLY_TOTAL
+  λ��: �� Operation
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\renderer\NullTridentItemRenderer.java:31: ����: �����ݵ�����: ResourceLocation�޷�ת��ΪModelResourceLocation
+            BakedModel model = Minecraft.getInstance().getModelManager().getModel(ResourceLocation.parse(Horror9.MODID + ":item/null_trident_2d"));
+                                                                                                        ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\renderer\NullTridentItemRenderer.java:40: ����: ����renderToBuffer(PoseStack,VertexConsumer,int,int,float,float,float,float), �Ҳ������ʵķ���
+        this.tridentModel.renderToBuffer(poseStack, vertexconsumer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
+                         ^
+    ���� Model.renderToBuffer(PoseStack,VertexConsumer,int,int)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+    ���� TridentModel.renderToBuffer(PoseStack,VertexConsumer,int,int,int)������
+      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\message\ModMessages.java:9: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
+@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+                                           ^
+D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\message\ModMessages.java:9: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
+@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+                                                                   ^
+ע: ĳЩ�����ļ�ʹ�û򸲸����ѹ�ʱ�� API��
+ע: �й���ϸ��Ϣ, ��ʹ�� -Xlint:deprecation ���±��롣
+ע: ĳЩ��Ϣ�Ѿ�����; ��ʹ�� -Xdiags:verbose ���±����Ի���������
+45 ������
+19 ������
+[Incubating] Problems report is available at: file:///D:/MinecraftDev1.20.1/Horror9/build/reports/problems/problems-report.html
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:23: ����: �Ҳ�������
+  public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
+                                                          ^
+    ����: �� Vanishable
+  45 ������
+  19 ������
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to generate a Build Scan (powered by Develocity).
+BUILD FAILED in 1s
+2 actionable tasks: 1 executed, 1 up-to-date
+Configuration cache entry reused.

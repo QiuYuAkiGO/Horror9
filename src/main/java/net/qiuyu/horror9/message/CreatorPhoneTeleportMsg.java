@@ -1,38 +1,36 @@
 package net.qiuyu.horror9.message;
 
-import net.minecraft.network.FriendlyByteBuf;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.qiuyu.horror9.Horror9;
 
-import java.util.function.Supplier;
+public record CreatorPhoneTeleportMsg(String targetName) implements CustomPacketPayload {
 
-public class CreatorPhoneTeleportMsg {
-    private final String targetName;
+    public static final Type<CreatorPhoneTeleportMsg> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Horror9.MODID, "creator_phone_teleport"));
 
-    public CreatorPhoneTeleportMsg(String targetName) {
-        this.targetName = targetName;
+    public static final StreamCodec<ByteBuf, CreatorPhoneTeleportMsg> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.STRING_UTF8, CreatorPhoneTeleportMsg::targetName,
+            CreatorPhoneTeleportMsg::new
+    );
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static void write(CreatorPhoneTeleportMsg msg, FriendlyByteBuf buf) {
-        buf.writeUtf(msg.targetName);
-    }
-
-    public static CreatorPhoneTeleportMsg read(FriendlyByteBuf buf) {
-        return new CreatorPhoneTeleportMsg(buf.readUtf());
-    }
-
-    public static class Handler {
-        public static void handle(CreatorPhoneTeleportMsg msg, Supplier<NetworkEvent.Context> ctx) {
-            ctx.get().enqueueWork(() -> {
-                ServerPlayer player = ctx.get().getSender();
-                if (player != null) {
-                    ServerPlayer target = player.getServer().getPlayerList().getPlayerByName(msg.targetName);
-                    if (target != null) {
-                        player.teleportTo(target.serverLevel(), target.getX(), target.getY(), target.getZ(), target.getYRot(), target.getXRot());
-                    }
+    public static void handle(CreatorPhoneTeleportMsg msg, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            if (ctx.player() instanceof ServerPlayer player) {
+                ServerPlayer target = player.getServer().getPlayerList().getPlayerByName(msg.targetName);
+                if (target != null) {
+                    player.teleportTo(target.serverLevel(), target.getX(), target.getY(), target.getZ(), target.getYRot(), target.getXRot());
                 }
-            });
-            ctx.get().setPacketHandled(true);
-        }
+            }
+        });
     }
 }

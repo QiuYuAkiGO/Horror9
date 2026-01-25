@@ -3,25 +3,25 @@ package net.qiuyu.horror9.items.custom;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.qiuyu.horror9.Horror9;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.qiuyu.horror9.items.renderer.YuukaHaloRenderer;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -37,6 +37,7 @@ public class YuukaHaloItem extends Item implements ICurioItem, GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override
@@ -59,17 +60,19 @@ public class YuukaHaloItem extends Item implements ICurioItem, GeoItem {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
-        Multimap<Attribute, AttributeModifier> modifiers = LinkedHashMultimap.create();
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier> modifiers = LinkedHashMultimap.create();
         // Speed 3 效果，原版 Speed I 是 20% (0.2)，Speed III 是 60% (0.6)
-        modifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "Yuuka Halo Speed", 0.6D, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        modifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.parse(Horror9.MODID + ":yuuka_halo_speed"), 0.6D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         return modifiers;
     }
 
+
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.yuuka_halo.line1").withStyle(ChatFormatting.GRAY));
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.yuuka_halo.line2").withStyle(ChatFormatting.GRAY));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.horror9.yuuka_halo.line1").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.horror9.yuuka_halo.line2").withStyle(ChatFormatting.GRAY));
+
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

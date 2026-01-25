@@ -1,45 +1,44 @@
 package net.qiuyu.horror9.message;
 
-import net.minecraft.network.FriendlyByteBuf;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.items.custom.HuntingHornItem;
-import net.minecraftforge.network.NetworkEvent;
 
-import java.util.function.Supplier;
+public record HuntingHornNoteMsg(int noteType) implements CustomPacketPayload {
 
-public class HuntingHornNoteMsg {
-    private final int noteType;
+    public static final Type<HuntingHornNoteMsg> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Horror9.MODID, "hunting_horn_note"));
 
-    public HuntingHornNoteMsg(int noteType) {
-        this.noteType = noteType;
+    public static final StreamCodec<ByteBuf, HuntingHornNoteMsg> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, HuntingHornNoteMsg::noteType,
+            HuntingHornNoteMsg::new
+    );
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static HuntingHornNoteMsg read(FriendlyByteBuf buf) {
-        return new HuntingHornNoteMsg(buf.readInt());
-    }
-
-    public static void write(HuntingHornNoteMsg message, FriendlyByteBuf buf) {
-        buf.writeInt(message.noteType);
-    }
-
-    public static class Handler {
-        public static void handle(HuntingHornNoteMsg message, Supplier<NetworkEvent.Context> context) {
-            context.get().setPacketHandled(true);
-            context.get().enqueueWork(() -> {
-                Player player = context.get().getSender();
-                if (player != null) {
-                    ItemStack stack = player.getMainHandItem();
+    public static void handle(HuntingHornNoteMsg message, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            Player player = context.player();
+            if (player != null) {
+                ItemStack stack = player.getMainHandItem();
+                if (stack.getItem() instanceof HuntingHornItem hornItem) {
+                    hornItem.addNote(stack, player, message.noteType);
+                } else {
+                    stack = player.getOffhandItem();
                     if (stack.getItem() instanceof HuntingHornItem hornItem) {
                         hornItem.addNote(stack, player, message.noteType);
-                    } else {
-                        stack = player.getOffhandItem();
-                        if (stack.getItem() instanceof HuntingHornItem hornItem) {
-                            hornItem.addNote(stack, player, message.noteType);
-                        }
                     }
                 }
-            });
-        }
+            }
+        });
     }
 }

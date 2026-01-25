@@ -11,14 +11,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.custom.WitherBombEntity;
 import net.qiuyu.horror9.items.renderer.WitherBombRenderer;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
@@ -35,7 +35,7 @@ public class WitherBombItem extends Item implements GeoItem {
     @Override
     public void onUseTick(Level level, @NotNull LivingEntity entity, @NotNull ItemStack stack, int remainingUseTicks) {
         if (level.isClientSide && entity instanceof Player player) {
-            int usedTicks = this.getUseDuration(stack) - remainingUseTicks;
+            int usedTicks = this.getUseDuration(stack, entity) - remainingUseTicks;
 
             // 检查是否到达蓄力节点
             for (int chargePoint : CHARGE_POINTS) {
@@ -62,15 +62,14 @@ public class WitherBombItem extends Item implements GeoItem {
     @Override
     public void releaseUsing(@NotNull ItemStack itemstack, @NotNull Level level, @NotNull LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof Player player) {
-            int i = this.getUseDuration(itemstack) - timeLeft;
+            int i = this.getUseDuration(itemstack, entityLiving) - timeLeft;
             if (i < USE_TIME) {
                 return;
             }
             // 创建实体
             if (!level.isClientSide()) {
-                WitherBombEntity witherBombEntity = new WitherBombEntity(ModEntityTypes.WITHER_BOMB.get(),
-                        player.position().x(), player.getEyePosition().y, player.position().z(), 0F, -0.5F, 0F, level);
-                witherBombEntity.setOwner(player);
+                WitherBombEntity witherBombEntity = new WitherBombEntity(level, player);
+                witherBombEntity.setItem(itemstack);
                 witherBombEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                 level.addFreshEntity(witherBombEntity);
             }
@@ -94,7 +93,7 @@ public class WitherBombItem extends Item implements GeoItem {
     }
 
     @Override
-    public int getUseDuration(@NotNull ItemStack stack) {
+    public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
         return 72000;
     }
 

@@ -18,12 +18,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.qiuyu.horror9.items.renderer.OxygenDestroyerRenderer;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public OxygenDestroyerItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Item.Properties pProperties) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        super(pTier, pProperties.attributes(AxeItem.createAttributes(pTier, pAttackDamageModifier, pAttackSpeedModifier)));
     }
 
     public static Item.Properties createDefaultProperties() {
@@ -46,13 +46,13 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
         if (pPlayer.getCooldowns().isOnCooldown(this)) {
             return InteractionResultHolder.fail(itemstack);
         }
-        pPlayer.playSound(SoundEvents.NOTE_BLOCK_BELL.get(), 1.0F, 1.0F);
+        pPlayer.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 1.0F, 1.0F);
         pPlayer.startUsingItem(pUsedHand);
         return InteractionResultHolder.consume(itemstack);
     }
 
     @Override
-    public int getUseDuration(ItemStack pStack) {
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
         return 72000;
     }
 
@@ -63,18 +63,18 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
 
     @Override
     public void onUseTick(Level pLevel, LivingEntity pLivingEntity, ItemStack pStack, int pRemainingUseDuration) {
-        int i = this.getUseDuration(pStack) - pRemainingUseDuration;
+        int i = this.getUseDuration(pStack, pLivingEntity) - pRemainingUseDuration;
         if (i == 40) {
-            pLivingEntity.playSound(SoundEvents.NOTE_BLOCK_BELL.get(), 1.0F, 2.0F);
+            pLivingEntity.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 1.0F, 2.0F);
         }
     }
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeLeft) {
         if (pLivingEntity instanceof Player player) {
-            int i = this.getUseDuration(pStack) - pTimeLeft;
+            int i = this.getUseDuration(pStack, pLivingEntity) - pTimeLeft;
             if (i >= 40) { // 2 seconds
-                player.playSound(SoundEvents.GENERIC_EXPLODE, 1.0F, 1.0F);
+                player.playSound(SoundEvents.GENERIC_EXPLODE.value(), 1.0F, 1.0F);
                 if (!pLevel.isClientSide) {
                     performAoeAttack(player, pLevel);
                     player.getCooldowns().addCooldown(this, 240); // 12 seconds
@@ -166,15 +166,15 @@ public class OxygenDestroyerItem extends AxeItem implements GeoItem {
 
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.horror9.oxygen_destroyer.line1").withStyle(ChatFormatting.LIGHT_PURPLE));
+        tooltipComponents.add(Component.translatable("tooltip.horror9.oxygen_destroyer.line2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.oxygen_destroyer.line1").withStyle(ChatFormatting.LIGHT_PURPLE));
-        pTooltipComponents.add(Component.translatable("tooltip.horror9.oxygen_destroyer.line2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override

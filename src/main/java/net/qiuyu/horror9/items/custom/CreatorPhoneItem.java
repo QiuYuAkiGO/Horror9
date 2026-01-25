@@ -1,6 +1,7 @@
 package net.qiuyu.horror9.items.custom;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -10,26 +11,23 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.EnergyStorage;
-import net.minecraftforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.qiuyu.horror9.items.renderer.CreatorPhoneRenderer;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import java.util.function.Consumer;
 
 public class CreatorPhoneItem extends Item implements GeoItem {
     public static final int MAX_ENERGY = 100;
@@ -48,10 +46,6 @@ public class CreatorPhoneItem extends Item implements GeoItem {
     }
 
     private void openScreen() {
-        // Use reflection or a proxy to avoid server-side class loading issues if needed, 
-        // but since this is called only if isClientSide is true, it's generally safe 
-        // as long as the method itself doesn't have Screen in its signature or body in a way that triggers loading.
-        // Actually, it's better to use a DistExecutor or similar if it's in a common class.
         net.qiuyu.horror9.Horror9.PROXY.openCreatorPhoneScreen();
     }
 
@@ -59,25 +53,25 @@ public class CreatorPhoneItem extends Item implements GeoItem {
     public void inventoryTick(@NotNull ItemStack pStack, Level pLevel, @NotNull Entity pEntity, int pSlotId, boolean pIsSelected) {
         if (!pLevel.isClientSide && pEntity instanceof Player) {
             if (pLevel.getGameTime() % 20 == 0) {
-                pStack.getCapability(ForgeCapabilities.ENERGY).ifPresent(energy -> {
-                    if (energy instanceof ItemEnergyStorage itemEnergy) {
-                        itemEnergy.receiveEnergyInternal(5, false);
-                    }
-                });
+                IEnergyStorage energy = pStack.getCapability(Capabilities.EnergyStorage.ITEM);
+                if (energy instanceof ItemEnergyStorage itemEnergy) {
+                    itemEnergy.receiveEnergyInternal(5, false);
+                }
             }
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        pStack.getCapability(ForgeCapabilities.ENERGY).ifPresent(energy -> {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        IEnergyStorage energy = stack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (energy != null) {
             int percentage = (int) ((float) energy.getEnergyStored() / energy.getMaxEnergyStored() * 100);
-            pTooltipComponents.add(Component.translatable("tooltip.horror9.creator_phone.energy", percentage)
+            tooltipComponents.add(Component.translatable("tooltip.horror9.creator_phone.energy", percentage)
                     .withStyle(ChatFormatting.GOLD));
-        });
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-    }
+        }
 
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
     @Override
     public boolean isBarVisible(@NotNull ItemStack pStack) {
         return true;
@@ -90,13 +84,17 @@ public class CreatorPhoneItem extends Item implements GeoItem {
 
     @Override
     public int getBarWidth(ItemStack pStack) {
-        return pStack.getCapability(ForgeCapabilities.ENERGY)
-                .map(e -> Math.round((float) e.getEnergyStored() * 13.0F / (float) e.getMaxEnergyStored()))
-                .orElse(0);
+        IEnergyStorage energy = pStack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (energy != null) {
+            return Math.round((float) energy.getEnergyStored() * 13.0F / (float) energy.getMaxEnergyStored());
+        }
+        return 0;
     }
+
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
     }
 
     @Override
@@ -118,32 +116,15 @@ public class CreatorPhoneItem extends Item implements GeoItem {
         });
     }
 
-    @Override
-    public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-        return new CreatorPhoneEnergyCapability(stack);
-    }
-
-    private static class CreatorPhoneEnergyCapability implements ICapabilityProvider {
-        private final LazyOptional<IEnergyStorage> energy;
-
-        public CreatorPhoneEnergyCapability(ItemStack stack) {
-            this.energy = LazyOptional.of(() -> new ItemEnergyStorage(stack, MAX_ENERGY));
-        }
-
-        @Override
-        public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable net.minecraft.core.Direction side) {
-            return ForgeCapabilities.ENERGY.orEmpty(cap, energy);
-        }
-    }
-
-    private static class ItemEnergyStorage extends EnergyStorage {
+    public static class ItemEnergyStorage extends EnergyStorage {
         private final ItemStack stack;
 
         public ItemEnergyStorage(ItemStack stack, int capacity) {
             super(capacity);
             this.stack = stack;
-            if (stack.getTag() != null && stack.hasTag() && stack.getTag().contains("Energy")) {
-                this.energy = stack.getTag().getInt("Energy");
+            CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+            if (tag.contains("Energy")) {
+                this.energy = tag.getInt("Energy");
             }
         }
 
@@ -162,7 +143,9 @@ public class CreatorPhoneItem extends Item implements GeoItem {
             int energyReceived = Math.min(capacity - energyStored, maxReceive);
             if (!simulate && energyReceived != 0) {
                 this.energy = energyStored + energyReceived;
-                stack.getOrCreateTag().putInt("Energy", this.energy);
+                CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+                tag.putInt("Energy", this.energy);
+                stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
             }
         }
 
@@ -172,15 +155,18 @@ public class CreatorPhoneItem extends Item implements GeoItem {
             int energyExtracted = Math.min(energyStored, maxExtract);
             if (!simulate && energyExtracted != 0) {
                 this.energy = energyStored - energyExtracted;
-                stack.getOrCreateTag().putInt("Energy", this.energy);
+                CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+                tag.putInt("Energy", this.energy);
+                stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
             }
             return energyExtracted;
         }
 
         @Override
         public int getEnergyStored() {
-            if (stack.getTag() != null && stack.hasTag() && stack.getTag().contains("Energy")) {
-                this.energy = stack.getTag().getInt("Energy");
+            CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+            if (tag.contains("Energy")) {
+                this.energy = tag.getInt("Energy");
             }
             return this.energy;
         }
