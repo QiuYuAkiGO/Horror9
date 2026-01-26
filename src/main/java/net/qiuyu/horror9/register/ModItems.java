@@ -43,7 +43,10 @@ public class ModItems {
 
     // 凋零炸弹
     public static final DeferredItem<WitherBombItem> WITHER_BOMB = ITEMS.register("wither_bomb", () -> new WitherBombItem(new Item.Properties()));
-
+    // 钻石剑
+    public static final DeferredItem<Item> OLD_DIAMOND_SWORD = ITEMS.register(
+            "old_diamond_sword", () -> new OldSwordItem(Tiers.DIAMOND, new Item.Properties().attributes(OldSwordItem.createAttributes(Tiers.DIAMOND, 3)), 3)
+    );
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

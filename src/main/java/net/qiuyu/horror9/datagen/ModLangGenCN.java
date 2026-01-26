@@ -40,6 +40,10 @@ public class ModLangGenCN extends LanguageProvider {
         add(ModItems.WITHER_BOMB.get(), "凋零炸弹");
         add("tooltip.horror9.wither_bomb.line1", "危险易爆品，请小心存放！");
         add("tooltip.horror9.wither_bomb.line2", "右键长按1s抛出，碰撞后爆炸并放出大范围凋零气体。");
+        add(ModItems.OLD_DIAMOND_SWORD.get(), "钻石剑");
+        add("tooltip.horror9.old_sword.line1", "一把失去了光泽但依旧锋利的剑");
+        add("tooltip.horror9.old_sword.line2", "攻击伤害");
+        add("tooltip.horror9.when_in_main_hand", "在主手时：");
 
         // 饰品
         add(ModItems.HEART_METAL.get(),"❤『爱心勋章』❤");

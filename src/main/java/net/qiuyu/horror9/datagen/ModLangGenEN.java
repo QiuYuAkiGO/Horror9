@@ -36,6 +36,10 @@ public class ModLangGenEN extends LanguageProvider {
         add(ModItems.WITHER_BOMB.get(), "Wither Bomb");
         add("tooltip.horror9.wither_bomb.line1", "Warning: Explosive device!");
         add("tooltip.horror9.wither_bomb.line2", "Hold right-click to throw. Explodes on impact with a wither gas effect.");
+        add(ModItems.OLD_DIAMOND_SWORD.get(), "Diamond Sword");
+        add("tooltip.horror9.old_sword.line1", "A sword that has lost its luster but remains sharp");
+        add("tooltip.horror9.old_sword.line2", "Attack Damage");
+        add("tooltip.horror9.when_in_main_hand", "When in Main Hand:");
 
         add(ModItems.HEART_METAL.get(),"❤『Heart Metal』❤");
         add("tooltip.horror9.heart_metal.line1", "Heart Blood Donation Reward❤");

@@ -4,6 +4,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -28,6 +29,7 @@ import net.qiuyu.horror9.entity.ModEntityTypes;
 import net.qiuyu.horror9.entity.custom.BiterEntity;
 import net.qiuyu.horror9.entity.custom.No1Entity;
 import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
+import net.qiuyu.horror9.items.custom.OldSwordItem;
 import net.qiuyu.horror9.register.ModItems;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -94,6 +96,20 @@ public class ModEvents {
                                 victim.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 0));
                             }
                         });
+            }
+
+            // 剑的伤害减免
+            if (event.getEntity() instanceof Player player) {
+                // 检查是否在用剑格挡
+                if (OldSwordItem.isBlockingWithSword(player)) {
+                    DamageSource source = event.getSource();
+
+                    // 只格挡近战和远程伤害
+                    if (OldSwordItem.canBlockAttack(source)) {
+                        // 减少伤害
+                        event.setAmount(event.getAmount() * OldSwordItem.DAMAGE_REDUCTION);
+                    }
+                }
             }
         }
 
