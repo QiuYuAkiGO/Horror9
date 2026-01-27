@@ -89,6 +89,8 @@ public class Horror9 {
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
             CuriosRendererRegistry.register(ModItems.YUUKA_HALO.get(), YuukaHaloRenderer::new);
             EntityRenderers.register(ModEntityTypes.WITHER_BOMB.get(), WitherBombRenderer::new);
+            EntityRenderers.register(ModEntityTypes.VILLAGE_CORE_BLUE.get(), VillageCoreBlueRenderer::new);
+            EntityRenderers.register(ModEntityTypes.VILLAGE_CORE_RED.get(), VillageCoreRedRenderer::new);
         }
 
         @SubscribeEvent

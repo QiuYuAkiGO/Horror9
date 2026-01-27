@@ -47,6 +47,13 @@ public class ModItems {
     public static final DeferredItem<Item> OLD_DIAMOND_SWORD = ITEMS.register(
             "old_diamond_sword", () -> new OldSwordItem(Tiers.DIAMOND, new Item.Properties().attributes(OldSwordItem.createAttributes(Tiers.DIAMOND, 3)), 3)
     );
+    // 村庄核心
+    public static final DeferredItem<Item> VILLAGE_CORE_RED_SPAWN_EGG = ITEMS.register("village_core_red_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntityTypes.VILLAGE_CORE_RED, 0xF8F8FF, 0xFF0000,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> VILLAGE_CORE_BLUE_SPAWN_EGG = ITEMS.register("village_core_blue_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntityTypes.VILLAGE_CORE_BLUE, 0xF8F8FF, 0x0000FF,
+                    new Item.Properties()));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

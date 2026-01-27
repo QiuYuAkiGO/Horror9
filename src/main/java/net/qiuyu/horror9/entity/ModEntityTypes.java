@@ -41,6 +41,18 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.<WitherBombEntity>of(WitherBombEntity::new, MobCategory.MISC)
                             .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10)
                             .build(ResourceLocation.parse(Horror9.MODID + ":" + "wither_bomb").toString()));
+    // 村庄核心红色
+    public static final DeferredHolder<EntityType<?>, EntityType<VillageCoreRedEntity>> VILLAGE_CORE_RED =
+            ENTITY_TYPES.register("village_core_red",
+                    () -> EntityType.Builder.of(VillageCoreRedEntity::new, MobCategory.MISC)
+                            .sized(5F, 5F)
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "village_core_red").toString()));
+    // 村庄核心蓝色
+    public static final DeferredHolder<EntityType<?>, EntityType<VillageCoreBlueEntity>> VILLAGE_CORE_BLUE =
+            ENTITY_TYPES.register("village_core_blue",
+                    () -> EntityType.Builder.of(VillageCoreBlueEntity::new, MobCategory.MISC)
+                            .sized(5F, 5F)
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "village_core_blue").toString()));
 
 
     public static void register(IEventBus eventBus) {
