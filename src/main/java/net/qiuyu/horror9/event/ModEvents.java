@@ -37,13 +37,24 @@ import java.util.List;
 
 public class ModEvents {
 
-    @EventBusSubscriber(modid = Horror9.MODID)
-    public static class ForgeEvents {
+    @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
+    public static class ModEventBusEvents {
 
         @SubscribeEvent
         public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent event) {
             event.registerItem(Capabilities.EnergyStorage.ITEM, (stack, ctx) -> new net.qiuyu.horror9.items.custom.CreatorPhoneItem.ItemEnergyStorage(stack, net.qiuyu.horror9.items.custom.CreatorPhoneItem.MAX_ENERGY), ModItems.CREATOR_PHONE.get());
         }
+
+        @SubscribeEvent
+        public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+            event.put(ModEntityTypes.NO1.get(), No1Entity.setAttributes());
+            event.put(ModEntityTypes.BITER.get(), BiterEntity.setAttributes());
+            event.put(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenEntity.setAttributes());
+        }
+    }
+
+    @EventBusSubscriber(modid = Horror9.MODID)
+    public static class ForgeEvents {
 
         @SubscribeEvent
         public static void onLivingFall(LivingFallEvent event) {

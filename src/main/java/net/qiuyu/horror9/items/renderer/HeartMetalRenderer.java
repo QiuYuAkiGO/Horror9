@@ -37,6 +37,7 @@ public class HeartMetalRenderer implements ICurioRenderer {
             model.body.translateAndRotate(matrixStack);
             // 1.0 通常对应 1/16 块。
             // x: 负值向右, y: 正值向下, z: 负值向前
+
             double zOffset = -0.15D;
             if (!slotContext.entity().getItemBySlot(EquipmentSlot.CHEST).isEmpty()) {
                 zOffset = -0.20D;

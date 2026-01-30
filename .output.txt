@@ -1,281 +1,217 @@
-Reusing configuration cache.
-> Task :compileJava FAILED
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:23: ����: �Ҳ�������
-public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
-                                                        ^
-  ����: �� Vanishable
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:14: ����: �Ҳ�������
-@Mod(value = horror9.MODID, dist = Dist.CLIENT)
-             ^
-  ����: ���� horror9
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:16: ����: �Ҳ�������
-@EventBusSubscriber(modid = horror9.MODID, value = Dist.CLIENT)
-                            ^
-  ����: ���� horror9
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\client\gui\CreatorPhoneScreen.java:39: ����: �޷����� Screen�еķ��� renderBackgroundӦ�õ���������;
-        this.renderBackground(pGuiGraphics);
-            ^
-  ��Ҫ: GuiGraphics,int,int,float
-  �ҵ�:    GuiGraphics
-  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\client\ModKeyBindings.java:18: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-                                           ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\client\ModKeyBindings.java:18: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-                                                                   ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\DataGenerators.java:12: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                           ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\DataGenerators.java:12: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                                                   ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\ModBlockModelGen.java:27: ����: �Ҳ�������
-        return NeoForgeRegistries.BLOCKS.getKey(block);
-                                 ^
-  ����:   ���� BLOCKS
-  λ��: �� NeoForgeRegistries
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\datagen\ModItemModelGen.java:47: ����: �����ForgeRegistries������
-        return ForgeRegistries.ITEMS.getKey(item).getPath();
-                              ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\entity\custom\WitherBombEntity.java:37: ����: ����AbstractHurtingProjectile(EntityType<CAP#1>,double,double,double,double,double,double,Level), �Ҳ������ʵĹ�����
-        super(entityType, pX, pY, pZ, pOffsetX, pOffsetY, pOffsetZ, pLevel);
-        ^
-    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,Level)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,double,double,double,Level)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,double,double,double,Vec3,Level)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-    ������ AbstractHurtingProjectile.AbstractHurtingProjectile(EntityType<? extends AbstractHurtingProjectile>,LivingEntity,Vec3,Level)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-  ����, CAP#1�������ͱ���:
-    CAP#1��? extends WitherBombEntity�Ĳ�����չWitherBombEntity
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\entity\custom\WitherBombEntity.java:104: ����: �����ݵ�����: Holder<MobEffect>�޷�ת��ΪMobEffect
-            MobEffect mobeffect = effectInstances.getEffect();
-                                                           ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\entity\custom\WitherBombEntity.java:109: ����: �����ݵ�����: MobEffect�޷�ת��ΪHolder<MobEffect>
-                MobEffectInstance mobeffectinstance1 = new MobEffectInstance(mobeffect, i, effectInstances.getAmplifier(), effectInstances.isAmbient(), effectInstances.isVisible());
-                                                                             ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\event\ModEvents.java:141: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
-        @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                                   ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\event\ModEvents.java:141: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
-        @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                                                           ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\Horror9.java:80: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-                                       ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\Horror9.java:80: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-                                                               ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:28: ����: �����horror9������
-        horror9.LOGGER.info("HELLO FROM CLIENT SETUP");
-               ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\horror9Client.java:29: ����: �����horror9������
-        horror9.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-               ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\CreatorPhoneItem.java:106: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartMetal.java:25: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartMetal.java:30: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-                                      ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:23: ����: �޷����� AxeItem�еĹ����� AxeItemӦ�õ���������;
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-        ^
-  ��Ҫ: Tier,Properties
-  �ҵ�:    Tier,float,float,Properties
-  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:30: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:34: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-                                      ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HeartPassItem.java:47: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:118: ����: [removal] IItemExtension �е� onEntitySwing(ItemStack,LivingEntity) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-                   ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:124: ����: �Ҳ�������
-                CompoundTag nbt = stack.getTag();
-                                       ^
-  ����:   ���� getTag()
-  λ��: ����ΪItemStack�ı��� stack
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:148: ����: [removal] IItemExtension �е� onEntitySwing(ItemStack,LivingEntity) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-        return super.onEntitySwing(stack, entity);
-                    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:162: ����: �Ҳ�������
-        CompoundTag nbt = stack.getOrCreateTag();
-                               ^
-  ����:   ���� getOrCreateTag()
-  λ��: ����ΪItemStack�ı��� stack
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:180: ����: �Ҳ�������
-        CompoundTag nbt = stack.getOrCreateTag();
-                               ^
-  ����:   ���� getOrCreateTag()
-  λ��: ����ΪItemStack�ı��� stack
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:236: ����: �Ҳ�������
-        CompoundTag nbt = stack.getOrCreateTag();
-                               ^
-  ����:   ���� getOrCreateTag()
-  λ��: ����ΪItemStack�ı��� stack
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\HuntingHornItem.java:256: ����: �Ҳ�������
-        stack.getOrCreateTag().remove("InputSeq");
-             ^
-  ����:   ���� getOrCreateTag()
-  λ��: ����ΪItemStack�ı��� stack
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:54: ����: �޷����� TridentItem�еķ��� getUseDurationӦ�õ���������;
-            int i = this.getUseDuration(pStack) - pTimeLeft;
-                        ^
-  ��Ҫ: ItemStack,LivingEntity
-  �ҵ�:    ItemStack
-  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:56: ����: �Ҳ�������
-                int j = EnchantmentHelper.getRiptide(pStack);
-                                         ^
-  ����:   ���� getRiptide(ItemStack)
-  λ��: �� EnchantmentHelper
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:59: ����: �����ݵ�����: EquipmentSlot ���Ǻ����ӿ�
-                        pStack.hurtAndBreak(1, player, (p_43414_) -> {
-                              ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:70: ����: ����playSound(Player,NullTridentEntity,Holder<SoundEvent>,SoundSource,float,float), �Ҳ������ʵķ���
-                            pLevel.playSound((Player)null, nulltrident, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
-                                  ^
-    ���� Level.playSound(Entity,BlockPos,SoundEvent,SoundSource,float,float)������
-      (������ƥ��; NullTridentEntity�޷�ת��ΪBlockPos)
-    ���� Level.playSound(Player,BlockPos,SoundEvent,SoundSource,float,float)������
-      (������ƥ��; NullTridentEntity�޷�ת��ΪBlockPos)
-    ���� Level.playSound(Player,double,double,double,SoundEvent,SoundSource)������
-      (������ƥ��; NullTridentEntity�޷�ת��Ϊdouble)
-    ���� Level.playSound(Player,Entity,SoundEvent,SoundSource,float,float)������
-      (������ƥ��; Holder<SoundEvent>�޷�ת��ΪSoundEvent)
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:90: ����: �޷����� Player�еķ��� startAutoSpinAttackӦ�õ���������;
-                        player.startAutoSpinAttack(20);
-                              ^
-  ��Ҫ: int,float,ItemStack
-  �ҵ�:    int
-  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:98: ����: �����ݵ�����: Holder<SoundEvent>�޷�ת��ΪSoundEvent
-                            soundevent = SoundEvents.TRIDENT_RIPTIDE_3;
-                                                    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:100: ����: �����ݵ�����: Holder<SoundEvent>�޷�ת��ΪSoundEvent
-                            soundevent = SoundEvents.TRIDENT_RIPTIDE_2;
-                                                    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:102: ����: �����ݵ�����: Holder<SoundEvent>�޷�ת��ΪSoundEvent
-                            soundevent = SoundEvents.TRIDENT_RIPTIDE_1;
-                                                    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:113: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:117: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-                                      ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\NullTridentItem.java:121: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:26: ����: ����SwordItem(Tier,int,float,Properties), �Ҳ������ʵĹ�����
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-        ^
-    ������ SwordItem.SwordItem(Tier,Properties)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-    ������ SwordItem.SwordItem(Tier,Properties,Tool)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:30: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:55: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:59: ����: �����ݵ�����: @org.jetbrains.annotations.Nullable Level�޷�ת��ΪTooltipContext
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-                                      ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:36: ����: �޷����� AxeItem�еĹ����� AxeItemӦ�õ���������;
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-        ^
-  ��Ҫ: Tier,Properties
-  �ҵ�:    Tier,float,float,Properties
-  ԭ��: ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:49: ����: �Ҳ�������
-        pPlayer.playSound(SoundEvents.NOTE_BLOCK_BELL.get(), 1.0F, 1.0F);
-                                                     ^
-  ����:   ���� get()
-  λ��: ����ΪReference<SoundEvent>�ı��� NOTE_BLOCK_BELL
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:54: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:68: ����: �Ҳ�������
-            pLivingEntity.playSound(SoundEvents.NOTE_BLOCK_BELL.get(), 1.0F, 2.0F);
-                                                               ^
-  ����:   ���� get()
-  λ��: ����ΪReference<SoundEvent>�ı��� NOTE_BLOCK_BELL
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:77: ����: �����ݵ�����: Reference<SoundEvent>�޷�ת��ΪSoundEvent
-                player.playSound(SoundEvents.GENERIC_EXPLODE, 1.0F, 1.0F);
-                                            ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OxygenDestroyerItem.java:185: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\WitherBombItem.java:96: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\WitherBombItem.java:125: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:63: ����: YuukaHaloItem�е�getAttributeModifiers(SlotContext,UUID,ItemStack)�޷�ʵ��ICurioItem�е�getAttributeModifiers(SlotContext,UUID,ItemStack)
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
-                                                  ^
-  ��������Multimap<Attribute,AttributeModifier>��Multimap<Holder<Attribute>,AttributeModifier>������
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:49: ����: [removal] Item �е� initializeClient(Consumer<IClientItemExtensions>) �ѹ�ʱ, �ұ��Ϊ��ɾ��
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-                ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:62: ����: �������Ḳ�ǻ�ʵ�ֳ����͵ķ���
-    @Override
-    ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\YuukaHaloItem.java:66: ����: �Ҳ�������
-        modifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "Yuuka Halo Speed", 0.6D, AttributeModifier.Operation.MULTIPLY_TOTAL));
-                                                                                                                                  ^
-  ����:   ���� MULTIPLY_TOTAL
-  λ��: �� Operation
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\renderer\NullTridentItemRenderer.java:31: ����: �����ݵ�����: ResourceLocation�޷�ת��ΪModelResourceLocation
-            BakedModel model = Minecraft.getInstance().getModelManager().getModel(ResourceLocation.parse(Horror9.MODID + ":item/null_trident_2d"));
-                                                                                                        ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\renderer\NullTridentItemRenderer.java:40: ����: ����renderToBuffer(PoseStack,VertexConsumer,int,int,float,float,float,float), �Ҳ������ʵķ���
-        this.tridentModel.renderToBuffer(poseStack, vertexconsumer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
-                         ^
-    ���� Model.renderToBuffer(PoseStack,VertexConsumer,int,int)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-    ���� TridentModel.renderToBuffer(PoseStack,VertexConsumer,int,int,int)������
-      (ʵ�ʲ����б����ʽ�����б���Ȳ�ͬ)
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\message\ModMessages.java:9: ����: [removal] EventBusSubscriber �е� bus() �ѹ�ʱ, �ұ��Ϊ��ɾ��
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                           ^
-D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\message\ModMessages.java:9: ����: [removal] EventBusSubscriber �е� Bus �ѹ�ʱ, �ұ��Ϊ��ɾ��
-@EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
-                                                                   ^
-ע: ĳЩ�����ļ�ʹ�û򸲸����ѹ�ʱ�� API��
-ע: �й���ϸ��Ϣ, ��ʹ�� -Xlint:deprecation ���±��롣
-ע: ĳЩ��Ϣ�Ѿ�����; ��ʹ�� -Xdiags:verbose ���±����Ի���������
-45 ������
-19 ������
-[Incubating] Problems report is available at: file:///D:/MinecraftDev1.20.1/Horror9/build/reports/problems/problems-report.html
-FAILURE: Build failed with an exception.
-* What went wrong:
-Execution failed for task ':compileJava'.
-> Compilation failed; see the compiler output below.
-  D:\MinecraftDev1.20.1\Horror9\src\main\java\net\qiuyu\horror9\items\custom\OwlSickleItem.java:23: ����: �Ҳ�������
-  public class OwlSickleItem extends SwordItem implements Vanishable,GeoItem {
-                                                          ^
-    ����: �� Vanishable
-  45 ������
-  19 ������
-* Try:
-> Check your code and dependencies to fix the compilation error(s)
-> Run with --scan to generate a Build Scan (powered by Develocity).
-BUILD FAILED in 1s
-2 actionable tasks: 1 executed, 1 up-to-date
-Configuration cache entry reused.
+
+    目录: C:\MinecraftDev\Horror9\src\main\resources
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2026/1/6      8:40                assets
+d-----          2026/1/6      8:40                data
+d-----        2025/12/17     15:13                META-INF
+-a----         2026/1/30     15:57            224 horror9.mixins.json
+-a----        2025/12/17     15:13             88 pack.mcmeta
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2026/1/6      8:40                horror9
+d-----          2026/1/6      8:40                minecraft
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/28      8:45                animations
+d-----        2025/12/27     16:51                blockstates
+d-----          2026/1/6      8:40                geo
+d-----        2025/12/27     16:51                lang
+d-----          2026/1/5     15:42                models
+d-----         2026/1/30     15:57                textures
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\animations
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/28      8:45                armor
+d-----          2026/1/6      8:40                entity
+d-----         2026/1/28      8:45                item
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\animations\ar
+    mor
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/28      8:45          30510 cat_tail_loop.animation.json
+-a----          2026/1/6      8:40            127 medicare.animation.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\animations\en
+    tity
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2026/1/6      8:40          35093 biter.animation.json
+-a----          2026/1/6      8:40           1843 no1.animation.json
+-a----          2026/1/6      8:40           5238 the_mistaken.animation.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\animations\it
+    em
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/28      8:45             58 creator_phone.animation.json
+-a----         2026/1/28      8:45            129 wither_bomb.animation.json
+-a----         2026/1/28      8:45             52 yuuka_halo.animation.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\geo
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/28      8:45                armor
+d-----         2026/1/30     15:57                entity
+d-----         2026/1/28      8:45                item
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\geo\armor
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/28      8:45           1224 cat_tail.geo.json
+-a----          2026/1/6      8:40           1892 medicare.geo.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\geo\entity
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2026/1/6      8:40           3430 biter.geo.json
+-a----          2026/1/6      8:40           3453 no1.geo.json
+-a----          2026/1/6      8:40           2665 the_mistaken.geo.json
+-a----         2026/1/30     15:57           3501 village_core_blue.geo.json
+-a----         2026/1/30     15:57           3501 village_core_red.geo.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\geo\item
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/28      8:45          89008 creator_phone.geo.json
+-a----          2026/1/6      8:40          27970 heart_pass.geo.json
+-a----          2026/1/6      8:40           6648 owl_sickle.geo.json
+-a----         2026/1/28      8:45           1255 wither_bomb.geo.json
+-a----         2026/1/28      8:45         234335 yuuka_halo.geo.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\models
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2025/12/27     16:51                block
+d-----         2026/1/28      8:45                item
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\models\item
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/28      8:45          25033 creator_phone.json
+-a----          2026/1/8      8:55          32849 heart_pass.json
+-a----          2026/1/8      8:55           1453 null_trident_in_hand.json
+-a----          2026/1/8      8:55           7750 owl_sickle.json
+-a----         2026/1/28      8:45          36876 oxygen_destroyer.json
+-a----         2026/1/28      8:45          26292 wither_bomb.json
+-a----         2026/1/28      8:45           1121 yuuka_halo.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\textures
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/30     15:57                entity
+d-----        2025/12/27     16:51                gui
+d-----         2026/1/30     15:57                item
+d-----        2025/12/27     16:45                models
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\textures\enti
+    ty
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2026/1/5     15:42           1955 biter_texture.png
+-a----        2025/12/17     15:13           9226 no1_texture.png
+-a----          2026/1/8      8:55            324 null_trident_texture.png
+-a----          2026/1/5     15:45           1116 the_mistaken_texture.png
+-a----         2026/1/30     15:57          11523 village_core_blue_texture.png
+-a----         2026/1/30     15:57          11517 village_core_red_texture.png
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\textures\item
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/28      8:45            142 cat_tail_white_texture.png
+-a----         2026/1/28      8:45           1174 creator_phone_texture.png
+-a----          2026/1/6      8:40            249 heart_metal_texture.png
+-a----          2026/1/6      8:40           1611 heart_pass_texture.png
+-a----          2026/1/6      8:40            287 medicare_boots_texture.png
+-a----          2026/1/6      8:40            505 medicare_chestplate_texture.p
+                                                  ng
+-a----          2026/1/6      8:40            266 medicare_helmet_texture.png
+-a----          2026/1/6      8:40            339 medicare_leggings_texture.png
+-a----        1989/11/26      0:00            166 null_trident_texture.png
+-a----         2026/1/30     15:57            359 old_diamond_sword.png
+-a----          2026/1/5     15:45           1921 owl_sickle_texture.png
+-a----         2026/1/28      8:45           8103 oxygen_destroyer_texture.png
+-a----         2026/1/28      8:45           1268 wither_bomb_a_texture.png
+-a----         2026/1/28      8:45            311 wither_bomb_ba_texture.png
+-a----         2026/1/28      8:45            311 wither_bomb_b_texture.png
+-a----         2026/1/28      8:45            308 yuuka_halo_texture.png
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\textures\mode
+    ls
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/30     15:57                armor
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\horror9\textures\mode
+    ls\armor
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/30     15:57           1298 medicare_layer_1.png
+-a----         2026/1/30     15:57            342 medicare_layer_2.png
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\minecraft
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2026/1/6      8:40                textures
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\minecraft\textures
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2026/1/6      8:40                models
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\minecraft\textures\mo
+    dels
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2026/1/6      8:40                armor
+    目录: C:\MinecraftDev\Horror9\src\main\resources\assets\minecraft\textures\mo
+    dels\armor
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2026/1/6      8:40           1482 medicare_layer_1.png
+-a----          2026/1/6      8:40            342 medicare_layer_2.png
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/30     20:03                curios
+d-----        2025/12/17     15:13                forge
+d-----        2025/12/17     15:13                horror9
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\curios
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/30     20:03                curios
+d-----         2026/1/30     20:03                tags
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\curios\curios
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/30     20:03                entities
+d-----         2026/1/30     20:03                slots
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\curios\curios\entities
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/30     15:57             71 player.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\curios\curios\slots
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2026/1/30     15:57            103 chest.json
+-a----         2026/1/30     15:57             99 halo.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\curios\tags
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2026/1/30     20:03                item
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\curios\tags\item
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2026/1/6      8:40             72 chest.json
+-a----         2026/1/28      8:45             73 halo.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\forge
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2025/12/17     15:13                loot_modifiers
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\forge\loot_modifiers
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2025/12/17     15:13             92 global_loot_modifiers.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\horror9
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2025/12/17     15:13                forge
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\horror9\forge
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2025/12/18      9:02                biome_modifier
+    目录: C:\MinecraftDev\Horror9\src\main\resources\data\horror9\forge\biome_mod
+    ifier
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2025/12/18      9:02            189 spawn_no1.json
+    目录: C:\MinecraftDev\Horror9\src\main\resources\META-INF
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2025/12/17     15:13           4422 mods.toml
