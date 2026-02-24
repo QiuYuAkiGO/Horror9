@@ -75,5 +75,12 @@ public class ModLangGenCN extends LanguageProvider {
 
         add("curios.identifier.chest", "胸部");
         add("curios.identifier.halo", "光环");
+        add("curios.identifier.protect_stone", "护石槽位");
+        add(ModItems.PROTECT_STONE.get(), "护石");
+        add("tooltip.horror9.protect_stone.line1", "装备于护石槽位时激活效果。");
+        add("tooltip.horror9.protect_stone.line2", "效果列表存储于 NBT 的 Effects 中（如 minecraft:regeneration）。");
+        add("tooltip.horror9.protect_stone.effects", "附加效果：");
+        add("effect.horror9.moving_light_1", "移动光源 I");
+        add("effect.horror9.moving_light_2", "移动光源 II");
     }
 }

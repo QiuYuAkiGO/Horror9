@@ -70,6 +70,7 @@ public class Horror9 {
     private void enqueueIMC(final InterModEnqueueEvent event) {
         Curios.registerCurioSlot(Curios.CHEST_SLOT, 1, false, null);
         Curios.registerCurioSlot(Curios.HALO_SLOT, 1, false, null);
+        Curios.registerCurioSlot(Curios.PROTECT_STONE_SLOT, 1, false, null);
     }
 
     private void processIMC(final InterModProcessEvent event) {

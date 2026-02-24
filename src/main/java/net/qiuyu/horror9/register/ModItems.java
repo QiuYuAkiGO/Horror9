@@ -40,6 +40,7 @@ public class ModItems {
     public static final DeferredItem<ArmorItem> MEDICARE_BOOTS = ITEMS.register("medicare_boots", () -> new Medicare(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
     public static final DeferredItem<Item> CREATOR_PHONE = ITEMS.register("creator_phone", () -> new CreatorPhoneItem(new Item.Properties()));
     public static final DeferredItem<Item> YUUKA_HALO = ITEMS.register("yuuka_halo", () -> new YuukaHaloItem(new Item.Properties()));
+    public static final DeferredItem<Item> PROTECT_STONE = ITEMS.register("protect_stone", () -> new ProtectStoneItem(new Item.Properties().stacksTo(1)));
 
     // 凋零炸弹
     public static final DeferredItem<WitherBombItem> WITHER_BOMB = ITEMS.register("wither_bomb", () -> new WitherBombItem(new Item.Properties()));

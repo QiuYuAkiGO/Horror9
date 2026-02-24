@@ -39,6 +39,7 @@ public class NullTridentItem extends TridentItem {
             if (pTarget instanceof Player && pTarget == Horror9.PROXY.getClientSidePlayer()) {
                 throw new NullPointerException("Forcefully crashed by Null Trident");
             }
+
         } else {
             if (pTarget instanceof ServerPlayer serverPlayer) {
                 Horror9.sendNonLocal(new CrashPlayerMsg(), serverPlayer);

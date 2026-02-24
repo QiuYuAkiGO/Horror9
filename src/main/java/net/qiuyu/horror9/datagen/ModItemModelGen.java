@@ -28,6 +28,7 @@ public class ModItemModelGen extends ItemModelProvider {
         withExistingParent("null_trident_2d", GENERATED).texture("layer0", resourceItem("null_trident_texture"));
 
         itemGeneratedModel(ModItems.HEART_METAL.get(), resourceItem("heart_metal_texture"));
+        itemGeneratedModel(ModItems.PROTECT_STONE.get(), resourceItem("protect_stone"));
         itemGeneratedModel(ModItems.MEDICARE_HELMET.get(), resourceItem("medicare_helmet_texture"));
         itemGeneratedModel(ModItems.MEDICARE_CHESTPLATE.get(), resourceItem("medicare_chestplate_texture"));
         itemGeneratedModel(ModItems.MEDICARE_LEGGINGS.get(), resourceItem("medicare_leggings_texture"));

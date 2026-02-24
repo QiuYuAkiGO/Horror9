@@ -69,5 +69,12 @@ public class ModLangGenEN extends LanguageProvider {
 
         add("curios.identifier.chest", "Chest");
         add("curios.identifier.halo", "Halo");
+        add("curios.identifier.protect_stone", "Protect Stone");
+        add(ModItems.PROTECT_STONE.get(), "Protect Stone");
+        add("tooltip.horror9.protect_stone.line1", "Activates effects when equipped in Protect Stone slot.");
+        add("tooltip.horror9.protect_stone.line2", "Effect list stored in NBT under Effects (e.g. minecraft:regeneration).");
+        add("tooltip.horror9.protect_stone.effects", "Effects:");
+        add("effect.horror9.moving_light_1", "Moving Light I");
+        add("effect.horror9.moving_light_2", "Moving Light II");
     }
 }

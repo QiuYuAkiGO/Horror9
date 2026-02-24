@@ -9,6 +9,7 @@ import top.theillusivec4.curios.api.SlotTypeMessage;
 public class Curios {
     public static String CHEST_SLOT = "chest";
     public static String HALO_SLOT = "halo";
+    public static String PROTECT_STONE_SLOT = "protect_stone";
 
     public static void registerCurioSlot(final String identifier, final int slots, final boolean isHidden, @Nullable final ResourceLocation icon) {
         final SlotTypeMessage.Builder message = new SlotTypeMessage.Builder(identifier);
