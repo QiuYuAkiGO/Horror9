@@ -37,6 +37,53 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.WITHER_BOMB.get());
                         pOutput.accept(ModItems.CREATOR_PHONE.get());
                         pOutput.accept(ModItems.PROTECT_STONE.get());
+
+                        // Corruption basic materials
+                        pOutput.accept(ModItems.CORRUPTED_BRAIN.get());
+                        pOutput.accept(ModItems.CORRUPTED_CHITIN.get());
+                        pOutput.accept(ModItems.CORRUPTED_STICK.get());
+                        pOutput.accept(ModItems.CORRUPTED_FOREGUT.get());
+                        pOutput.accept(ModItems.DARK_SOUL.get());
+                        pOutput.accept(ModItems.COTTON.get());
+                        pOutput.accept(ModItems.VEIN.get());
+                        pOutput.accept(ModItems.TOXIC_FLAME_CRYSTALLIZATION.get());
+                        pOutput.accept(ModItems.WATER_LAVA_CRYSTALLIZATION.get());
+                        pOutput.accept(ModItems.NITROCELLULOSE.get());
+                        pOutput.accept(ModItems.TOOTH.get());
+                        pOutput.accept(ModItems.BOTTLE_OF_TOXIC_FLAME.get());
+                        pOutput.accept(ModItems.CORRECTLY_SNOW_BALL.get());
+
+                        // Corruption weapons & tools
+                        pOutput.accept(ModItems.CORRUPTLY_LAVA_SNOW_BROAD_SWORD.get());
+                        pOutput.accept(ModItems.CORRUPTLY_LAVA_SNOW_KNIFE.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_SWORD.get());
+                        pOutput.accept(ModItems.SAND_WATER_THROWING_KNIFE.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_BOW.get());
+
+                        // Corruption armor
+                        pOutput.accept(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_HELMET.get());
+                        pOutput.accept(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_CHESTPLATE.get());
+                        pOutput.accept(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_LEGGINGS.get());
+                        pOutput.accept(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_BOOTS.get());
+
+                        pOutput.accept(ModItems.CORRUPTLY_SAND_WATER_LIGHT_HELMET.get());
+                        pOutput.accept(ModItems.CORRUPTLY_SAND_WATER_LIGHT_CHESTPLATE.get());
+                        pOutput.accept(ModItems.CORRUPTLY_SAND_WATER_LIGHT_LEGGINGS.get());
+                        pOutput.accept(ModItems.CORRUPTLY_SAND_WATER_LIGHT_BOOTS.get());
+
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_HELMET.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_CHESTPLATE.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_LEGGINGS.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_BOOTS.get());
+
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_HELMET.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_CHESTPLATE.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_LEGGINGS.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_BOOTS.get());
+
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_HEART.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_PUNCH_0.get());
+                        pOutput.accept(ModItems.CORRUPTLY_TOXIC_FLAME_PUNCH_1.get());
                     })
                     .build());
 

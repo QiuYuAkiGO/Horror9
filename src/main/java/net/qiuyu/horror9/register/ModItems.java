@@ -55,6 +55,92 @@ public class ModItems {
     public static final DeferredItem<Item> VILLAGE_CORE_BLUE_SPAWN_EGG = ITEMS.register("village_core_blue_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntityTypes.VILLAGE_CORE_BLUE, 0xF8F8FF, 0x0000FF,
                     new Item.Properties()));
+
+    // Corruption basic materials
+    public static final DeferredItem<Item> CORRUPTED_BRAIN = ITEMS.register("corrupted_brain",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTED_CHITIN = ITEMS.register("corrupted_chitin",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTED_STICK = ITEMS.register("corrupted_stick",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTED_FOREGUT = ITEMS.register("corrupted_foregut",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DARK_SOUL = ITEMS.register("dark_soul",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COTTON = ITEMS.register("cotton",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> VEIN = ITEMS.register("vein",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TOXIC_FLAME_CRYSTALLIZATION = ITEMS.register("toxic_flame_crystallization",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WATER_LAVA_CRYSTALLIZATION = ITEMS.register("water_lava_crystallization",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> NITROCELLULOSE = ITEMS.register("nitrocellulose",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TOOTH = ITEMS.register("tooth",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BOTTLE_OF_TOXIC_FLAME = ITEMS.register("bottle_of_toxic_flame",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRECTLY_SNOW_BALL = ITEMS.register("correctly_snow_ball",
+            () -> new Item(new Item.Properties()));
+
+    // Corruption weapons & tools
+    public static final DeferredItem<Item> CORRUPTLY_LAVA_SNOW_BROAD_SWORD = ITEMS.register("corruptly_lava_snow_broad_sword",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTLY_LAVA_SNOW_KNIFE = ITEMS.register("corruptly_lava_snow_knife",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTLY_TOXIC_FLAME_SWORD = ITEMS.register("corruptly_toxic_flame_sword",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SAND_WATER_THROWING_KNIFE = ITEMS.register("sand_water_throwing_knife",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<BowItem> CORRUPTLY_TOXIC_FLAME_BOW = ITEMS.register("corruptly_toxic_flame_bow",
+            () -> new BowItem(new Item.Properties().durability(384)));
+
+    // Corruption armor (heavy/light, lava/snow, sand/water, toxic flame)
+    public static final DeferredItem<ArmorItem> CORRUPTLY_LAVA_SNOW_HEAVY_HELMET = ITEMS.register("corruptly_lava_snow_heavy_helmet",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_LAVA_SNOW_HEAVY_CHESTPLATE = ITEMS.register("corruptly_lava_snow_heavy_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_LAVA_SNOW_HEAVY_LEGGINGS = ITEMS.register("corruptly_lava_snow_heavy_leggings",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_LAVA_SNOW_HEAVY_BOOTS = ITEMS.register("corruptly_lava_snow_heavy_boots",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final DeferredItem<ArmorItem> CORRUPTLY_SAND_WATER_LIGHT_HELMET = ITEMS.register("corruptly_sand_water_light_helmet",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_SAND_WATER_LIGHT_CHESTPLATE = ITEMS.register("corruptly_sand_water_light_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_SAND_WATER_LIGHT_LEGGINGS = ITEMS.register("corruptly_sand_water_light_leggings",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_SAND_WATER_LIGHT_BOOTS = ITEMS.register("corruptly_sand_water_light_boots",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_HEAVY_HELMET = ITEMS.register("corruptly_toxic_flame_heavy_helmet",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_HEAVY_CHESTPLATE = ITEMS.register("corruptly_toxic_flame_heavy_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_HEAVY_LEGGINGS = ITEMS.register("corruptly_toxic_flame_heavy_leggings",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_HEAVY_BOOTS = ITEMS.register("corruptly_toxic_flame_heavy_boots",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_LIGHT_HELMET = ITEMS.register("corruptly_toxic_flame_light_helmet",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_LIGHT_CHESTPLATE = ITEMS.register("corruptly_toxic_flame_light_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_LIGHT_LEGGINGS = ITEMS.register("corruptly_toxic_flame_light_leggings",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final DeferredItem<ArmorItem> CORRUPTLY_TOXIC_FLAME_LIGHT_BOOTS = ITEMS.register("corruptly_toxic_flame_light_boots",
+            () -> new ArmorItem(ModArmorMaterials.MEDICARE, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final DeferredItem<Item> CORRUPTLY_TOXIC_FLAME_HEART = ITEMS.register("corruptly_toxic_flame_heart",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTLY_TOXIC_FLAME_PUNCH_0 = ITEMS.register("corruptly_toxic_flame_punch_0",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CORRUPTLY_TOXIC_FLAME_PUNCH_1 = ITEMS.register("corruptly_toxic_flame_punch_1",
+            () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

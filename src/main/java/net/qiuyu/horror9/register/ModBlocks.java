@@ -109,6 +109,52 @@ public class ModBlocks {
     public static final DeferredBlock<ButtonBlock> SAPINDUS_BUTTON =
             BLOCKS.register("sapindus_button", () -> new ButtonBlock(BlockSetType.OAK, 30, woodProps().noCollission()));
 
+    // Corruption wood set (from corruption-textures)
+    public static final DeferredBlock<RotatedPillarBlock> CORRUPTED_LOG =
+            BLOCKS.register("corrupted_log", () -> new RotatedPillarBlock(woodProps()));
+
+    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_CORRUPTED_LOG =
+            BLOCKS.register("stripped_corrupted_log", () -> new RotatedPillarBlock(woodProps()));
+
+    public static final DeferredBlock<Block> SOFTEN_DIRT =
+            BLOCKS.register("soften_dirt", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT)
+                    .strength(0.5F)
+                    .sound(SoundType.GRAVEL)));
+
+    public static final DeferredBlock<Block> SOFTEN_GRASS_BLOCK =
+            BLOCKS.register("soften_grass_block", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.GRASS)
+                    .strength(0.6F)
+                    .sound(SoundType.GRASS)));
+
+    public static final DeferredBlock<Block> CORRUPTED_LEAVES =
+            registerLeaves("corrupted_leaves", () -> new LeavesBlock(leavesProps()));
+
+    public static final DeferredBlock<Block> CORRUPTED_GRASS_BLOCK =
+            BLOCKS.register("corrupted_grass_block", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.GRASS)
+                    .strength(0.6F)
+                    .sound(SoundType.GRASS)));
+
+    public static final DeferredBlock<Block> CORRUPTED_FRUIT =
+            BLOCKS.register("corrupted_fruit", () -> new Block(plantProps()));
+
+    public static final DeferredBlock<Block> TOXIC_STRAW_MUSHROOM =
+            BLOCKS.register("toxic_straw_mushroom", () -> new Block(plantProps()));
+
+    public static final DeferredBlock<Block> SOUL_CONTAINER =
+            BLOCKS.register("soul_container", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .strength(1.5F)
+                    .sound(SoundType.GLASS)));
+
+    public static final DeferredBlock<Block> CORRUPTION_WORKPLACE =
+            BLOCKS.register("corruption_workplace", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .strength(2.0F)
+                    .sound(SoundType.STONE)));
+
 //    private static final AbstractTreeGrower SAPINDUS_TREE_GROWER = new SapindusTreeGrower();
 //    // Leaves + Sapling
 //    public static final DeferredBlock<SapindusSaplingBlock.SapindusLeavesBlock> SAPINDUS_LEAVES =

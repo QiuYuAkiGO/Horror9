@@ -76,5 +76,52 @@ public class ModLangGenEN extends LanguageProvider {
         add("tooltip.horror9.protect_stone.effects", "Effects:");
         add("effect.horror9.moving_light_1", "Moving Light I");
         add("effect.horror9.moving_light_2", "Moving Light II");
+
+        // Corruption basic materials
+        add(ModItems.CORRUPTED_BRAIN.get(), "Corrupted Brain");
+        add(ModItems.CORRUPTED_CHITIN.get(), "Corrupted Chitin");
+        add(ModItems.CORRUPTED_STICK.get(), "Corrupted Stick");
+        add(ModItems.CORRUPTED_FOREGUT.get(), "Corrupted Foregut");
+        add(ModItems.DARK_SOUL.get(), "Dark Soul");
+        add(ModItems.COTTON.get(), "Cotton");
+        add(ModItems.VEIN.get(), "Vein");
+        add(ModItems.TOXIC_FLAME_CRYSTALLIZATION.get(), "Toxic Flame Crystallization");
+        add(ModItems.WATER_LAVA_CRYSTALLIZATION.get(), "Water-Lava Crystallization");
+        add(ModItems.NITROCELLULOSE.get(), "Nitrocellulose");
+        add(ModItems.TOOTH.get(), "Tooth");
+        add(ModItems.BOTTLE_OF_TOXIC_FLAME.get(), "Bottle of Toxic Flame");
+        add(ModItems.CORRECTLY_SNOW_BALL.get(), "Correctly Snow Ball");
+
+        // Corruption weapons & tools
+        add(ModItems.CORRUPTLY_LAVA_SNOW_BROAD_SWORD.get(), "Corruptly Lava Snow Broadsword");
+        add(ModItems.CORRUPTLY_LAVA_SNOW_KNIFE.get(), "Corruptly Lava Snow Knife");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_SWORD.get(), "Corruptly Toxic Flame Sword");
+        add(ModItems.SAND_WATER_THROWING_KNIFE.get(), "Sand Water Throwing Knife");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_BOW.get(), "Corruptly Toxic Flame Bow");
+
+        // Corruption armor
+        add(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_HELMET.get(), "Corruptly Lava Snow Heavy Helmet");
+        add(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_CHESTPLATE.get(), "Corruptly Lava Snow Heavy Chestplate");
+        add(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_LEGGINGS.get(), "Corruptly Lava Snow Heavy Leggings");
+        add(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_BOOTS.get(), "Corruptly Lava Snow Heavy Boots");
+
+        add(ModItems.CORRUPTLY_SAND_WATER_LIGHT_HELMET.get(), "Corruptly Sand Water Light Helmet");
+        add(ModItems.CORRUPTLY_SAND_WATER_LIGHT_CHESTPLATE.get(), "Corruptly Sand Water Light Chestplate");
+        add(ModItems.CORRUPTLY_SAND_WATER_LIGHT_LEGGINGS.get(), "Corruptly Sand Water Light Leggings");
+        add(ModItems.CORRUPTLY_SAND_WATER_LIGHT_BOOTS.get(), "Corruptly Sand Water Light Boots");
+
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_HELMET.get(), "Corruptly Toxic Flame Heavy Helmet");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_CHESTPLATE.get(), "Corruptly Toxic Flame Heavy Chestplate");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_LEGGINGS.get(), "Corruptly Toxic Flame Heavy Leggings");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_BOOTS.get(), "Corruptly Toxic Flame Heavy Boots");
+
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_HELMET.get(), "Corruptly Toxic Flame Light Helmet");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_CHESTPLATE.get(), "Corruptly Toxic Flame Light Chestplate");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_LEGGINGS.get(), "Corruptly Toxic Flame Light Leggings");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_BOOTS.get(), "Corruptly Toxic Flame Light Boots");
+
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_HEART.get(), "Corruptly Toxic Flame Heart");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_PUNCH_0.get(), "Corruptly Toxic Flame Punch I");
+        add(ModItems.CORRUPTLY_TOXIC_FLAME_PUNCH_1.get(), "Corruptly Toxic Flame Punch II");
     }
 }

@@ -16,8 +16,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -37,7 +35,6 @@ import java.util.List;
 
 public class ModEvents {
 
-    @EventBusSubscriber(modid = Horror9.MODID, bus = EventBusSubscriber.Bus.MOD)
     public static class ModEventBusEvents {
 
         @SubscribeEvent
@@ -53,7 +50,6 @@ public class ModEvents {
         }
     }
 
-    @EventBusSubscriber(modid = Horror9.MODID)
     public static class ForgeEvents {
 
         @SubscribeEvent
@@ -161,17 +157,6 @@ public class ModEvents {
                         }
                     }
                 }
-            }
-        }
-
-
-        @EventBusSubscriber(modid = Horror9.MODID)
-        public static class ModEventBusEvents {
-            @SubscribeEvent
-            public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-                event.put(ModEntityTypes.NO1.get(), No1Entity.setAttributes());
-                event.put(ModEntityTypes.BITER.get(), BiterEntity.setAttributes());
-                event.put(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenEntity.setAttributes());
             }
         }
     }

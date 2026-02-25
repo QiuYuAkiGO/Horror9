@@ -35,6 +35,56 @@ public class ModItemModelGen extends ItemModelProvider {
         itemGeneratedModel(ModItems.MEDICARE_BOOTS.get(), resourceItem("medicare_boots_texture"));
 
         handheldItem(ModItems.OLD_DIAMOND_SWORD.get());
+
+        // Corruption basic materials - use their own migrated textures
+        itemGeneratedModel(ModItems.CORRUPTED_BRAIN.get(), resourceItem("corrupted_brain"));
+        itemGeneratedModel(ModItems.CORRUPTED_CHITIN.get(), resourceItem("corrupted_chitin"));
+        itemGeneratedModel(ModItems.CORRUPTED_STICK.get(), resourceItem("corrupted_stick"));
+        itemGeneratedModel(ModItems.CORRUPTED_FOREGUT.get(), resourceItem("corrupted_Foregut".toLowerCase()));
+        itemGeneratedModel(ModItems.DARK_SOUL.get(), resourceItem("dark_Soul".toLowerCase()));
+        itemGeneratedModel(ModItems.COTTON.get(), resourceItem("cotton"));
+        itemGeneratedModel(ModItems.VEIN.get(), resourceItem("vein"));
+        itemGeneratedModel(ModItems.TOXIC_FLAME_CRYSTALLIZATION.get(), resourceItem("toxic_flame_crystallization"));
+        itemGeneratedModel(ModItems.WATER_LAVA_CRYSTALLIZATION.get(), resourceItem("water_lava_crystallization"));
+        itemGeneratedModel(ModItems.NITROCELLULOSE.get(), resourceItem("nitrocellulose"));
+        itemGeneratedModel(ModItems.TOOTH.get(), resourceItem("tooth"));
+        itemGeneratedModel(ModItems.BOTTLE_OF_TOXIC_FLAME.get(), resourceItem("bottle_of_toxic_flame"));
+        itemGeneratedModel(ModItems.CORRECTLY_SNOW_BALL.get(), resourceItem("correctly_snow_ball"));
+
+        // Corruption weapons & tools - use their own icons
+        handheldItem(ModItems.CORRUPTLY_LAVA_SNOW_BROAD_SWORD.get());
+        handheldItem(ModItems.CORRUPTLY_LAVA_SNOW_KNIFE.get());
+        handheldItem(ModItems.CORRUPTLY_TOXIC_FLAME_SWORD.get());
+        handheldItem(ModItems.SAND_WATER_THROWING_KNIFE.get());
+
+        // Bow uses vanilla-style bow model; texture name comes from item id
+        withExistingParent(itemName(ModItems.CORRUPTLY_TOXIC_FLAME_BOW.get()), "item/bow");
+
+        // Corruption armor - use their own item textures
+        itemGeneratedModel(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_HELMET.get(), resourceItem("corruptly_lava_snow_heavy_helmet"));
+        itemGeneratedModel(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_CHESTPLATE.get(), resourceItem("corruptly_lava_snow_heavy_chestplate"));
+        itemGeneratedModel(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_LEGGINGS.get(), resourceItem("corruptly_lava_snow_heavy_leggings"));
+        itemGeneratedModel(ModItems.CORRUPTLY_LAVA_SNOW_HEAVY_BOOTS.get(), resourceItem("corruptly_lava_snow_heavy_boots"));
+
+        itemGeneratedModel(ModItems.CORRUPTLY_SAND_WATER_LIGHT_HELMET.get(), resourceItem("corruptly_sand_water_light_helmet"));
+        itemGeneratedModel(ModItems.CORRUPTLY_SAND_WATER_LIGHT_CHESTPLATE.get(), resourceItem("corruptly_sand_water_light_chestplate"));
+        itemGeneratedModel(ModItems.CORRUPTLY_SAND_WATER_LIGHT_LEGGINGS.get(), resourceItem("corruptly_sand_water_light_leggings"));
+        itemGeneratedModel(ModItems.CORRUPTLY_SAND_WATER_LIGHT_BOOTS.get(), resourceItem("corruptly_sand_water_light_boots"));
+
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_HELMET.get(), resourceItem("corruptly_toxic_flame_heavy_helmet"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_CHESTPLATE.get(), resourceItem("corruptly_toxic_flame_heavy_chestplate"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_LEGGINGS.get(), resourceItem("corruptly_toxic_flame_heavy_leggings"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_HEAVY_BOOTS.get(), resourceItem("corruptly_toxic_flame_heavy_boots"));
+
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_HELMET.get(), resourceItem("corruptly_toxic_flame_light_helmet"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_CHESTPLATE.get(), resourceItem("corruptly_toxic_flame_light_chestplate"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_LEGGINGS.get(), resourceItem("corruptly_toxic_flame_light_leggings"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_LIGHT_BOOTS.get(), resourceItem("corruptly_toxic_flame_light_boots"));
+
+        // Heart & Punch - use their own migrated textures
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_HEART.get(), resourceItem("corruptly_toxic_flame_heart"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_PUNCH_0.get(), resourceItem("corruptly_toxic_flame_punch_0"));
+        itemGeneratedModel(ModItems.CORRUPTLY_TOXIC_FLAME_PUNCH_1.get(), resourceItem("corruptly_toxic_flame_punch_1"));
     }
 
     private void eggItem(Item item) {
