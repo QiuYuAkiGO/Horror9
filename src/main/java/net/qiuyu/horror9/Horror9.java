@@ -86,12 +86,18 @@ public class Horror9 {
             EntityRenderers.register(ModEntityTypes.NO1.get(), No1Renderer::new);
             EntityRenderers.register(ModEntityTypes.BITER.get(), BiterRenderer::new);
             EntityRenderers.register(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenRenderer::new);
+            EntityRenderers.register(ModEntityTypes.ARTHROEE.get(), ArthroeeRenderer::new);
+            EntityRenderers.register(ModEntityTypes.BULCULITER.get(), BulculiterRenderer::new);
             EntityRenderers.register(ModEntityTypes.NULL_TRIDENT_ENTITY.get(), NullTridentEntityRenderer::new);
+            EntityRenderers.register(ModEntityTypes.ARTHROEE.get(), ArthroeeRenderer::new);
+            EntityRenderers.register(ModEntityTypes.BULCULITER.get(), BulculiterRenderer::new);
             CuriosRendererRegistry.register(ModItems.HEART_METAL.get(), HeartMetalRenderer::new);
             CuriosRendererRegistry.register(ModItems.YUUKA_HALO.get(), YuukaHaloRenderer::new);
             EntityRenderers.register(ModEntityTypes.WITHER_BOMB.get(), WitherBombRenderer::new);
             EntityRenderers.register(ModEntityTypes.VILLAGE_CORE_BLUE.get(), VillageCoreBlueRenderer::new);
             EntityRenderers.register(ModEntityTypes.VILLAGE_CORE_RED.get(), VillageCoreRedRenderer::new);
+            
+            
         }
 
         @SubscribeEvent

@@ -44,7 +44,11 @@ public class ModLangGenCN extends LanguageProvider {
         add("tooltip.horror9.old_sword.line1", "一把失去了光泽但依旧锋利的剑");
         add("tooltip.horror9.old_sword.line2", "攻击伤害");
         add("tooltip.horror9.when_in_main_hand", "在主手时：");
-
+        add(ModItems.KNIFE.get(), "小刀");
+        add(ModItems.GIANT_KILLER.get(), "巨人杀手");
+        add("death.attack.giant_killer_damage", "%1$s 被巨人杀手终结了");
+        add("death.attack.giant_killer_damage.player", "%1$s 在与 %2$s 战斗时被巨人杀手终结了");
+ 
         // 饰品
         add(ModItems.HEART_METAL.get(),"❤『爱心勋章』❤");
         add("tooltip.horror9.heart_metal.line1", "已发放爱心献血奖励❤");
@@ -62,10 +66,14 @@ public class ModLangGenCN extends LanguageProvider {
         add(ModItems.NO1_SPAWN_EGG.get(),"一号机原形");
         add(ModItems.BITER_SPAWN_EGG.get(),"活体蔓生者卵");
         add(ModItems.THE_MISTAKEN_SPAWN_EGG.get(),"误解之人投影");
+        add(ModItems.ARTHROEE_SPAWN_EGG.get(),"节肢者原形");
+        add(ModItems.BULCULITER_SPAWN_EGG.get(),"贪食者原形");
         add(ModCreativeModeTab.HORROR9_TAB_STRING,"恐怖九号");
         add("entity.horror9.no1","一号机");
         add("entity.horror9.biter","活体蔓生者");
         add("entity.horror9.the_mistaken","误解之人");
+        add("entity.horror9.arthroee","节肢者");
+        add("entity.horror9.bulculiter","贪食者");
 
         // 按键翻译
         add("key.category.horror9", "恐怖九号");

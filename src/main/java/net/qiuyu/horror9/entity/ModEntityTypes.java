@@ -35,6 +35,19 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(TheMistakenEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 2.9f)
                             .build(ResourceLocation.parse(Horror9.MODID + ":" + "the_mistaken").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ArthroeeEntity>> ARTHROEE =
+            ENTITY_TYPES.register("arthroee",
+                    () -> EntityType.Builder.of(ArthroeeEntity::new, MobCategory.MONSTER)
+                            .sized(0.8f, 0.8f)
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "arthroee").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BulculiterEntity>> BULCULITER =
+            ENTITY_TYPES.register("bulculiter",
+                    () -> EntityType.Builder.of(BulculiterEntity::new, MobCategory.MONSTER)
+                            .sized(0.8f, 2.5f)
+                            .build(ResourceLocation.parse(Horror9.MODID + ":" + "bulculiter").toString()));
+
     // 凋零炸弹
     public static final DeferredHolder<EntityType<?>, EntityType<WitherBombEntity>> WITHER_BOMB =
             ENTITY_TYPES.register("wither_bomb",
@@ -53,6 +66,7 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(VillageCoreBlueEntity::new, MobCategory.MISC)
                             .sized(5F, 5F)
                             .build(ResourceLocation.parse(Horror9.MODID + ":" + "village_core_blue").toString()));
+
 
 
     public static void register(IEventBus eventBus) {

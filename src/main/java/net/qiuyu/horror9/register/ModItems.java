@@ -27,6 +27,12 @@ public class ModItems {
     public static final DeferredItem<Item> THE_MISTAKEN_SPAWN_EGG = ITEMS.register("the_mistaken_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntityTypes.THE_MISTAKEN, 0x22b341, 0x19732e,
                     new Item.Properties()));
+    public static final DeferredItem<Item> ARTHROEE_SPAWN_EGG = ITEMS.register("arthroee_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntityTypes.ARTHROEE, 0x22b341, 0x19732e,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> BULCULITER_SPAWN_EGG = ITEMS.register("bulculiter_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntityTypes.BULCULITER, 0x22b341, 0x19732e,
+                    new Item.Properties()));
     public static final DeferredItem<Item> OWL_SICKLE = ITEMS.register("owl_sickle", () -> new OwlSickleItem(Tiers.NETHERITE, 9, -3.84f,
             new Item.Properties().durability(198)));
     public static final DeferredItem<Item> HEART_METAL = ITEMS.register("heart_metal", () -> new HeartMetal(new Item.Properties().stacksTo(1)));
@@ -41,7 +47,9 @@ public class ModItems {
     public static final DeferredItem<Item> CREATOR_PHONE = ITEMS.register("creator_phone", () -> new CreatorPhoneItem(new Item.Properties()));
     public static final DeferredItem<Item> YUUKA_HALO = ITEMS.register("yuuka_halo", () -> new YuukaHaloItem(new Item.Properties()));
     public static final DeferredItem<Item> PROTECT_STONE = ITEMS.register("protect_stone", () -> new ProtectStoneItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () -> new KnifeItem((new Item.Properties()).durability(256)));
 
+    public static final DeferredItem<Item> GIANT_KILLER = ITEMS.register("giant_killer", () -> new GiantKillerItem((new Item.Properties()).durability(500).stacksTo(1)));
     // 凋零炸弹
     public static final DeferredItem<WitherBombItem> WITHER_BOMB = ITEMS.register("wither_bomb", () -> new WitherBombItem(new Item.Properties()));
     // 钻石剑

@@ -11,11 +11,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -24,17 +26,20 @@ import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.qiuyu.horror9.Horror9;
 import net.qiuyu.horror9.entity.ModEntityTypes;
+import net.qiuyu.horror9.entity.custom.ArthroeeEntity;
 import net.qiuyu.horror9.entity.custom.BiterEntity;
+import net.qiuyu.horror9.entity.custom.BulculiterEntity;
 import net.qiuyu.horror9.entity.custom.No1Entity;
 import net.qiuyu.horror9.entity.custom.TheMistakenEntity;
 import net.qiuyu.horror9.items.custom.OldSwordItem;
+import net.qiuyu.horror9.register.ModDamageTypes;
 import net.qiuyu.horror9.register.ModItems;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
 
 public class ModEvents {
-
+    @EventBusSubscriber(modid = Horror9.MODID)
     public static class ModEventBusEvents {
 
         @SubscribeEvent
@@ -47,9 +52,11 @@ public class ModEvents {
             event.put(ModEntityTypes.NO1.get(), No1Entity.setAttributes());
             event.put(ModEntityTypes.BITER.get(), BiterEntity.setAttributes());
             event.put(ModEntityTypes.THE_MISTAKEN.get(), TheMistakenEntity.setAttributes());
+            event.put(ModEntityTypes.ARTHROEE.get(), ArthroeeEntity.setAttributes());
+            event.put(ModEntityTypes.BULCULITER.get(), BulculiterEntity.setAttributes());
         }
     }
-
+    @EventBusSubscriber(modid = Horror9.MODID)
     public static class ForgeEvents {
 
         @SubscribeEvent
@@ -84,8 +91,13 @@ public class ModEvents {
 
         @SubscribeEvent
         public static void onLivingHurt(LivingIncomingDamageEvent event) {
+            if (event.getSource().is(ModDamageTypes.GIANT_KILLER_DAMAGE)) {
+                return;
+            }
+
             LivingEntity victim = event.getEntity();
             Entity attacker = event.getSource().getEntity();
+            Entity directEntity = event.getSource().getDirectEntity();
 
             if (attacker instanceof Player player) {
                 if (player.getMainHandItem().is(ModItems.OWL_SICKLE.get()) && player.hasEffect(MobEffects.DARKNESS) && player.getAttackStrengthScale(0.0F) >= 1.0F) {
@@ -93,6 +105,20 @@ public class ModEvents {
                 }
                 if (player.getMainHandItem().is(ModItems.HEART_PASS.get()) && player.getAttackStrengthScale(0.0F) >= 1.0F) {
                     victim.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200, 1));
+                }
+            }
+
+            if (directEntity instanceof AbstractArrow arrow) {
+                ItemStack weapon = arrow.getWeaponItem();
+                if (weapon != null && weapon.is(ModItems.GIANT_KILLER.get())) {
+                    // 基础伤害增加 2 点
+                    event.setAmount(event.getAmount() + 2.0f);
+
+                    // 额外造成 5% 最大生命值的伤害，使用自定义伤害类型
+                    float extraDamage = victim.getMaxHealth() * 0.05f;
+                    if (extraDamage > 0) {
+                        victim.hurt(victim.level().damageSources().source(ModDamageTypes.GIANT_KILLER_DAMAGE, attacker, arrow), extraDamage);
+                    }
                 }
             }
 
@@ -133,10 +159,10 @@ public class ModEvents {
                 }
 
                 // Creator Phone protection
-                for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-                    ItemStack stack = player.getInventory().getItem(i);
-                    if (stack.is(ModItems.CREATOR_PHONE.get())) {
-                        IEnergyStorage energy = stack.getCapability(Capabilities.EnergyStorage.ITEM);
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    handler.findFirstCurio(stack -> stack.is(ModItems.CREATOR_PHONE.get())).ifPresent(slotResult -> {
+                        ItemStack curioStack = slotResult.stack();
+                        IEnergyStorage energy = curioStack.getCapability(Capabilities.EnergyStorage.ITEM);
                         if (energy != null && energy.getEnergyStored() > 0) {
                             event.setCanceled(true);
                             energy.extractEnergy(energy.getEnergyStored(), false);
@@ -153,10 +179,9 @@ public class ModEvents {
                                         player.getX(), player.getY() + 1.0, player.getZ(),
                                         60, 0.5, 0.5, 0.5, 0.2);
                             }
-                            break;
                         }
-                    }
-                }
+                    });
+                });
             }
         }
     }
