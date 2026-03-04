@@ -102,7 +102,7 @@ public class Horror9 {
 
         @SubscribeEvent
         public static void onModelRegister(ModelEvent.RegisterAdditional event) {
-            event.register(new ModelResourceLocation(ResourceLocation.parse(Horror9.MODID + ":item/null_trident_2d"), "standalone"));
+            event.register(new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath(Horror9.MODID, "item/null_trident_2d"), "standalone"));
         }
     }
 }

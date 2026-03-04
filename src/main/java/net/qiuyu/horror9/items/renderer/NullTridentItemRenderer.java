@@ -29,7 +29,7 @@ public class NullTridentItemRenderer extends BlockEntityWithoutLevelRenderer {
         if (displayContext == ItemDisplayContext.GUI) {
             poseStack.pushPose();
 //            poseStack.scale(2.0F, 2.0F, 2.0F);
-            BakedModel model = Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(ResourceLocation.parse(Horror9.MODID + ":item/null_trident_2d"), "inventory"));
+            BakedModel model = Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath(Horror9.MODID, "item/null_trident_2d"), "standalone"));
             Minecraft.getInstance().getItemRenderer().render(stack, displayContext, false, poseStack, buffer, packedLight, packedOverlay, model);
             poseStack.popPose();
             return;
