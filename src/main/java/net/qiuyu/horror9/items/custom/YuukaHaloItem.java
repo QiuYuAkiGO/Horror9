@@ -13,7 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
-import net.qiuyu.horror9.Horror9;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import top.theillusivec4.curios.api.SlotContext;
@@ -25,7 +24,6 @@ import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.function.Consumer;
 
 public class YuukaHaloItem extends Item implements ICurioItem, GeoItem {
@@ -60,10 +58,15 @@ public class YuukaHaloItem extends Item implements ICurioItem, GeoItem {
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        // 也可以在这里添加 tick 效果
+    }
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifiers = LinkedHashMultimap.create();
         // Speed 3 效果，原版 Speed I 是 20% (0.2)，Speed III 是 60% (0.6)
-        modifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.parse(Horror9.MODID + ":yuuka_halo_speed"), 0.6D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(id.withSuffix("/yuuka_halo_speed"), 0.6D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         return modifiers;
     }
 

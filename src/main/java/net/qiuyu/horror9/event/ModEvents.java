@@ -70,6 +70,7 @@ public class ModEvents {
                                 Level level = player.level();
                                 // 产生视觉爆炸，半径随距离略微增加
                                 level.explode(player, player.getX(), player.getY(), player.getZ(), 2.0f + fallDistance / 10.0f, Level.ExplosionInteraction.NONE);
+                                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_EXPLODE.value(), player.getSoundSource(), 1.0f, 1.0f);
 
                                 // 手动计算半径内的伤害，实现 1:1 的比例
                                 float radius = 3.0f + fallDistance / 5.0f;
