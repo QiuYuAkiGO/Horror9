@@ -26,8 +26,6 @@ public class ModCreativeModeTab {
                         pOutput.accept(ModItems.THE_MISTAKEN_SPAWN_EGG.get());
                         pOutput.accept(ModItems.ARTHROEE_SPAWN_EGG.get());
                         pOutput.accept(ModItems.BULCULITER_SPAWN_EGG.get());
-                        pOutput.accept(ModItems.VILLAGE_CORE_RED_SPAWN_EGG.get());
-                        pOutput.accept(ModItems.VILLAGE_CORE_BLUE_SPAWN_EGG.get());
                         pOutput.accept(ModItems.OWL_SICKLE.get());
                         pOutput.accept(ModItems.HEART_METAL.get());
                         pOutput.accept(ModItems.HEART_PASS.get());
